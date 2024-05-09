@@ -14,4 +14,19 @@ export class ReclamationService {
   addReclamation(reclamation: Reclamation): Observable<Reclamation> {
     return this.http.post<Reclamation>(`${this.baseUrl}/add`, reclamation);
   }
+
+  getAllReclamations(): Observable<Reclamation[]> {
+    return this.http.get<Reclamation[]>(`${this.baseUrl}/read`);
+  }
+
+  getReclamations(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
+  }
+
+  getEnAttenteReclamationNumber(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/statistics/enattente-count`);
+  }
+  getSolvedReclamationNumberThisMonth(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/statistics/solved-this-month-count`);
+  }
 }

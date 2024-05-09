@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AjoutReclamationComponent } from './pages/ajout-reclamation/ajout-reclamation.component';
+import { AfficherReclamationAdminComponent } from './pages/afficher-reclamation-admin/afficher-reclamation-admin.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { AjoutReclamationComponent } from './pages/ajout-reclamation/ajout-recla
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    AjoutReclamationComponent
+    AjoutReclamationComponent,
+    AfficherReclamationAdminComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

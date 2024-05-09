@@ -6,6 +6,7 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { AjoutReclamationComponent } from 'src/app/pages/ajout-reclamation/ajout-reclamation.component';
+import { AfficherReclamationAdminComponent } from 'src/app/pages/afficher-reclamation-admin/afficher-reclamation-admin.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -14,5 +15,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'ajout-reclamation',           component: AjoutReclamationComponent },
+    { path: 'afficher-reclamation',           component: AfficherReclamationAdminComponent },
+
 
 ];
