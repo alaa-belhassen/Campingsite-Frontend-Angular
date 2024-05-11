@@ -12,6 +12,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { AddActiviteComponent } from './add-activite/add-activite.component';
+import { ActiviteAdminComponent } from './activite-admin/activite-admin.component';
+import { HeaderNavbarComponent } from './header-navbar/header-navbar.component';
+import { ModifyActiviteComponent } from './modify-activite/modify-activite.component';
+
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -22,12 +30,19 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    AddActiviteComponent,
+    ActiviteAdminComponent,
+    HeaderNavbarComponent,
+    ModifyActiviteComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
