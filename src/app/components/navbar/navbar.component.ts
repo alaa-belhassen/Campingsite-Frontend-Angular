@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     if(titlee.charAt(0) === '#'){
         titlee = titlee.slice( 1 );
+        console.log(titlee);
     }
 
     for(var item = 0; item < this.listTitles.length; item++){

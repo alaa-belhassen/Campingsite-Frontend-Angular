@@ -1,0 +1,44 @@
+.card__img {
+    display: block;
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+  }
+
+
+  body{
+    background-color:#dce3f0;
+}
+
+
+.out{
+  position:absolute;
+  bottom:0;
+  right:0;
+
+
+
+}
+
+.card_h{
+  height:375px;
+}
+.main-heading{
+    
+  font-size:20px;
+  color:red !important;
+}
+
+.ratings i{
+    
+    color:orange;
+    
+}
+
+.quantiter{
+  position:absolute;
+  top:5px;
+  right:15px;
+  padding-left:15px;
+  align-content: center;
+}
