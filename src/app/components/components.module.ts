@@ -9,12 +9,16 @@ import { CardStatComponent } from './card-stat/card-stat.component';
 import { ChartComponent } from './chart/chart.component';
 import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
 import { ListUsersComponent } from '../pages/list-users/list-users.component';
+import { CardProduitComponent } from './card-produit/card-produit.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule
   ],
   declarations: [
     FooterComponent,
@@ -23,7 +27,10 @@ import { ListUsersComponent } from '../pages/list-users/list-users.component';
     CardStatComponent,
     ChartComponent,
     ChartPipesComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    CardProduitComponent,
+    
+  
   ],
   exports: [
     FooterComponent,
@@ -31,7 +38,9 @@ import { ListUsersComponent } from '../pages/list-users/list-users.component';
     SidebarComponent,
     CardStatComponent,
     ChartComponent,
-    ChartPipesComponent
+    ChartPipesComponent,
+    CardProduitComponent,
+    
   ]
 })
 export class ComponentsModule { }
