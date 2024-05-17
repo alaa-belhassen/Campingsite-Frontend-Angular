@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CardStatComponent } from './card-stat/card-stat.component';
 import { ChartComponent } from './chart/chart.component';
 import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
+import { ListUsersComponent } from '../pages/list-users/list-users.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
     SidebarComponent,
     CardStatComponent,
     ChartComponent,
-    ChartPipesComponent
+    ChartPipesComponent,
+    ListUsersComponent
   ],
   exports: [
     FooterComponent,

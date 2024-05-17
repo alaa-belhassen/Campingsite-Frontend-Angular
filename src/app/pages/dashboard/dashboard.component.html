@@ -4,18 +4,31 @@
       <!-- Card stats -->
       <div class="row">
         <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-           <app-card-stat [title]="'money'" [growth]="100" [value]="'100.000'" [since]="'yesterday'"></app-card-stat>
+         
+          <div >
+            <div class="card card-stats mb-4 mb-xl-0" >
+              <app-card-stat [title]=favoriteSeason [value]=favoriteSeason ></app-card-stat>
+            </div>
+          
+        
+          </div>
+          
+
+        </div>
+
+        <div class="col-xl-3 col-lg-6">
+          
+            <div *ngIf="favoriteLandscapeStatistics && favoriteLandscapeStatistics.length > 0">
+              <div class="card card-stats mb-4 mb-xl-0" *ngFor="let LandscapeStat of favoriteLandscapeStatistics">
+                <app-card-stat [title]="LandscapeStat[0]"  [value]="LandscapeStat[1]" ></app-card-stat>
+              </div>
+           
           </div>
         </div>
         <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-           <app-card-stat [title]="'job'" [growth]="100" [value]="'100.000'" [since]="'yesterday'"></app-card-stat>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-           <app-card-stat [title]="'wabna'" [growth]="100" [value]="'100.000'" [since]="'yesterday'"></app-card-stat>
+          <div *ngIf="favoriteAccommodationTypeStatistics && favoriteAccommodationTypeStatistics.length > 0">
+          <div class="card card-stats mb-4 mb-xl-0" *ngFor="let TypeStat of favoriteAccommodationTypeStatistics">
+           <app-card-stat [title]="TypeStat[0]"  [value]="TypeStat[1]"></app-card-stat>
           </div>
         </div>
       </div>
@@ -166,10 +179,10 @@
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
-                    <span class="mr-2">60%</span>
+                    <span class="mr-2">10%</span>
                     <div>
                       <div class="progress">
-                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;"></div>
                       </div>
                     </div>
                   </div>

@@ -38,13 +38,34 @@
           <div class="text-center text-muted mb-4">
             <small>Or sign up with credentials</small>
           </div>
-          <form role="form">
+         
+          <form [formGroup]="addUserForm" (ngSubmit)="addUser"  id="firstForm">
             <div class="form-group">
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" placeholder="Name" type="text">
+                <input class="form-control" placeholder="Nom" type="text" formControlName="firstName">
+              </div>
+              <div *ngIf="addUserForm.controls['firstName'].invalid && (
+                addUserForm.controls['firstName'].touched || addUserForm.controls['firstName'].dirty 
+              )">
+                   <div *ngIf ="addUserForm.controls['firstName'].errors?.['required']">  Ce champ est obligatoire </div>
+                  
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input class="form-control" placeholder="Prenom" type="text" formControlName="lastName">
+              </div>
+              <div *ngIf="addUserForm.controls['lastName'].invalid && (
+                addUserForm.controls['lastName'].touched || addUserForm.controls['lastName'].dirty
+              )">
+                   <div *ngIf ="addUserForm.controls['lastName'].errors?.['required']">  Ce champ est obligatoire </div>
+                  
               </div>
             </div>
             <div class="form-group">
@@ -52,18 +73,67 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" placeholder="Email" type="email">
+                <input class="form-control" placeholder="Email" type="email" formControlName="email">
+              
+              </div>
+              <div *ngIf="addUserForm.controls['email'].invalid && (
+                addUserForm.controls['email'].touched || addUserForm.controls['email'].dirty
+              )">
+                   <div *ngIf ="addUserForm.controls['email'].errors?.['required']">  Ce champ est obligatoire </div>
+                   <div *ngIf ="addUserForm.controls['email'].errors?.['email']">  Ce n'est pas une adresse mail </div>
               </div>
             </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input class="form-control" placeholder="Telephone" type="number" formControlName="telephone">
+              </div>
+              <div *ngIf="addUserForm.controls['telephone'].invalid && (
+                addUserForm.controls['telephone'].touched || addUserForm.controls['telephone'].dirty
+              )">
+                   <div *ngIf ="addUserForm.controls['telephone'].errors?.['required']">  Ce champ est obligatoire </div>
+                   <div *ngIf="addUserForm.controls['telephone'].errors?.pattern">
+                    Le numéro de téléphone doit contenir exactement 8 chiffres.
+                  </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input class="form-control" placeholder="adresse" type="text" formControlName="adresse">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input class="form-control" placeholder="Date de naissannce" type="date" formControlName="date_naissance">
+              </div>
+            </div>
+            
             <div class="form-group">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password">
+                <input class="form-control" placeholder="Password" type="password" formControlName="password">
               </div>
+              <div *ngIf="addUserForm.controls['password'].invalid && (
+                addUserForm.controls['password'].touched || addUserForm.controls['password'].dirty
+              )">
+                   <div *ngIf ="addUserForm.controls['password'].errors?.['required']">  Ce champ est obligatoire </div>
+                  
+              </div>
+              <div class="text-muted font-italic">
+                <small>Force du mot de passe : 
+                    <span class="text-success font-weight-700">{{ getPasswordStrength() }}</span>
+                </small>
             </div>
-            <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
             <div class="row my-4">
               <div class="col-12">
                 <div class="custom-control custom-control-alternative custom-checkbox">
@@ -74,8 +144,80 @@
                 </div>
               </div>
             </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-secondary mt-4" (click)="showOtherForm()">Vos préférences</button>
+              </div>
+              <div  class="container mt-8 pb-5" >
+                <form [formGroup]="DetailsUserForm" style="display: none;" id="secondForm">
+                  <div class="form-group">
+                    <label for="landscapeType">Types de paysage</label>
+                    <select class="form-control" id="landscapeType" formControlName="paysage">
+                      <option value="foret">foret</option>
+                      <option value="montagne">desert</option>
+                      <option value="plage">montagne</option>
+                      <option value="desert">plage</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="color">Couleur</label>
+                    <input type="text" class="form-control" id="color" placeholder="Couleur" formControlName="couleur">
+                  </div>
+                  <div class="form-group">
+                    <label for="food">Alimentation</label>
+                    <select class="form-control" id="food" formControlName="alimentation">
+                      <option value="pique_nique">pique_nique</option>
+                      <option value="barbecue">barbecue</option>
+                      <option value="restaurant">restaurant</option>
+                      <option value="cafe">cafe</option>
+                    </select>
+                  </div>
+               
+                  <div class="form-group">
+                    <label for="companionship">Accompagnement</label>
+                    <select class="form-control" id="companionship" formControlName="compagnement">
+                      <option value="visitesGuidees">visitesGuidees</option>
+                      <option value="pleinair">pleinair</option>
+                      <option value="soiree">soiree</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="season">Saison</label>
+                    <select class="form-control" id="season" formControlName="saison">
+                      <option value="printemps">printemps</option>
+                      <option value="ete">ete</option>
+                      <option value="automne">automne</option>
+                      <option value="hiver">hiver</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="accommodation">Type d'hébergement</label>
+                    <select class="form-control" id="accommodation" formControlName="type_hebergement">
+                      <option value="tente">tente</option>
+                      <option value="cabane">cabane</option>
+                     
+                    </select>
+                  </div>
+                  <!-- Vos autres champs ici -->
+                
+                </form>
+                
+              </div>
+            </div>
+            
+           <!-- Afficher ce message si l'ajout est réussi -->
+<div *ngIf="ajoutReussi" class="alert alert-success" role="alert">
+  L'utilisateur a été ajouté avec succès!
+</div>
+<div *ngIf="userByEmail" class="alert alert-danger" role="alert">
+  Cet utilisateur existe déjà.
+</div>
+<!-- Afficher ce message en cas d'erreur -->
+<div *ngIf="erreurAjout && !userByEmail" class="alert alert-danger" role="alert">
+  Une erreur est survenue lors de l'ajout de l'utilisateur. Veuillez réessayer.
+</div>
+
             <div class="text-center">
-              <button type="button" class="btn btn-primary mt-4">Create account</button>
+              <button type="button" class="btn btn-primary mt-4" (click)="addUser()" [disabled]="!addUserForm.valid && !DetailsUserForm">Create account</button>
             </div>
           </form>
         </div>
