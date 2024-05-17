@@ -12,6 +12,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { ActiviteCardsComponent } from './Activites/activite-cards/activite-cards.component';
+import { UpdateActiviteComponent } from './Activites/update-activite/update-activite.component';
+import { AddActiviteComponent } from './Activites/add-activite/add-activite.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FilterPipe } from './filter-activite.pipe';
+
+
+
 
 
 @NgModule({
@@ -22,12 +31,19 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ActiviteCardsComponent,
+    UpdateActiviteComponent,
+    AddActiviteComponent,
+    FilterPipe,
   ],
   providers: [],
   bootstrap: [AppComponent]

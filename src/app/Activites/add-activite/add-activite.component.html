@@ -1,0 +1,37 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText">
+</div>
+<div class="table-responsive">
+  <table class="table align-items-center table-flush" style="width: 100%; overflow-x: auto;">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Activite</th>
+        <th scope="col">Date</th>
+        <th scope="col">Participants</th>
+        <th scope="col">Lieu</th>
+        <th scope="col">Status</th>
+        <th scope="col">Pre_requis</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="activite && activite.length > 0">
+      <tr *ngFor="let act of activite |filter : searchText">
+        <td>{{ act.nomActivite }}</td>
+        <td>{{ act.date }}</td>
+        <td>{{ act.participants }}</td>
+        <td>{{ act.lieu }}</td>
+        <td>{{ act.status }}</td>
+        <td>{{ act.pre_requis }}</td>
+        <td>{{ act.prix }}</td>
+        <td>
+          <div class="col-4 text-right">
+            <a class="btn btn-sm btn-warning" (click)="deleteActivite(act.activiteID)">Delete</a>
+            <a class="btn btn-sm btn-success" (click)="updateActivite( act.activiteID)">Update</a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
