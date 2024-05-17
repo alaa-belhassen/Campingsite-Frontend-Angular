@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/services/token-storage.service';
 import { UserServiceService } from 'src/services/user-service.service';
-=======
 import { Product } from 'src/app/entities/Product';
 import { ProduitserviceService } from 'src/app/services/produitservice.service';
->>>>>>> origin/alaa
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +23,6 @@ export class DashboardComponent implements OnInit {
  ngOnInit(): void {
   this.getStatistics();
 
-<<<<<<< HEAD
       
   }
 
@@ -61,10 +57,4 @@ export class DashboardComponent implements OnInit {
     });
    
   }
-
-=======
-  ngOnInit(): void {
-  }
-  
->>>>>>> origin/alaa
 }
