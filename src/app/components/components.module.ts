@@ -8,12 +8,22 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CardStatComponent } from './card-stat/card-stat.component';
 import { ChartComponent } from './chart/chart.component';
 import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
+import { ImageComponentComponent } from './image-component/image-component.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MaterialFileInputModule} from "ngx-material-file-input";
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+    MatIconModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialFileInputModule
   ],
   declarations: [
     FooterComponent,
@@ -21,7 +31,8 @@ import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
     SidebarComponent,
     CardStatComponent,
     ChartComponent,
-    ChartPipesComponent
+    ChartPipesComponent,
+    ImageComponentComponent
   ],
   exports: [
     FooterComponent,
@@ -29,7 +40,8 @@ import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
     SidebarComponent,
     CardStatComponent,
     ChartComponent,
-    ChartPipesComponent
+    ChartPipesComponent,
+    ImageComponentComponent
   ]
 })
 export class ComponentsModule { }
