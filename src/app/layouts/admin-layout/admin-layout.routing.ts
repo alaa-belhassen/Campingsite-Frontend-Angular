@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+
 
 import { DashbordAdminComponent } from 'src/app/pages/dashbord-admin/dashbord-admin.component'
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
@@ -12,6 +12,9 @@ import { AddProduitComponent } from 'src/app/pages/add-produit/add-produit.compo
 import { ChartComponent } from 'src/app/pages/chart/chart.component';
 import { ConfirmComponent } from 'src/app/components/dialog/confirm/confirm.component';
 import { PayementDoneComponent } from 'src/app/pages/payement-done/payement-done.component';
+import { ListeReservationComponent } from 'src/app/components/Reservation/liste-reservation/liste-reservation.component';
+import { Routes } from '@angular/router';
+
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'produit',      component: ProduitComponent },
@@ -21,6 +24,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'chart',      component: ChartComponent },
     { path: 'addproduit',      component: AddProduitComponent },
     { path: 'dashboard',      component: DashboardComponent },
+    { path: 'reservation',      component: ListeReservationComponent },
+
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },

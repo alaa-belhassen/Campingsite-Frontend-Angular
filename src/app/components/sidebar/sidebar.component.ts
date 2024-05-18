@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ProduitserviceService } from 'src/app/services/produitservice.service';
 
+
 declare interface RouteInfo {
     path: string;
     title: string;
@@ -17,6 +18,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
     { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
     { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
+    { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' }
 
 ];
 

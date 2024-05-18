@@ -1,0 +1,85 @@
+<div class="custom-mat-dialog-container">
+    <!-- MatDialog content goes here -->
+    <h2 mat-dialog-title>Update Reservation</h2>
+    <mat-dialog-content>
+        <div class="card-body">
+            <form [formGroup]="ResForm" (ngSubmit)="SubmitForm()">
+              <h6 class="heading-small text-muted mb-4">Reservation details</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-idReservation">ID Reservation</label>
+                      <input type="text" id="input-idReservation" class="form-control form-control-alternative" formControlName="idReservation">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-campeurId">Campeur ID</label>
+                      <input type="text" id="input-campeurId" class="form-control form-control-alternative" formControlName="campeurId">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-campsiteId">Campsite ID</label>
+                      <input type="text" id="input-campsiteId" class="form-control form-control-alternative" formControlName="campsiteId">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group" formGroupName="detailReservation">
+                      <label class="form-control-label" for="input-detailResID">Detail Reservation ID</label>
+                      <input type="text" id="input-detailResID" class="form-control form-control-alternative" formControlName="detailResID">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group" formGroupName="detailReservation">
+                      <label class="form-control-label" for="input-dateArrivee">Date Arrivée</label>
+                      <input type="date" id="input-dateArrivee" class="form-control form-control-alternative" formControlName="dateArrivee">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group" formGroupName="detailReservation">
+                      <label class="form-control-label" for="input-dateDepart">Date Départ</label>
+                      <input type="date" id="input-dateDepart" class="form-control form-control-alternative" formControlName="dateDepart">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group" formGroupName="detailReservation">
+                      <label class="form-control-label" for="input-nombreCampeurs">Nombre Campeurs</label>
+                      <input type="number" id="input-nombreCampeurs" class="form-control form-control-alternative" formControlName="nombreCampeurs">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group" formGroupName="detailReservation">
+                      <label class="form-control-label" for="input-statusReservation">Status Reservation</label>
+                      <select id="input-statusReservation" class="form-control form-control-alternative" formControlName="statusReservation">
+                        <option value="IN_PROGRESS">In Progress</option>
+                        <option value="CONFIRMED">Confirmed</option>
+                        <option value="CANCELLED">Cancelled</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group" formGroupName="detailReservation">
+                      <label class="form-control-label" for="input-prix">Prix</label>
+                      <input type="number" id="input-prix" class="form-control form-control-alternative" formControlName="prix">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4 text-right">
+                <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                
+              </div>
+            </form>
+          </div>
+    </mat-dialog-content>
+</div>
