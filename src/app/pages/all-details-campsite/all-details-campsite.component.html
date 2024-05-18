@@ -1,0 +1,44 @@
+<p>all-details-campsite works!</p>
+
+<p> {{id}}</p>
+<section class="gallery  d-flex justify-content-around">
+    <div class="img-container">
+      <!-- Display the preview image separately -->
+      <ng-container *ngIf="photos$ | async as photos">
+        <!-- Display the first photo as the preview -->
+        <a [routerLink]="['/detaillistcampsite', id]">
+          <img *ngIf="photos.length > 0" [src]="photos[0]" id="preview" alt="Image">
+        </a>
+        <div class="img-prev text-center">
+          <!-- Display the first photo again in the slider -->
+          <div class="img-slide">
+            <img *ngIf="photos.length > 0" [src]="photos[0]" [alt]="'Image1'" appClickimg>
+            <!-- Add the 'Add to favorite' button -->
+          </div>
+
+          <!-- Loop through the rest of the photos starting from index 1 -->
+          <div class="img-slide" *ngFor="let photo of photos.slice(1); let i = index">
+            <!-- Check if the current index is 0, if so, add the 'active' class -->
+            <img [src]="photo" [alt]="'Image' + (i + 2)" [class.active]="i === 0" appClickimg>
+            <!-- Add the 'Add to favorite' button -->
+          </div>
+        </div>
+      </ng-container>
+    </div>
+      <div class="infos bg-white">
+      <mat-card class="info-card">Lieu : {{ campsiteInfos.lieu }}</mat-card>
+      <mat-card class="info-card">Region : {{ campsiteInfos.region }}</mat-card>
+      <mat-card class="info-card">Nombre de places: {{ campsiteInfos.places }}</mat-card>
+      <mat-card class="info-card">  Date du campsite: {{ campsiteInfos.date_prevu }}</mat-card>
+
+        <div class="btns">
+          <button class="archive-btn" (click)="setArchivedTrue(id)">
+            <i class="fas fa-trash"></i> Archiver
+          </button>
+          <button class="update-btn" (click)="update()">
+            <i class="fas fa-pencil-alt"></i> Modifier
+          </button>
+        </div>
+
+      </div>
+</section>
