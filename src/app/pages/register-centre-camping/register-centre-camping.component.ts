@@ -4,11 +4,12 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-register-centre-camping',
+  templateUrl: './register-centre-camping.component.html',
+  styleUrls: ['./register-centre-camping.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterCentreCampingComponent implements OnInit {
+
   addUserForm: any;
   DetailsUserForm: any;
   user={
@@ -30,21 +31,12 @@ export class RegisterComponent implements OnInit {
       email: ["", [Validators.email, Validators.required]],
       adresse: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       telephone: ["", [Validators.required, Validators.pattern('[0-9]{8}')]], // Validates 8 digits
-      role: ["CAMPEUR"],
+      role: ["CENTRECAMPING"],
       password: [ "", [Validators.required]],
       date_naissance: ["", Validators.required] 
     });
 
-    this.DetailsUserForm = this.formBuilder.group({
-      paysage: ['foret', Validators.required],
-      couleur: ['', Validators.required],
-      alimentation: ['pique_nique', Validators.required],
-      musique: ['', Validators.required],
-      compagnement: ['visitesGuidees', Validators.required],
-      saison: ['printemps', Validators.required],
-      type_hebergement: ['tente', Validators.required],
-      // Ajoutez d'autres champs ici si nécessaire
-    });
+    
     
   }
   addUser() {
@@ -58,33 +50,19 @@ export class RegisterComponent implements OnInit {
           }, 3000);
         } else {
           console.log("L'utilisateur n'existe pas, enregistrement en cours...");
-          this.ajoutReussi = true;
           this.erreurAjout = false;
+          this.ajoutReussi = true;
           
-              setTimeout(() => {
-                this.ajoutReussi = false;
-              }, 10000);
+          setTimeout(() => {
+            this.ajoutReussi = false;
+          }, 5000);
           
           this.userService.register(this.addUserForm.value).subscribe(
             (userData) => {
               this.user = userData.id; // Récupérer les données de l'utilisateur ajouté
               console.log("userData", userData.email);
+            this.addUserForm.reset();
               
-              // Appel de la méthode addDetailsUser avec les détails de l'utilisateur et son ID
-              this.userService.addDetailsUser(this.DetailsUserForm.value,this.addUserForm.value.email).subscribe(
-                (detailsUserData) => {
-                  console.log("Détails de l'utilisateur ajoutés avec succès :", detailsUserData);
-                this.addUserForm.reset();
-                },
-                (detailsUserError) => {
-                  console.error("Une erreur s'est produite lors de l'ajout des détails de l'utilisateur :", detailsUserError);
-                  this.erreurAjout = true;
-                  this.ajoutReussi = false;
-                  setTimeout(() => {
-                    this.erreurAjout = false;
-                  }, 5000);
-                }
-              );
             },
             (err) => {
               console.error(err);
@@ -111,7 +89,7 @@ export class RegisterComponent implements OnInit {
     
   }
   getPasswordStrength(): string {
-    if (this.addUserForm.value.password.length < 4) {
+    if (this.addUserForm.value.password.length < 5) {
         return 'faible';
     } else {
         return 'fort';
@@ -119,7 +97,5 @@ export class RegisterComponent implements OnInit {
 }
      
     
-  }
-  
 
-
+}

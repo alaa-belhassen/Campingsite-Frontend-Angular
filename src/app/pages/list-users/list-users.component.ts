@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { TokenStorageService } from 'src/services/token-storage.service';
-import { UserServiceService } from 'src/services/user-service.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserServiceService } from 'src/app/services/user-service.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({

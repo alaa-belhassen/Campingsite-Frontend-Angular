@@ -87,14 +87,15 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="alert alert-success" role="alert"  *ngIf="ValidPassword" >
-            <strong class="d-block d-sm-inline-block-force"> Votre profil est modifié avec succès   </strong>
-           </div>
-           
-            <div class="alert alert-danger" role="alert" *ngIf="InvalidPassword"  >
-             <strong class="d-block d-sm-inline-block-force">  Veuillez vérifier les champs </strong>
-            </div>
+        
           <form [formGroup]="editUserForm" (ngSubmit)="updateUser" >
+            <div class="alert alert-success" role="alert"  *ngIf="ValidProfil" >
+              <strong class="d-block d-sm-inline-block-force"> Votre profil est modifié avec succès   </strong>
+             </div>
+             
+              <div class="alert alert-danger" role="alert" *ngIf="InvalidProfil"  >
+               <strong class="d-block d-sm-inline-block-force">  Veuillez vérifier les champs </strong>
+              </div>
             <h6 class="heading-small text-muted mb-4">User information</h6>
             <div class="pl-lg-4">
               <div class="row">

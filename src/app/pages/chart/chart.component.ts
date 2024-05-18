@@ -167,7 +167,7 @@ hideElement() {
   });
 
   processPayment(_idproduit?:any) {
-    if(this.dateRetour.nativeElement.value!=''){
+    if(this.dateRetour?.nativeElement?.value!=''){
       this.paymeForm.setValue({
         amount: this.total,
         note: 'Order #123',

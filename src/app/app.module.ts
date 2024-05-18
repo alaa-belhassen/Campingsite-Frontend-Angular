@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { RegisterCentreCampingComponent } from './register-centre-camping/register-centre-camping.component';
+import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
 
 import { ProduitComponent } from './pages/produit/produit.component';
 import { AddProduitComponent } from './pages/add-produit/add-produit.component';
@@ -25,6 +25,7 @@ import { PayementDoneComponent } from './pages/payement-done/payement-done.compo
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import { DashbordAdminComponent } from './pages/dashbord-admin/dashbord-admin.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import {MatButtonModule} from '@angular/material/button';
     AddProduitComponent,
     ChartComponent,
     PayementDoneComponent,
+    DashbordAdminComponent,
     
   ],
   providers: [],

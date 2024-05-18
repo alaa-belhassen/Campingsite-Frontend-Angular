@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+import { DashbordAdminComponent } from 'src/app/pages/dashbord-admin/dashbord-admin.component'
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
@@ -24,5 +25,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path : 'ListUser',      component :ListUsersComponent}
+    { path : 'ListUser',      component :ListUsersComponent},
+    { path: 'dashboardAdmin',      component: DashbordAdminComponent },
 ];

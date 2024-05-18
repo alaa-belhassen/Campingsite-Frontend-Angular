@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TokenStorageService } from 'src/services/token-storage.service';
-import { UserServiceService } from 'src/services/user-service.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserServiceService } from 'src/app/services/user-service.service';
 import { mustMatch } from 'src/validators/mustMatch';
 
 @Component({
@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   InvalidPassword: any = false;
   ValidProfil:any = false;
   InvalidProfil: any = false;
+  UserAfterUpdate : any ;
 
   constructor(private userService:UserServiceService , private tokenStorage : TokenStorageService , private formBuilder :FormBuilder) {     this.currentUser = this.tokenStorage.getUser();
   }
@@ -56,18 +57,32 @@ export class UserProfileComponent implements OnInit {
     return age;
   }
   updateUser(){
-  console.log(this.editUserForm.value);
+    this.currentUser.firstName=this.editUserForm.value.nom;
+    this.currentUser.lastName=this.editUserForm.value.prenom;
+    this.currentUser.adresse=this.editUserForm.value.adresse;
+    this.currentUser.telephone=this.editUserForm.value.telephone;
+    this.tokenStorage.saveUser(this.currentUser);
+    this.currentUser = this.tokenStorage.getUser();
+
   this.userService.updateUser(this.editUserForm.value).subscribe( (data) =>
     {
-     console.log(this.editUserForm);
-     this.currentUser.prenom=this.editUserForm.value.prenom;
-     this.currentUser.nom=this.editUserForm.value.nom;
-     this.currentUser.adresse=this.editUserForm.value.adresse;
-     this.currentUser.telephone=this.editUserForm.value.telephone;
-     this.ValidProfil = true;
+      this.ValidProfil = true;
+      console.log("lavariable est ",this.ValidProfil )
         setTimeout(() => {
           this.ValidProfil = false;
         }, 8000);
+      
+      this.userService.getUserById(this.currentUser.id).subscribe((data) =>
+      {
+       
+
+      })
+
+     
+    
+     
+     
+    
     },
     error => {
       this.InvalidProfil = true;
