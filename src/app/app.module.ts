@@ -1,8 +1,12 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+<<<<<<< HEAD
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+=======
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+>>>>>>> origin/Sarra
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -14,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+<<<<<<< HEAD
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
@@ -41,6 +46,19 @@ import { ListeReservationComponent } from './components/Reservation/liste-reserv
 import { ChartPipeComponent } from './components/Reservation/chart-pipe/chart-pipe.component';
 import { FilterPipe } from './filter-reservation.pipe';
 
+=======
+import { CampsiteComponent } from './pages/campsite/campsite.component';
+import { ListCampsitesComponent } from './pages/list-campsites/list-campsites.component';
+import { ClickimgDirective } from './clickimg.directive';
+import { AllDetailsCampsiteComponent } from './pages/all-details-campsite/all-details-campsite.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from "@angular/material/icon";
+import {MatCardModule} from "@angular/material/card";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
+>>>>>>> origin/Sarra
 
 @NgModule({
   imports: [
@@ -53,6 +71,7 @@ import { FilterPipe } from './filter-reservation.pipe';
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
 
     MatStepperModule,
     MatFormFieldModule,
@@ -69,11 +88,21 @@ import { FilterPipe } from './filter-reservation.pipe';
     MatToolbarModule,
     MatSlideToggleModule
    
+=======
+    MatStepperModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatTableModule,
+    MatSortModule
+>>>>>>> origin/Sarra
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+<<<<<<< HEAD
     RegisterCentreCampingComponent,
     ProduitComponent,
     AddProduitComponent,
@@ -89,6 +118,13 @@ import { FilterPipe } from './filter-reservation.pipe';
   
    
    
+=======
+    CampsiteComponent,
+    ListCampsitesComponent,
+    ClickimgDirective,
+    AllDetailsCampsiteComponent,
+
+>>>>>>> origin/Sarra
   ],
   providers: [],
   bootstrap: [AppComponent]

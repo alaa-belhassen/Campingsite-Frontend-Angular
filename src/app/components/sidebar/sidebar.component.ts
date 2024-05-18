@@ -17,9 +17,13 @@ export const ROUTES: RouteInfo[] = [
     { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
     { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
     { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
+<<<<<<< HEAD
     { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
     { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' }
 
+=======
+  { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' }
+>>>>>>> origin/Sarra
 ];
 
 @Component({

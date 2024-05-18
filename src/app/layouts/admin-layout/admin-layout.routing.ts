@@ -6,6 +6,7 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
+<<<<<<< HEAD
 import { ListUsersComponent } from 'src/app/pages/list-users/list-users.component';
 import { ProduitComponent } from 'src/app/pages/produit/produit.component';
 import { AddProduitComponent } from 'src/app/pages/add-produit/add-produit.component';
@@ -15,6 +16,11 @@ import { PayementDoneComponent } from 'src/app/pages/payement-done/payement-done
 import { ListeReservationComponent } from 'src/app/components/Reservation/liste-reservation/liste-reservation.component';
 import { Routes } from '@angular/router';
 
+=======
+import {CampsiteComponent} from "../../pages/campsite/campsite.component";
+import {ListCampsitesComponent} from "../../pages/list-campsites/list-campsites.component";
+import {AllDetailsCampsiteComponent} from "../../pages/all-details-campsite/all-details-campsite.component";
+>>>>>>> origin/Sarra
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'produit',      component: ProduitComponent },
@@ -30,6 +36,14 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
+<<<<<<< HEAD
     { path : 'ListUser',      component :ListUsersComponent},
     { path: 'dashboardAdmin',      component: DashbordAdminComponent },
+=======
+  { path: 'campsite',           component: CampsiteComponent },
+  { path: 'listcampsite',           component: ListCampsitesComponent },
+  { path: 'detaillistcampsite/:id', component: AllDetailsCampsiteComponent }
+
+
+>>>>>>> origin/Sarra
 ];
