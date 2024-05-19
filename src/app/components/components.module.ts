@@ -10,6 +10,7 @@ import { ChartComponent } from './chart/chart.component';
 import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
 import { CardProduitComponent } from './card-produit/card-produit.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ShoploaderComponent } from './shoploader/shoploader.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     ChartComponent,
     ChartPipesComponent,
     CardProduitComponent,
+    ShoploaderComponent,
     
   
   ],
@@ -38,7 +40,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     ChartComponent,
     ChartPipesComponent,
     CardProduitComponent,
-    
+    ShoploaderComponent,
+
   ]
 })
 export class ComponentsModule { }

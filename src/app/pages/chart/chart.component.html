@@ -1,8 +1,9 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8" style="min-height: 350px;">
-<div class="container-fluid" >
+  </div>
+<!--<div class="container-fluid" >
   <div class="row">
       <div class="col">
-        <div class="card shadow">
+        <div class="card shadow">-->
           <div class="card-header d-flex justify-content-between border-0">
             <h3>{{switch}}</h3>
 
@@ -11,7 +12,8 @@
               <button type="submit" *ngIf="switch=='SELLABLE'" class="btn " (click)="switchTo('SELLABLE')">switchTo Rentable </button>
             </h3>
           </div>
-          <div class="table-responsive" >
+          
+  <!--       <div class="table-responsive" >
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
@@ -43,8 +45,8 @@
                     </div>
                     <span *ngIf="!editmode">{{panier.quantiter}}</span>
                   </td>
-                  <td>
-                    <div *ngIf="switch=='RENTABLE'" >
+                  <td *ngIf="switch=='RENTABLE'">
+                    <div  >
                       <input type="date" id="input-quantiter" #dateRetour  class="form-control form-control-alternative " placeholder="quantity"  >
                     </div>
                   </td>
@@ -66,7 +68,7 @@
           <div class="card-footer py-4 d-flex justify-content-between">
             
             <div class="d-flex" *ngIf="switch=='SELLABLE'">
-              <button class="btn " (click)="openDialog()">Checkout</button>
+              <button class="btn " (click)="processPayment()">Checkout</button>
               <div class="d-flex ">
                 <span>|</span>
                 <p>{{total}} TND</p>
@@ -100,6 +102,70 @@
         </div>
       </div>
     </div>
- </div>
+ </div> -->
+ <app-shoploader></app-shoploader>
+ <div class="card">
+  <div class="row">
+      <div class="col-md-8 cart">
+          <div class="title">
+              <div class="row">
+                  <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                  <div class="col align-self-center text-right text-muted">{{paniersFilter.length}} items</div>
+              </div>
+          </div>    
+          <div class="row border-top border-bottom">
+              <div class="row main align-items-center" *ngFor="let panier of paniersFilter;index as i ">
+                  <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                  <div class="col">
+                      <div class="row text-muted">{{panier.produit.id_Categorie.nom_Categorie}}</div>
+                      <div class="row">{{panier.produit.nomProduct}}</div>
+                  </div>
+                  <div class="col">
+                    <div *ngIf="editmode">
+                      <input type="number" id="input-quantiter" #quantier  class="form-control form-control-alternative inputstyle" placeholder="quantity" [value]="panier.quantiter" >
+                    </div>
+                    <span *ngIf="!editmode">1</span>
+                  </div>
+                  <div class="col">
+                    {{panier.produit.prix}} DT
+                  </div>
+                  <div class="col d-flex">
+                    <button type="submit" class="btn  " *ngIf="switch=='RENTABLE'" (click)="processPayment(panier.produit.idProduct)"><span class="ni ni ni-shop"></span></button>
+                    <button type="submit" class="btn   " (click)="remove(panier.produit.idProduct)"><span class="ni ni ni-fat-remove"></span></button>
+                    <button type="submit" class="btn   " (click)="edit(panier.quantiter,panier.produit.idProduct)">
+                      <span class="ni ni-settings-gear-65" *ngIf="!editmode"></span>
+                      <span class="ni ni-check-bold" *ngIf="editmode"></span>
+                    </button>
+                  </div>
+               </div>
+          </div>
+       
+          <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+      </div>
+      <div class="col-md-4 summary  bg-gradient-primary">
+          <div><h5><b>Summary</b></h5></div>
+          <hr>
+          <div class="row">
+              <div class="col" style="padding-left:0;">ITEMS {{paniersFilter.length}}</div>
+              <div class="col text-right">&euro; {{total}}</div>
+          </div>
+          <form>
+              <p>SHIPPING</p>
+              <select>
+                <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+              </select>
+              <p >GIVE CODE</p>
+              <input class="form-control form-control-alternative " id="code" placeholder="Enter your code">
+              <p *ngIf="switch=='RENTABLE'">GIVE DATE RETOUR</p>
+              <input type="date" id="input-quantiter" #dateRetour *ngIf="switch=='RENTABLE'"  class="form-control form-control-alternative " placeholder="datederetour"  >
 
- 
+          </form>
+          <div *ngIf="switch=='SELLABLE'" class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+              <div class="col">TOTAL PRICE</div>
+              <div class="col text-right">&euro; {{total}}</div>
+          </div>
+          <button *ngIf="switch=='SELLABLE'" class="btn" (click)="processPayment()">CHECKOUT</button>
+      </div>
+  </div>
+  
+</div>

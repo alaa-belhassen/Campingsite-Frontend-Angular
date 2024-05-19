@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+
+
 import { ProduitComponent } from './pages/produit/produit.component';
 import { AddProduitComponent } from './pages/add-produit/add-produit.component';
 import { ChartComponent } from './pages/chart/chart.component';
