@@ -18,6 +18,7 @@ import { AddActiviteComponent } from './Activites/add-activite/add-activite.comp
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterPipe } from './filter-activite.pipe';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -34,6 +35,7 @@ import { FilterPipe } from './filter-activite.pipe';
     AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatTabsModule
 
   ],
   declarations: [
