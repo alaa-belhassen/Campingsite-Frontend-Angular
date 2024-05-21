@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-lg-7 col-md-10">
         <h1 class="display-2 text-white">Salut, {{this.currentUser.firstName}}</h1>
-       
+
         <a (click)="updateUser ()" class="btn btn-info"  >Edit profile</a>
       </div>
     </div>
@@ -52,11 +52,11 @@
           </div>
           <div class="text-center">
             <h3>
-              {{ this.currentUser.lastName}} {{ this.currentUser.firstName}} 
+              {{ this.currentUser.lastName}} {{ this.currentUser.firstName}}
               <span class="font-weight-light">{{ this.calculateAge(this.currentUser.date_naissance
                 ) }} ans </span>
             </h3>
-            
+
             <div class="h5 font-weight-300">
               <i class="ni location_pin date_naissance
               mr-2"></i>{{this.currentUser.telephone}}
@@ -87,12 +87,12 @@
           </div>
         </div>
         <div class="card-body">
-        
+
           <form [formGroup]="editUserForm" (ngSubmit)="updateUser" >
             <div class="alert alert-success" role="alert"  *ngIf="ValidProfil" >
               <strong class="d-block d-sm-inline-block-force"> Votre profil est modifié avec succès   </strong>
              </div>
-             
+
               <div class="alert alert-danger" role="alert" *ngIf="InvalidProfil"  >
                <strong class="d-block d-sm-inline-block-force">  Veuillez vérifier les champs </strong>
               </div>
@@ -113,7 +113,7 @@
                 </div>
               </div>
               <div class="row">
-               
+
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">Email address</label>
@@ -126,9 +126,9 @@
                     <input type="text" id="input-country" class="form-control form-control-alternative"  value="{{this.currentUser.date_naissance}}" disabled>
                   </div>
                 </div>
-               
+
               </div>
-             
+
             </div>
             <hr class="my-4" />
             <!-- Address -->
@@ -149,9 +149,9 @@
                     <input type="text" id="input-city" class="form-control form-control-alternative"  value="{{this.currentUser.telephone}}" formControlName="telephone">
                   </div>
                 </div>
-             
+
                 <div class="col-lg-4">
-                 
+
                 </div>
               </div>
             </div>
@@ -169,40 +169,40 @@
           <div id="changePasswordForm" class="">
           <form [formGroup]="PasswordForm" *ngIf="ShowFormPassword" (ngSubmit)="valider" >
 
-            
-    
+
+
             <div class="form-group">
               <div class="alert alert-success" role="alert"  *ngIf="ValidPassword" >
                 <strong class="d-block d-sm-inline-block-force"> Votre mot de passe est modifié avec succès   </strong>
                </div>
-               
+
                 <div class="alert alert-danger" role="alert" *ngIf="InvalidPassword"  >
                  <strong class="d-block d-sm-inline-block-force">  Veuillez vérifier les champs </strong>
                 </div>
-              <label for="exampleFormControlInput1">Ancien mot de passe <span class="tx-danger">*</span> </label>
+              <label >Ancien mot de passe <span class="tx-danger">*</span> </label>
               <input type="password" class="form-control" formControlName="OldPassword" placeholder=" Entrer le nouveau mot de passe" >
               <div *ngIf="PasswordForm.controls['OldPassword'].invalid && (
                 PasswordForm.controls['OldPassword'].touched || PasswordForm.controls['OldPassword'].dirty
               )">
                    <div *ngIf ="PasswordForm.controls['OldPassword'].errors?.['required']" class="red"> Ce champ est obligatoire  </div>
                    <div  *ngIf ="PasswordForm.controls['OldPassword'].errors?.['minlength']" class="red"> Au moins 5 caractéres  </div>
-  
+
               </div>
             </div>
-              
+
               <div class="form-group">
-                <label for="exampleFormControlInput1">Nouveau mot de passe <span class="tx-danger">*</span> </label>
+                <label >Nouveau mot de passe <span class="tx-danger">*</span> </label>
                 <input type="password" class="form-control" formControlName="NewPassword"   placeholder=" Entrer le nouveau mot de passe" >
                 <div *ngIf="PasswordForm.controls['NewPassword'].invalid && (
                   PasswordForm.controls['NewPassword'].touched || PasswordForm.controls['NewPassword'].dirty
                 )">
                      <div *ngIf ="PasswordForm.controls['NewPassword'].errors?.['required']" class="red"> Ce champ est obligatoire  </div>
                      <div  *ngIf ="PasswordForm.controls['NewPassword'].errors?.['minlength']" class="red"> Au moins 5 caractéres  </div>
-    
+
                 </div>
               </div>
                <div class="form-group">
-                <label for="exampleFormControlInput1">Confirmer le nouveau mot de passe <span class="tx-danger">*</span> </label>
+                <label >Confirmer le nouveau mot de passe <span class="tx-danger">*</span> </label>
                 <input type="password" class="form-control" formControlName="ConfirmPassword"   placeholder=" Entrer la confirmation de mot de passe" >
                 <div *ngIf="PasswordForm.controls['ConfirmPassword'].invalid && (
                   PasswordForm.controls['ConfirmPassword'].touched || PasswordForm.controls['ConfirmPassword'].dirty
@@ -211,16 +211,16 @@
                      <div *ngIf="PasswordForm.controls['ConfirmPassword'].errors?.['noMatch']" class="red">
                       Le mot de passe et sa confirmation ne correspondent pas.
                     </div>
-    
+
                 </div>
               </div>
               <a (click)="annuler ()" class="btn btn-info" >Anuuler</a>
               <a (click)="valider ()" class="btn btn-info" >Valider</a>
-           
+
           </form>
-          
+
          </div>
-          
+
         </div>
       </div>
     </div>
