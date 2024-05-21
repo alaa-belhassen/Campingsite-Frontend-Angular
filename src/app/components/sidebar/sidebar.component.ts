@@ -19,7 +19,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
     { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
     { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' },
-  { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' }
+  { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' },
+    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' }
+
 ];
 
 @Component({
@@ -43,6 +45,7 @@ export class SidebarComponent implements OnInit {
 
     this.navigateToProductDetail();
     this.router.events.subscribe((event) => {
+
       this.isCollapsed = true;
    });
    
@@ -98,4 +101,4 @@ export class SidebarComponent implements OnInit {
   }
 
   
-}
+  }

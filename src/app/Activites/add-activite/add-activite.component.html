@@ -1,0 +1,119 @@
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<mat-tab-group>
+  <mat-tab label="List Activite">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText">
+    </div>
+    <div class="table-responsive">
+      <table class="table align-items-center table-flush" style="width: 100%; overflow-x: auto;">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Activite</th>
+            <th scope="col">Date</th>
+            <th scope="col">Participants</th>
+            <th scope="col">Lieu</th>
+            <th scope="col">Status</th>
+            <th scope="col">Pre_requis</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="activite && activite.length > 0">
+          <tr *ngFor="let act of activite |filter : searchText">
+            <td>{{ act.nomActivite }}</td>
+            <td>{{ act.date }}</td>
+            <td>{{ act.participants }}</td>
+            <td>{{ act.lieu }}</td>
+            <td>{{ act.status }}</td>
+            <td>{{ act.pre_requis }}</td>
+            <td>{{ act.prix }}</td>
+            <td>
+              <div class="col-4 text-right">
+                <a class="btn btn-sm btn-warning" (click)="deleteActivite(act.activiteID)">Delete</a>
+                <a class="btn btn-sm btn-success" (click)="updateActivite( act.activiteID)">Update</a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </mat-tab>
+  <mat-tab label="Add Activite">
+
+    <form (ngSubmit)="addactivity()"  [formGroup]="activiteForm">
+      <h6 class="heading-small text-muted mb-4">Activity Details</h6>
+      <div class="pl-lg-4">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-NomActivite">Activity Name</label>
+              <input type="text" id="input-NomActivite" class="form-control form-control-alternative" formControlName="nomActivite">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-Description">Description</label>
+              <input type="text" id="input-Description" class="form-control form-control-alternative" formControlName="description">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-Date">Date</label>
+              <input type="date" id="input-Date" class="form-control form-control-alternative" formControlName="date">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-Participants">Participants</label>
+              <input type="number" id="input-Participants" class="form-control form-control-alternative" formControlName="participants">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-Lieu">Lieu</label>
+              <input type="text" id="input-Lieu" class="form-control form-control-alternative" formControlName="lieu">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-Status">Status</label>
+              <input type="checkbox" id="input-Status" class="form-control form-control-alternative" formControlName="status">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label" for="input-Participants">Prix</label>
+            <input type="float" id="input-Participants" class="form-control form-control-alternative" formControlName="prix">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-Pre_requis">Pre-requis</label>
+              <select id="input-Pre_requis" class="form-control form-control-alternative" formControlName="pre_requis">
+                <option *ngFor="let option of preRequisOptions" [value]="option">{{ option }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 text-right">
+        <button type="submit" class="btn btn-sm btn-success">Submit</button>
+
+      </div>
+    </form>
+  </mat-tab>
+
+</mat-tab-group>
+
+
+
+
+
+

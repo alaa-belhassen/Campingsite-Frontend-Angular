@@ -6,6 +6,8 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
+import { ActiviteCardsComponent } from 'src/app/Activites/activite-cards/activite-cards.component';
+import { AddActiviteComponent } from 'src/app/Activites/add-activite/add-activite.component';
 
 import { Routes } from '@angular/router';
 
@@ -37,7 +39,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboardAdmin',      component: DashbordAdminComponent },
     { path: 'campsite',           component: CampsiteComponent },
     { path: 'listcampsite',           component: ListCampsitesComponent },
-    { path: 'detaillistcampsite/:id', component: AllDetailsCampsiteComponent }
+    { path: 'detaillistcampsite/:id', component: AllDetailsCampsiteComponent },
 
 
+    { path: 'activite',       component:  AddActiviteComponent  }
 ];

@@ -14,6 +14,17 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
+import { ComponentsModule } from './components/components.module';
+import { ActiviteCardsComponent } from './Activites/activite-cards/activite-cards.component';
+import { UpdateActiviteComponent } from './Activites/update-activite/update-activite.component';
+import { AddActiviteComponent } from './Activites/add-activite/add-activite.component';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { FilterPipe } from './filter-activite.pipe';
+import { MatTabsModule } from '@angular/material/tabs';
+
+
+
 
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -21,10 +32,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import {MatStepperModule} from '@angular/material/stepper';
 
-import { MatTabsModule } from '@angular/material/tabs';
+
 
 import { MatDialog } from '@angular/material/dialog';
-import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -45,7 +56,7 @@ import {MatSortModule} from "@angular/material/sort";
 import { ChartPipeComponent } from './components/Reservation/chart-pipe/chart-pipe.component';
 import { ListeReservationComponent } from './components/Reservation/liste-reservation/liste-reservation.component';
 import { UpdateResComponent } from './components/Reservation/liste-reservation/update-res/update-res.component';
-import { FilterPipe } from './filter-reservation.pipe';
+
 import { AddProduitComponent } from './pages/add-produit/add-produit.component';
 import { AllDetailsCampsiteComponent } from './pages/all-details-campsite/all-details-campsite.component';
 import { CampsiteComponent } from './pages/campsite/campsite.component';
@@ -54,7 +65,7 @@ import { ListCampsitesComponent } from './pages/list-campsites/list-campsites.co
 import { PayementDoneComponent } from './pages/payement-done/payement-done.component';
 import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
-import { ComponentsModule } from './components/components.module';
+
 
 @NgModule({
   imports: [
@@ -87,7 +98,10 @@ import { ComponentsModule } from './components/components.module';
     MatIconModule,
     MatCardModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule,
+    MatTabsModule
+
   ],
   declarations: [
     AppComponent,
@@ -108,6 +122,10 @@ import { ComponentsModule } from './components/components.module';
     ClickimgDirective,
     AllDetailsCampsiteComponent,
 
+    ActiviteCardsComponent,
+    UpdateActiviteComponent,
+    AddActiviteComponent,
+    FilterPipe,
   ],
   providers: [],
   bootstrap: [AppComponent]

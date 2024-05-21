@@ -1,0 +1,72 @@
+<div class="custom-mat-dialog-container">
+  <h2 mat-dialog-title>Update Activity</h2>
+  <mat-dialog-content>
+      <form [formGroup]="activiteForm" (ngSubmit)="updateActivite()">
+        <h6 class="heading-small text-muted mb-4">Activity Details</h6>
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-NomActivite">Activity Name</label>
+                <input type="text" id="input-NomActivite" class="form-control form-control-alternative" formControlName="nomActivite">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-Description">Description</label>
+                <input type="text" id="input-Description" class="form-control form-control-alternative" formControlName="description">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-Date">Date</label>
+                <input type="date" id="input-Date" class="form-control form-control-alternative" formControlName="date">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-Participants">Participants</label>
+                <input type="number" id="input-Participants" class="form-control form-control-alternative" formControlName="participants">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-Lieu">Lieu</label>
+                <input type="text" id="input-Lieu" class="form-control form-control-alternative" formControlName="lieu">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-Status">Status</label>
+                <input type="checkbox" id="input-Status" class="form-control form-control-alternative" formControlName="status">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-Participants">Prix</label>
+              <input type="float" id="input-Participants" class="form-control form-control-alternative" formControlName="prix">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-Pre_requis">Pre-requis</label>
+                <select id="input-Pre_requis" class="form-control form-control-alternative" formControlName="pre_requis">
+                  <option *ngFor="let option of preRequisOptions" [value]="option">{{ option }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-right">
+          <button type="submit" class="btn btn-sm btn-success">Submit</button>
+          <button type="button" class="btn btn-sm btn-secondary" (click)="cancel()">Cancel</button>
+        </div>
+      </form>
+  </mat-dialog-content>
+</div>

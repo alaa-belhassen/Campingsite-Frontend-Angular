@@ -7,6 +7,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { TestLayoutComponent } from './layouts/test-layout/test-layout.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ActiviteCardsComponent } from './Activites/activite-cards/activite-cards.component';
+import { AddActiviteComponent } from './Activites/add-activite/add-activite.component';
+import { UpdateActiviteComponent } from './Activites/update-activite/update-activite.component';
 
 const routes: Routes =[
   {
@@ -44,8 +47,15 @@ const routes: Routes =[
   }, {
     path: '**',
     redirectTo: 'login'
-  }
+  }, {
+    path: 'activite',
+    component: AddActiviteComponent
+  }, {
+    path: 'update-activite/:id',
+    component: UpdateActiviteComponent
+  },
 ];
+
 
 @NgModule({
   imports: [
