@@ -131,6 +131,10 @@ export class ChartComponent implements OnInit {
     }
   }
   calculTotal(){
+    if(this.dateRetour?.nativeElement?.value!=''){
+      this.total = this.paniersFilter.map((v)=>v.produit.prix*v.quantiter);
+      this.total = this.total.reduce((acc, curr) => acc + curr, 0);      
+    }
     this.total = this.paniersFilter.map((v)=>v.produit.prix*v.quantiter);
     this.total = this.total.reduce((acc, curr) => acc + curr, 0);
   }

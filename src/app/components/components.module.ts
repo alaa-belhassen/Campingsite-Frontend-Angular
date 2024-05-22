@@ -11,6 +11,7 @@ import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
 import { CardProduitComponent } from './card-produit/card-produit.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ShoploaderComponent } from './shoploader/shoploader.component';
+import { CardHoverFancyProduitComponent } from './card-hover-fancy-produit/card-hover-fancy-produit.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ShoploaderComponent } from './shoploader/shoploader.component';
     ChartPipesComponent,
     CardProduitComponent,
     ShoploaderComponent,
+    CardHoverFancyProduitComponent,
     
   
   ],
@@ -41,7 +43,7 @@ import { ShoploaderComponent } from './shoploader/shoploader.component';
     ChartPipesComponent,
     CardProduitComponent,
     ShoploaderComponent,
-
+    CardHoverFancyProduitComponent,
   ]
 })
 export class ComponentsModule { }

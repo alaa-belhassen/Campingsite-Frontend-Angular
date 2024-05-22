@@ -1,28 +1,43 @@
-<div class=" bg-gradient-danger " style="min-height: 200px; z-index:-2;">
-
+<div class=" bg-gradient-danger " class="imageCover">
+  <div class="poisitiontitle">
+    <h1 class="title">shopyCamp</h1>
+    <h1 class="subtitle text-muted">we provide you the best products</h1>
+  </div>
 </div>
+
+
 
 <div class="header">
     <div class="container-fluid">
-      <div class="header-body">
-      
+      <div class="header-body" *ngIf="this.id==null">
+        <h1 class="subtitle mt-2 align-self-center">Our shopServices</h1>
+        <hr class="my-2 divider" />
+        <div class="row mt-2">
+          <app-card-hover-fancy-produit class="col" [title]="'payement'"  [description]="'our payement is provided by payme a national and popular online payement '" ></app-card-hover-fancy-produit>
+          <app-card-hover-fancy-produit class="col" [title]="'authenticity'"  [description]="'all our products are authentic . we only provide good quality products'" ></app-card-hover-fancy-produit>
+          <app-card-hover-fancy-produit class="col" [title]="'Reclamation'"  [description]="'If you have any problem with our services please leave a comment on our reclamation point'" ></app-card-hover-fancy-produit>
+        </div>  
+      </div>
+      <div class="mt-4">
         <!-- Card stats -->
-        <div class="row" style="position:relative; top:-100px; z-index: 0;">
+        <div class="row" >
 
-           <!-- <button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>-->
+            <!--<button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>-->
           
-              <div class="d-flex mt-2">
-                <button type="submit"  class="btn " (click)="switchTo('SELLABLE')" [ngClass]="switch=='SELLABLE' ? '' : 'bg-green'" >switchTo Sellable </button>
-                <button type="submit"  class="btn " (click)="switchTo('RENTABLE')" [ngClass]="switch!=='SELLABLE'  ? '' : 'bg-green'">switchTo Rentable </button>  
-                <button type="submit"  class="btn " (click)="showOut()" [ngClass]="outOf ? '' : 'bg-red'">hide outOfTheStock </button>  
-
-              </div>
-            <div class="col-xl-3 col-lg-6 mt-4"  *ngFor="let produit of produitsFilter">
+            <h1 class="subtitle align-self-center">Our Products</h1>
+            <hr class="my-2 divider" />
+            <div class="d-flex filterbar  ">
+              <button type="submit"  class="btn " (click)="switchTo('SELLABLE')" [ngClass]="switch=='SELLABLE' ? '' : 'shadow'" >Sellable </button>
+              <button type="submit"  class="btn " (click)="switchTo('RENTABLE')" [ngClass]="switch!=='SELLABLE'  ? '' : 'shadow'">Rentable </button>  
+              <button type="submit"  class="btn " (click)="showOut()" [ngClass]="outOf ? '' : 'shadow'">OutOfTheStock</button>  
+            </div>
+            <div class="col-xl-3 col-lg-6 mt-2"  *ngFor="let produit of produitsFilter">
               <div >  
                 <app-card-produit class="mt-4" [id]="produit.idProduct" [title]="produit.nomProduct" [type]="produit.product_Type" [img]="'https://picsum.photos/200/300?grayscale'" [description]="produit.description" [price]="produit.prix" [quantiter]="produit.quantiter" ></app-card-produit>
-
               </div>
             </div>
+            <span *ngIf="produitsFilter.length==0" class="m-2">No products available</span>
+
         </div>
       </div>
     </div>
