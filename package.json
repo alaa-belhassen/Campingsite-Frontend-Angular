@@ -33,9 +33,11 @@
     "gsap": "^3.12.5",
     "ng2-search-filter": "^0.5.1",
     "ngx-clipboard": "15.0.1",
+    "ngx-material-file-input": "^4.0.1",
     "ngx-toastr": "14.2.2",
     "nouislider": "15.5.1",
     "rxjs": "~7.5.0",
+    "sweetalert2": "^11.11.0",
     "web-animations-js": "2.3.2",
     "zone.js": "~0.11.4"
   },

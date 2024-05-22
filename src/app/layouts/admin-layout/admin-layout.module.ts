@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
@@ -14,6 +14,11 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComponentsModule } from "../../components/components.module";
+import { ListUsersComponent } from 'src/app/pages/list-users/list-users.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -22,8 +27,11 @@ import { ComponentsModule } from "../../components/components.module";
         DashboardComponent,
         UserProfileComponent,
         TablesComponent,
+       
         IconsComponent,
-        MapsComponent
+        MapsComponent,
+        
+       
     ],
     imports: [
         CommonModule,
@@ -33,6 +41,8 @@ import { ComponentsModule } from "../../components/components.module";
         NgbModule,
         ClipboardModule,
         ComponentsModule,
+        ReactiveFormsModule,
+        Ng2SearchPipeModule
         
     ]
 })
