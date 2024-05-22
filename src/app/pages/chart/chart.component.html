@@ -9,8 +9,8 @@
   <div class="row">
       <div class="col-md-8 cart shadow">
         <h3 class="mb-0">
-          <button type="submit" *ngIf="switch=='RENTABLE'" class="btn " (click)="switchTo('RENTABLE')"> <i class="ni ni ni-basket"></i> </button>
-          <button type="submit" *ngIf="switch=='SELLABLE'" class="btn " (click)="switchTo('SELLABLE')"><i class="ni ni ni-calendar-grid-58"></i>  </button>
+          <button type="submit" *ngIf="switch=='SELLABLE'" class="btn " (click)="switchTo('RENTABLE')"> <i class="ni ni ni-basket"></i> </button>
+          <button type="submit" *ngIf="switch=='RENTABLE'" class="btn " (click)="switchTo('SELLABLE')"><i class="ni ni ni-calendar-grid-58"></i>  </button>
         </h3>
           <div class="title">
               <div class="row">
@@ -18,7 +18,7 @@
                     <h4><b>Shopping Cart</b></h4>
                   <span class="text-muted">{{switch}}</span>
                 </div>
-                  <div class="col align-self-center text-right text-muted">{{paniersFilter.length}} items</div>
+                  <div class="col align-self-center text-right text-muted">{{paniersFilter?.length}} items</div>
               </div>
           </div>    
           <div class="row border-top border-bottom">

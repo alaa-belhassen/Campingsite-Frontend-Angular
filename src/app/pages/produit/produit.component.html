@@ -10,9 +10,11 @@
 <div class="header">
     <div class="container-fluid">
       <div class="header-body" *ngIf="this.id==null">
-        <h1 class="subtitle mt-2 align-self-center">Our shopServices</h1>
-        <hr class="my-2 divider" />
-        <div class="row mt-2">
+        <div class="three">
+          <h1>Our Features</h1>
+        </div>
+        
+        <div class="row mt-3">
           <app-card-hover-fancy-produit class="col" [title]="'payement'"  [description]="'our payement is provided by payme a national and popular online payement '" ></app-card-hover-fancy-produit>
           <app-card-hover-fancy-produit class="col" [title]="'authenticity'"  [description]="'all our products are authentic . we only provide good quality products'" ></app-card-hover-fancy-produit>
           <app-card-hover-fancy-produit class="col" [title]="'Reclamation'"  [description]="'If you have any problem with our services please leave a comment on our reclamation point'" ></app-card-hover-fancy-produit>
@@ -24,8 +26,10 @@
 
             <!--<button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>-->
           
-            <h1 class="subtitle align-self-center">Our Products</h1>
-            <hr class="my-2 divider" />
+            <div class="three">
+              <h1>Our Products</h1>
+            </div>
+            
             <div class="d-flex filterbar  ">
               <button type="submit"  class="btn " (click)="switchTo('SELLABLE')" [ngClass]="switch=='SELLABLE' ? '' : 'shadow'" >Sellable </button>
               <button type="submit"  class="btn " (click)="switchTo('RENTABLE')" [ngClass]="switch!=='SELLABLE'  ? '' : 'shadow'">Rentable </button>  

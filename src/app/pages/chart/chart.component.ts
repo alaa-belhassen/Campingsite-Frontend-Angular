@@ -47,7 +47,7 @@ export class ChartComponent implements OnInit {
   @ViewChild('dateRetour') dateRetour: ElementRef;
 
   panier:Panier;
-  switch:any='SELLABLE';
+  switch ='SELLABLE';
   total:any;
   constructor(private commandeService:CommandeService,private servicePanier:ProduitserviceService,private dialog: MatDialog,private payement:PaymeService,private router:Router) { }
 
