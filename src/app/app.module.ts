@@ -122,6 +122,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     UpdateResComponent,
     FilterPipe,
     ChartPipeComponent,
+    ChartComponent,
     CampsiteComponent,
     ListCampsitesComponent,
     ClickimgDirective,
