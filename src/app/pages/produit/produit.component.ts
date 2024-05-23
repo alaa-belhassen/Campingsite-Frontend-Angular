@@ -42,7 +42,7 @@ export class ProduitComponent implements OnInit {
         if(this.id!=null){
           this.produits= r.filter((v)=> v.id_Categorie.nom_Categorie==this.id );
           this.produitsFilter= r.filter((v)=> v.id_Categorie.nom_Categorie==this.id );
-
+          console.log(this.produitsFilter)
         }else{
           this.produits= r;
           this.produitsFilter= r.filter((v)=> v.product_Type==this.switch );

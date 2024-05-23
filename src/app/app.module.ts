@@ -37,7 +37,6 @@ import {MatStepperModule} from '@angular/material/stepper';
 
 
 
-import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -68,6 +67,7 @@ import { ListCampsitesComponent } from './pages/list-campsites/list-campsites.co
 import { PayementDoneComponent } from './pages/payement-done/payement-done.component';
 import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
+import { RefundComponent } from './pages/refund/refund.component';
 
 
 @NgModule({
@@ -103,7 +103,7 @@ import { RegisterCentreCampingComponent } from './pages/register-centre-camping/
     MatTableModule,
     MatSortModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
 
   ],
   declarations: [
@@ -124,11 +124,12 @@ import { RegisterCentreCampingComponent } from './pages/register-centre-camping/
     ListCampsitesComponent,
     ClickimgDirective,
     AllDetailsCampsiteComponent,
-
+    ChartComponent,
     ActiviteCardsComponent,
     UpdateActiviteComponent,
     AddActiviteComponent,
     FilterPipe,
+    RefundComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

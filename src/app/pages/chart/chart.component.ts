@@ -45,10 +45,12 @@ export class ChartComponent implements OnInit {
   editmode=false;
   @ViewChild('quantier') myInput: ElementRef;
   @ViewChild('dateRetour') dateRetour: ElementRef;
-
+  Invalid=false;
+  valid=false;
   panier:Panier;
-  switch ='SELLABLE';
+  switch:any='SELLABLE';
   total:any;
+  message:any;
   constructor(private commandeService:CommandeService,private servicePanier:ProduitserviceService,private dialog: MatDialog,private payement:PaymeService,private router:Router) { }
 
   ngOnInit(): void {
@@ -58,33 +60,14 @@ export class ChartComponent implements OnInit {
   getAll(){
     this.servicePanier.getAllPanier().subscribe({
       next:(r)=>{this.paniers=r
+        console.log(r)
         this.paniersFilter = this.paniers.filter((e)=> e.produit.product_Type=='SELLABLE')
+        console.log(this.paniersFilter)
         this.calculTotal();
       }
     })
   }
-  
-  book(idproduit:any){
-    if(this.dateRetour.nativeElement.value!=''){
-      const newCommande: Commande = {
-        date_Commande: new Date(),
-        total_Commande: 0,
-        type_Commande: 'RENTABLE',
-        paymentMethode: "string",
-        payment_token: '',
-        transaction: 0,
-        dateDeRetour: this.dateRetour.nativeElement.value
 
-      };
-      this.commandeService.createSingleRentableCommande(newCommande,idproduit).subscribe({
-        next:(v)=> {this.paniersFilter = this.paniersFilter.filter((e)=>e.produit.idProduct !== idproduit);
-          console.log(v);
-        },
-        error:(e)=>console.log(e)
-      })
-    }
-  }
-  
   remove(id:any){
     this.servicePanier.deletePanier(id).subscribe({
       next:()=> {this.paniersFilter = this.paniersFilter.filter((e)=>e.produit.idProduct !== id);
@@ -109,10 +92,21 @@ export class ChartComponent implements OnInit {
           next:()=>{
            let foundvalue = this.paniers.filter((panier)=> panier.produit.idProduct==idproduit );
            console.log(foundvalue)
+           this.valid=true;
+           this.message='update successful';
+           setTimeout(() => {
+             this.valid = false;
+           }, 2000);
            foundvalue[0].quantiter=value;
            this.calculTotal();
           },
-          error:(e)=> console.log(e)
+          error:(e)=> {
+            this.message="update failed"
+            this.Invalid = true;
+              setTimeout(() => {
+                this.Invalid = false;
+              }, 2000);
+          }
         })  
       }
     }
@@ -131,29 +125,28 @@ export class ChartComponent implements OnInit {
     }
   }
   calculTotal(){
-    if(this.dateRetour?.nativeElement?.value!=''){
-      this.total = this.paniersFilter.map((v)=>v.produit.prix*v.quantiter);
-      this.total = this.total.reduce((acc, curr) => acc + curr, 0);      
-    }
+    
     this.total = this.paniersFilter.map((v)=>v.produit.prix*v.quantiter);
     this.total = this.total.reduce((acc, curr) => acc + curr, 0);
   }
 
-  openDialog() {
-    this.dialog.open(ConfirmComponent, {
+  openDialog(produitId:any,productname:any) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
       data: {
-        prix: this.total,
+        prix: productname
       },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      if(result=='accept'){
+        this.remove(produitId);
+      }
     });
   }
 
 
-
-  showElement = true;
-
-hideElement() {
-  this.showElement = false;
-}
 
   
 
@@ -170,8 +163,22 @@ hideElement() {
     order_id:new FormControl('', Validators.required)
   });
 
-  processPayment(_idproduit?:any) {
+  processPayment(_idproduit?:any,amount?:any) {
+    if(this.dateRetour?.nativeElement?.value==''&& amount!=0 && _idproduit){
+      this.message="Set Retourn Date"
+      this.Invalid = true;
+        setTimeout(() => {
+          this.Invalid = false;
+        }, 2000);
+    }
     if(this.dateRetour?.nativeElement?.value!=''){
+      if(amount!=0 && _idproduit){
+        let today = new Date()
+        let selectedtoday = new Date(this.dateRetour?.nativeElement?.value)
+        const dayDifference: number = Math.abs(Math.floor((today.getTime() - selectedtoday.getTime()) / (1000 * 60 * 60 * 24)));
+        this.total=amount*dayDifference;
+
+      }
       this.paymeForm.setValue({
         amount: this.total,
         note: 'Order #123',
@@ -186,31 +193,22 @@ hideElement() {
       });
   
       this.payement.create(this.paymeForm.getRawValue()).subscribe(
-        (response:any) => {
-          console.log('Payment successful:', response);
-          window.location.href = response.data.payment_url;
-  
-          // Handle successful payment response
-        },
-        error => {
-          console.error('Payment failed:', error);
-          // Handle payment error
-        }
-      );
+            (response:any) => {
+              console.log('Payment successful:', response);
+              window.location.href = response.data.payment_url;
+      
+              // Handle successful payment response
+            },
+            error => {
+              console.error('Payment failed:', error);
+              // Handle payment error
+            }
+          );
     }
-  }
-  checkPayement(){
-    this.payement.check().subscribe(
-      response => {
-        console.log('Payment successful:', response);
-
-        // Handle successful payment response
-      },
-      error => {
-        console.error('Payment failed:', error);
-        // Handle payment error
-      }
-    );
   }
 
 }
+
+
+
+

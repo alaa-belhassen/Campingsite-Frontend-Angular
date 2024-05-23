@@ -22,6 +22,7 @@ import { AddProduitComponent } from 'src/app/pages/add-produit/add-produit.compo
 import { ListeReservationComponent } from 'src/app/components/Reservation/liste-reservation/liste-reservation.component';
 import { ListUsersComponent } from 'src/app/pages/list-users/list-users.component';
 import { ChartComponent } from 'src/app/pages/chart/chart.component';
+import { RefundComponent } from 'src/app/pages/refund/refund.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'produit',      component: ProduitComponent , data:{animation:'animate'} },
@@ -41,7 +42,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'campsite',           component: CampsiteComponent },
     { path: 'listcampsite',           component: ListCampsitesComponent },
     { path: 'detaillistcampsite/:id', component: AllDetailsCampsiteComponent },
-
-
+    { path: 'refund',       component:  RefundComponent  },
     { path: 'activite',       component:  AddActiviteComponent  }
 ];

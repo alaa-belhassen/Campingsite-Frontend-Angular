@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
@@ -25,15 +25,15 @@ export class RegisterCentreCampingComponent implements OnInit {
   constructor( private userService:UserServiceService , private tokenStorage : TokenStorageService , private formBuilder :FormBuilder) { }
 
   ngOnInit() {
-    this.addUserForm = this.formBuilder.group({
-      firstName: ["", [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z]+')]],
-      lastName: ["", [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z]+')]],
-      email: ["", [Validators.email, Validators.required]],
-      adresse: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-      telephone: ["", [Validators.required, Validators.pattern('[0-9]{8}')]], // Validates 8 digits
-      role: ["CENTRECAMPING"],
-      password: [ "", [Validators.required]],
-      date_naissance: ["", Validators.required] 
+    this.addUserForm = new FormGroup({
+      firstName: new FormControl("", [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z]+')]),
+      lastName:new FormControl( "", [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z]+')]),
+      email:new FormControl( ["", [Validators.email, Validators.required]]),
+      adresse:new FormControl( ["", [Validators.required, Validators.minLength(3), Validators.maxLength(100)]]),
+      telephone:new FormControl( ["", [Validators.required, Validators.pattern('[0-9]{8}')]]), // Validates 8 digits
+      role:new FormControl("CENTRECAMPING"),
+      password: new FormControl( "", [Validators.required]),
+      date_naissance:new FormControl( "", Validators.required) 
     });
 
     
