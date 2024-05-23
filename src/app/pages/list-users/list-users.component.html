@@ -73,20 +73,17 @@
 
                   </tr>
                 </ng-container>
-                  <ng-container *ngIf="infoDetailsUser" >
-                  <tr *ngFor="let user of displayedUsers  ">
-                    <td>{{ user.detailsUser.paysage}}</td>
-                    <td>{{ user.detailsUser.alimentation }}</td>
-                    <td>{{ user.detailsUser.compagnement }}</td>
-                    <td>{{ user.detailsUser.saison }}</td>
-                    <td>{{ user.detailsUser.type_hebergement
-                       }}</td>
-                    <td>{{ user.detailsUser.couleur }}</td>
-                   
-                    
-                   
-
-                  </tr>
+                <ng-container *ngIf="infoDetailsUser">
+                  <ng-container *ngFor="let user of displayedUsers">
+                    <tr>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'paysage') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'alimentation') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'compagnement') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'saison') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'type_hebergement') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'couleur') }}</td>
+                    </tr>
+                  </ng-container>
                 </ng-container>
                 </tbody>
               </table>

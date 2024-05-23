@@ -134,72 +134,64 @@
                     <span class="text-success font-weight-700">{{ getPasswordStrength() }}</span>
                 </small>
             </div>
-            <div class="row my-4">
-              <div class="col-12">
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                  <label class="custom-control-label" for="customCheckRegister">
-                    <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-              <div class="text-center">
-                <button type="button" class="btn btn-secondary mt-4" (click)="showOtherForm()">Vos préférences</button>
-              </div>
+           
+              
               <div  class="container mt-8 pb-5" >
-                <form [formGroup]="DetailsUserForm" style="display: none;" id="secondForm">
+                <form [formGroup]="DetailsUserForm" >
                   <div class="form-group">
-                    <label for="landscapeType">Types de paysage</label>
-                    <select class="form-control" id="landscapeType" formControlName="paysage">
-                      <option value="foret">foret</option>
-                      <option value="montagne">desert</option>
-                      <option value="plage">montagne</option>
-                      <option value="desert">plage</option>
-                    </select>
+                    <h3>Types de paysage</h3>
+                    <mat-button-toggle-group name="landscapeType" aria-label="Types de paysage" formControlName="paysage"  multiple>
+                      <mat-button-toggle value="FOREST">FOREST</mat-button-toggle>
+                      <mat-button-toggle value="DESERT">DESERT</mat-button-toggle>
+                      <mat-button-toggle value="MOUNTAIN">MOUNTAIN</mat-button-toggle>
+                      <mat-button-toggle value="BEACH">BEACH</mat-button-toggle>
+                    </mat-button-toggle-group>
                   </div>
                   <div class="form-group">
                     <label for="color">Couleur</label>
-                    <input type="text" class="form-control" id="color" placeholder="Couleur" formControlName="couleur">
+                    
+                    <input type="color" value="#ff0000" formControlName="couleur"class="form-control" />
                   </div>
                   <div class="form-group">
-                    <label for="food">Alimentation</label>
-                    <select class="form-control" id="food" formControlName="alimentation">
-                      <option value="pique_nique">pique_nique</option>
-                      <option value="barbecue">barbecue</option>
-                      <option value="restaurant">restaurant</option>
-                      <option value="cafe">cafe</option>
-                    </select>
-                  </div>
-               
-                  <div class="form-group">
-                    <label for="companionship">Accompagnement</label>
-                    <select class="form-control" id="companionship" formControlName="compagnement">
-                      <option value="visitesGuidees">visitesGuidees</option>
-                      <option value="pleinair">pleinair</option>
-                      <option value="soiree">soiree</option>
-                    </select>
+                    <h3>Alimentation</h3>
+                    <mat-button-toggle-group name="food" aria-label="Alimentation" formControlName="alimentation"  multiple>    
+                      <mat-button-toggle value="PICNIC">PICNIC</mat-button-toggle>
+                      <mat-button-toggle value="BARBECUE">BARBECUE</mat-button-toggle>
+                      <mat-button-toggle value="RESTAURANT">RESTAURANT</mat-button-toggle>
+                      <mat-button-toggle value="CAFE">CAFE</mat-button-toggle>
+                    </mat-button-toggle-group>
                   </div>
                   <div class="form-group">
-                    <label for="season">Saison</label>
-                    <select class="form-control" id="season" formControlName="saison">
-                      <option value="printemps">printemps</option>
-                      <option value="ete">ete</option>
-                      <option value="automne">automne</option>
-                      <option value="hiver">hiver</option>
-                    </select>
+                    <h3>Accompagnement</h3>
+                    <mat-button-toggle-group name="companionship" aria-label="Accompagnement" formControlName="compagnement"  multiple>
+                      <mat-button-toggle value="GUIDED_TOURS">GUIDED_TOURS</mat-button-toggle>
+                      <mat-button-toggle value="OUTDOOR">OUTDOOR</mat-button-toggle>
+                      <mat-button-toggle value="EVENING">EVENING</mat-button-toggle>
+                    </mat-button-toggle-group>
                   </div>
                   <div class="form-group">
-                    <label for="accommodation">Type d'hébergement</label>
-                    <select class="form-control" id="accommodation" formControlName="type_hebergement">
-                      <option value="tente">tente</option>
-                      <option value="cabane">cabane</option>
-                     
-                    </select>
+                    <h3>Saison</h3>
+                    <mat-button-toggle-group name="season" aria-label="Saison" formControlName="saison"  multiple >
+                      <mat-button-toggle value="SPRING">SPRING</mat-button-toggle>
+                      <mat-button-toggle value="SUMMER">SUMMER</mat-button-toggle>
+                      <mat-button-toggle value="AUTUMN">AUTUMN</mat-button-toggle>
+                      <mat-button-toggle value="WINTER">WINTER</mat-button-toggle>
+                    </mat-button-toggle-group>
+                  </div>
+                  <div class="form-group">
+                    <h3>Type d'hébergement</h3>
+                    <mat-button-toggle-group name="accommodation" aria-label="Type d'hébergement" formControlName="type_hebergement"  multiple >
+                      <mat-button-toggle value="TENT">TENT</mat-button-toggle>
+                      
+                      <mat-button-toggle value="BUNGALOW">BUNGALOW</mat-button-toggle>
+                      <mat-button-toggle value="CARAVAN">CARAVAN</mat-button-toggle>
+                      
+                      <mat-button-toggle value="YURT">YURT</mat-button-toggle>
+                    </mat-button-toggle-group>
                   </div>
                   <!-- Vos autres champs ici -->
-                
                 </form>
+                
                 
               </div>
             </div>
@@ -217,7 +209,7 @@
 </div>
 
             <div class="text-center">
-              <button type="button" class="btn btn-primary mt-4" (click)="addUser()" [disabled]="!addUserForm.valid && !DetailsUserForm">Create account</button>
+              <button type="button" class="btn btn-primary mt-4" (click)="addUser()" [disabled]="!addUserForm.valid && !DetailsUserForm.valid">Create account</button>
             </div>
           </form>
         </div>

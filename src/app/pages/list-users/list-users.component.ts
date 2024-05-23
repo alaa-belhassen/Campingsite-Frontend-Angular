@@ -33,6 +33,7 @@ export class ListUsersComponent implements OnInit {
   currentPage: number = 1;
   pages: number[] = [];
   displayedUsers: any[];
+  detailsUser : any [];
   infoUser : boolean =true;
   
   
@@ -138,5 +139,19 @@ export class ListUsersComponent implements OnInit {
     this.infoDetailsUser = false;
    
   }
+  getFormattedDetails(detailsUser: any[], key: string): string {
+    const uniqueValues = new Set<string>();
+
+    // Ajoutez chaque valeur unique à l'ensemble
+    detailsUser.forEach(detail => {
+        if (detail[key]) {
+            uniqueValues.add(detail[key]);
+        }
+    });
+
+    // Convertissez l'ensemble en tableau et joignez les valeurs avec une virgule
+    return Array.from(uniqueValues).join(', ');
+}
+
   
 }

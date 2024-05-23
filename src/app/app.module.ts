@@ -65,6 +65,7 @@ import { ListCampsitesComponent } from './pages/list-campsites/list-campsites.co
 import { PayementDoneComponent } from './pages/payement-done/payement-done.component';
 import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import { RegisterCentreCampingComponent } from './pages/register-centre-camping/
     MatTableModule,
     MatSortModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    MatButtonToggleModule
 
   ],
   declarations: [
