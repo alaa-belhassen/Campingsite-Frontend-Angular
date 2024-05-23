@@ -47,7 +47,7 @@ export class ChartComponent implements OnInit {
   @ViewChild('dateRetour') dateRetour: ElementRef;
 
   panier:Panier;
-  switch:any='SELLABLE';
+  switch ='SELLABLE';
   total:any;
   constructor(private commandeService:CommandeService,private servicePanier:ProduitserviceService,private dialog: MatDialog,private payement:PaymeService,private router:Router) { }
 
@@ -131,6 +131,10 @@ export class ChartComponent implements OnInit {
     }
   }
   calculTotal(){
+    if(this.dateRetour?.nativeElement?.value!=''){
+      this.total = this.paniersFilter.map((v)=>v.produit.prix*v.quantiter);
+      this.total = this.total.reduce((acc, curr) => acc + curr, 0);      
+    }
     this.total = this.paniersFilter.map((v)=>v.produit.prix*v.quantiter);
     this.total = this.total.reduce((acc, curr) => acc + curr, 0);
   }

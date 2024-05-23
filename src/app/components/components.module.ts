@@ -10,6 +10,8 @@ import { ChartComponent } from './chart/chart.component';
 import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
+import { ShoploaderComponent } from './shoploader/shoploader.component';
+import { CardHoverFancyProduitComponent } from './card-hover-fancy-produit/card-hover-fancy-produit.component';
 
 import { RouterModule } from '@angular/router';
 import {MatIconModule} from "@angular/material/icon";
@@ -41,6 +43,10 @@ import { ImageComponentComponent } from './image-component/image-component.compo
     ChartPipesComponent,
     ListUsersComponent,
     CardProduitComponent,
+    ShoploaderComponent,
+    CardHoverFancyProduitComponent,
+    
+  
     ImageComponentComponent
   ],
   exports: [
@@ -51,7 +57,9 @@ import { ImageComponentComponent } from './image-component/image-component.compo
     ChartComponent,
     ChartPipesComponent,
     CardProduitComponent,
+    ShoploaderComponent,
+    CardHoverFancyProduitComponent,
     ImageComponentComponent
-      ]
+  ]
 })
 export class ComponentsModule { }

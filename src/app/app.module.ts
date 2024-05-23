@@ -15,6 +15,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+
+
+import { ChartComponent } from './pages/chart/chart.component';
 import { ActiviteCardsComponent } from './Activites/activite-cards/activite-cards.component';
 import { UpdateActiviteComponent } from './Activites/update-activite/update-activite.component';
 import { AddActiviteComponent } from './Activites/add-activite/add-activite.component';

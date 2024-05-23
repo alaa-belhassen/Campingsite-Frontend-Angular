@@ -1,58 +1,47 @@
-<div class=" bg-gradient-danger " style="min-height: 200px; z-index:-2;">
-
+<div class=" bg-gradient-danger " class="imageCover">
+  <div class="poisitiontitle">
+    <h1 class="title">shopyCamp</h1>
+    <h1 class="subtitle text-muted">we provide you the best products</h1>
+  </div>
 </div>
+
+
+
 <div class="header">
     <div class="container-fluid">
-      <div class="header-body">
-      
+      <div class="header-body" *ngIf="this.id==null">
+        <div class="three">
+          <h1>Our Features</h1>
+        </div>
+        
+        <div class="row mt-3">
+          <app-card-hover-fancy-produit class="col" [title]="'payement'"  [description]="'our payement is provided by payme a national and popular online payement '" ></app-card-hover-fancy-produit>
+          <app-card-hover-fancy-produit class="col" [title]="'authenticity'"  [description]="'all our products are authentic . we only provide good quality products'" ></app-card-hover-fancy-produit>
+          <app-card-hover-fancy-produit class="col" [title]="'Reclamation'"  [description]="'If you have any problem with our services please leave a comment on our reclamation point'" ></app-card-hover-fancy-produit>
+        </div>  
+      </div>
+      <div class="mt-4">
         <!-- Card stats -->
-        <div class="row" style="position:relative; top:-100px; z-index: 0;">
+        <div class="row" >
 
-            <button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>
-            <div id="carouselExampleCaptions" class="carousel slide slide carousel-fade" data-bs-ride="carousel" >
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-              </div>
-              <div class="carousel-inner" >
-                <div class="carousel-item active" >
-                  <img src="https://www.tunisianet.com.tn/modules/wbimageslider/views/img/072e4cd542b865192a23d7b01c49af6acf0108b7_msi%20promo.jpg" class="d-block w-100" alt="...">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                  </div>
-                </div>
-                <div class="carousel-item " >
-                  <img src="https://www.tunisianet.com.tn/modules/wbimageslider/views/img/507a4e093d8929d46f5f14c63eabe177fb65eb3a_v30.jpg" class="d-block w-100" alt="...">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
-                  </div>
-                </div>
-                <div class="carousel-item" >
-                  <img src="https://www.tunisianet.com.tn/modules/wbimageslider/views/img/6d55356c4766f0589952fd54b2381420c3a90f8e_CANDY%20REF%20COMB.jpg" class="d-block w-100" alt="...">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
-                  </div>
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+            <!--<button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>-->
+          
+            <div class="three">
+              <h1>Our Products</h1>
             </div>
-            <div class="col-xl-3 col-lg-6 mt-4"  *ngFor="let produit of produits">
+            
+            <div class="d-flex filterbar  ">
+              <button type="submit"  class="btn " (click)="switchTo('SELLABLE')" [ngClass]="switch=='SELLABLE' ? '' : 'shadow'" >Sellable </button>
+              <button type="submit"  class="btn " (click)="switchTo('RENTABLE')" [ngClass]="switch!=='SELLABLE'  ? '' : 'shadow'">Rentable </button>  
+              <button type="submit"  class="btn " (click)="showOut()" [ngClass]="outOf ? '' : 'shadow'">OutOfTheStock</button>  
+            </div>
+            <div class="col-xl-3 col-lg-6 mt-2"  *ngFor="let produit of produitsFilter">
               <div >  
                 <app-card-produit class="mt-4" [id]="produit.idProduct" [title]="produit.nomProduct" [type]="produit.product_Type" [img]="'https://picsum.photos/200/300?grayscale'" [description]="produit.description" [price]="produit.prix" [quantiter]="produit.quantiter" ></app-card-produit>
-
               </div>
             </div>
+            <span *ngIf="produitsFilter?.length==0" class="m-2">No products available</span>
+
         </div>
       </div>
     </div>

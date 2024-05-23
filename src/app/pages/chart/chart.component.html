@@ -1,106 +1,75 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8" style="min-height: 350px;">
-<div class="container-fluid" >
-  <div class="row">
-      <div class="col">
-        <div class="card shadow">
-          <div class="card-header d-flex justify-content-between border-0">
-            <h3>{{switch}}</h3>
+  </div>
 
-            <h3 class="mb-0">
-              <button type="submit" *ngIf="switch=='RENTABLE'" class="btn " (click)="switchTo('RENTABLE')">switchTo Sellable </button>
-              <button type="submit" *ngIf="switch=='SELLABLE'" class="btn " (click)="switchTo('SELLABLE')">switchTo Rentable </button>
-            </h3>
+          <div class=" d-flex justify-content-between border-0">
+       
           </div>
-          <div class="table-responsive" >
-            <table class="table align-items-center table-flush">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">product</th>
-                  <th scope="col">price</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col" *ngIf="switch=='RENTABLE'">Date de Retour</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let panier of paniersFilter;index as i ">
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">{{panier.produit.nomProduct}}</span>
-                      </div>
-                    </div>
-                  </th>
-                  {{paniers|json}}
-                  <td>
-                    {{panier.produit.prix}} DT
-                  </td>
-                  <td>
+
+ <div class="card">
+  <div class="row">
+      <div class="col-md-8 cart shadow">
+        <h3 class="mb-0">
+          <button type="submit" *ngIf="switch=='SELLABLE'" class="btn " (click)="switchTo('RENTABLE')"> <i class="ni ni ni-basket"></i> </button>
+          <button type="submit" *ngIf="switch=='RENTABLE'" class="btn " (click)="switchTo('SELLABLE')"><i class="ni ni ni-calendar-grid-58"></i>  </button>
+        </h3>
+          <div class="title">
+              <div class="row">
+                  <div class="col">
+                    <h4><b>Shopping Cart</b></h4>
+                  <span class="text-muted">{{switch}}</span>
+                </div>
+                  <div class="col align-self-center text-right text-muted">{{paniersFilter?.length}} items</div>
+              </div>
+          </div>    
+          <div class="row border-top border-bottom">
+              <div class="row main align-items-center" *ngFor="let panier of paniersFilter;index as i ">
+                  <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                  <div class="col">
+                      <div class="row text-muted">{{panier.produit.id_Categorie.nom_Categorie}}</div>
+                      <div class="row">{{panier.produit.nomProduct}}</div>
+                  </div>
+                  <div class="col">
                     <div *ngIf="editmode">
                       <input type="number" id="input-quantiter" #quantier  class="form-control form-control-alternative inputstyle" placeholder="quantity" [value]="panier.quantiter" >
                     </div>
                     <span *ngIf="!editmode">{{panier.quantiter}}</span>
-                  </td>
-                  <td>
-                    <div *ngIf="switch=='RENTABLE'" >
-                      <input type="date" id="input-quantiter" #dateRetour  class="form-control form-control-alternative " placeholder="quantity"  >
-                    </div>
-                  </td>
-                
-                  <td class="text-right">
-                    <button type="submit" class="btn " *ngIf="switch=='RENTABLE'" (click)="processPayment(panier.produit.idProduct)"><span class="ni ni ni-shop"></span></button>
-                    <button type="submit" class="btn " (click)="remove(panier.produit.idProduct)"><span class="ni ni ni-fat-remove"></span></button>
-                    <button type="submit" class="btn" (click)="edit(panier.quantiter,panier.produit.idProduct)">
+                  </div>
+                  <div class="col">
+                    {{panier.produit.prix}} DT
+                  </div>
+                  <div class="col d-flex">
+                    <button type="submit" class="btn  " *ngIf="switch=='RENTABLE'" (click)="processPayment(panier.produit.idProduct)"><span class="ni ni ni-shop"></span></button>
+                    <button type="submit" class="btn   " (click)="remove(panier.produit.idProduct)"><span class="ni ni ni-fat-remove"></span></button>
+                    <button type="submit" class="btn   " (click)="edit(panier.quantiter,panier.produit.idProduct)">
                       <span class="ni ni-settings-gear-65" *ngIf="!editmode"></span>
                       <span class="ni ni-check-bold" *ngIf="editmode"></span>
                     </button>
-
-                  </td>
-                </tr>
-                
-              </tbody>
-            </table>
+                  </div>
+               </div>
           </div>
-          <div class="card-footer py-4 d-flex justify-content-between">
-            
-            <div class="d-flex" *ngIf="switch=='SELLABLE'">
-              <button class="btn " (click)="processPayment()">Checkout</button>
-              <div class="d-flex ">
-                <span>|</span>
-                <p>{{total}} TND</p>
-              </div>
-            
-            </div>
-            <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled">
-                  <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                    <i class="fas fa-angle-left"></i>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="javascript:void(0)">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)">
-                    <i class="fas fa-angle-right"></i>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+       
       </div>
-    </div>
- </div>
+      <div class="col-md-4 summary  ">
+          <div><h3><b>Summary</b></h3></div>
+          <hr>
+        
+          <form>
+             <!--- <p>SHIPPING</p>
+              <select>
+                <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+              </select>-->
+              <p >Promo code</p>
+              <input class="form-control form-control-alternative mb-2" id="code" placeholder="Enter your code">
+              <p *ngIf="switch=='RENTABLE'"> Date retour</p>
+              <input type="date" id="input-quantiter" #dateRetour *ngIf="switch=='RENTABLE'"  class="form-control form-control-alternative " placeholder="datederetour"  >
 
- 
+          </form>
+          <div *ngIf="switch=='SELLABLE'" class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+              <div class="col">TOTAL PRICE</div>
+              <div class="col text-right">&euro; {{total}}</div>
+          </div>
+          <button *ngIf="switch=='SELLABLE'" class="btn" (click)="processPayment()">CHECKOUT</button>
+      </div>
+  </div>
+  
+</div>

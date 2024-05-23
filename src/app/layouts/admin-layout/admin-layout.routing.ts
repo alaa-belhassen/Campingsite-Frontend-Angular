@@ -17,13 +17,14 @@ import {AllDetailsCampsiteComponent} from "../../pages/all-details-campsite/all-
 import { ProduitComponent } from 'src/app/pages/produit/produit.component';
 import { ConfirmComponent } from 'src/app/components/dialog/confirm/confirm.component';
 import { PayementDoneComponent } from 'src/app/pages/payement-done/payement-done.component';
+import { animate, animation } from '@angular/animations';
 import { AddProduitComponent } from 'src/app/pages/add-produit/add-produit.component';
 import { ListeReservationComponent } from 'src/app/components/Reservation/liste-reservation/liste-reservation.component';
 import { ListUsersComponent } from 'src/app/pages/list-users/list-users.component';
 import { ChartComponent } from 'src/app/pages/chart/chart.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'produit',      component: ProduitComponent },
+    { path: 'produit',      component: ProduitComponent , data:{animation:'animate'} },
     { path: 'produit/:id',  component: ProduitComponent },
     { path: 'modal',      component: ConfirmComponent },
     { path: 'payementdone/:type',      component: PayementDoneComponent },
