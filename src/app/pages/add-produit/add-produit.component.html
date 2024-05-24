@@ -166,7 +166,6 @@
                     </div>
                   </div>
                   <button type="submit" class="btn btn-success ">add</button>
-                  <button mat-button matStepperNext class="btn btn-success ">Next</button>
                 </form>
               </div>
             </div>
@@ -178,6 +177,7 @@
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Fill out your address</ng-template>
         <app-image-component [idProduit]="this.produit?.idProduct"></app-image-component>
+        <button mat-button matStepperNext (click)="redirect()" class="btn btn-success ">Done</button>
       </form>
     </mat-step>
   </mat-stepper>
