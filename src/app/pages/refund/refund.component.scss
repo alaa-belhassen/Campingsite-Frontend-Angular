@@ -32,14 +32,14 @@ body{
 .cart{
     background-color: #fff;
     padding: 4vh 5vh;
-    border-bottom-left-radius: 1rem;
-    border-top-left-radius: 1rem;
+    border-bottom-left-radius: unset;
+    border-top-left-radius: unset;
 }
 @media(max-width:767px){
     .cart{
         padding: 4vh;
         border-bottom-left-radius: unset;
-        border-top-right-radius: 1rem;
+        border-top-right-radius: unset;
     }
 }
 .summary{
@@ -51,7 +51,7 @@ body{
 @media(max-width:767px){
     .summary{
     border-top-right-radius: unset;
-    border-bottom-left-radius: 1rem;
+    border-bottom-left-radius: unset;
     }
 }
 .summary .col-2{

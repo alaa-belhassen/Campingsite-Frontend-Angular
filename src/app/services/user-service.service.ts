@@ -69,4 +69,7 @@ export class UserServiceService {
     const url = `${this.URL}ChangePassword/${userId}/${ancienPassword}/${newPassword}`;
     return this.http.get<any>(url);
   }
+  RecommenderProduit(id: number) : Observable<any> {
+    return this.http.get<any>(this.detailsUser + "recommenderProduits/" + id);
+  }
 }

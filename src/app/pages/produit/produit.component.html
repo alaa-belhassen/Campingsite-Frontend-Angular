@@ -22,9 +22,48 @@
       </div>
       <div class="mt-4">
         <!-- Card stats -->
+        <!-- ICI  -->
         <div class="row" >
 
-            <!--<button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>-->
+         
+        
+          <div class="three">
+            <h1>Recommendations for you {{this.currentUser.firstName}}</h1>
+          </div>
+          
+          
+          <div class="col-xl-3 col-lg-6 mt-2"  *ngFor="let p of displayedProducts">
+            <div >  
+              <app-card-produit class="mt-4" [urlImg]="p?.photo?.imageUrl" [id]="p.idProduct" [title]="p.nomProduct" [type]="p.product_Type" [img]="'https://picsum.photos/200/300?grayscale'" [description]="p.description" [price]="p.prix" [quantiter]="p.quantiter" ></app-card-produit>
+            </div>
+          </div>
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item" [class.disabled]="currentPage == 1">
+                <a class="page-link"   (click)="prevPage()" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item" *ngFor="let page of pages" [class.active]="currentPage === page">
+                <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+              </li>
+
+              <li class="page-item" [class.disabled]="currentPage == totalPages">
+                <a class="page-link"  (click)="nextPage()">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <span *ngIf="produitsFilter?.length==0" class="m-2">No products available</span>
+
+      </div>
+      <!-- ICI  -->
+        <div class="row" >
+
+            <!-- <button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>-->
           
             <div class="three">
               <h1>Our Products</h1>
@@ -35,13 +74,21 @@
               <button type="submit"  class="btn " (click)="switchTo('RENTABLE')" [ngClass]="switch!=='SELLABLE'  ? '' : 'shadow'">Rentable </button>  
               <button type="submit"  class="btn " (click)="showOut()" [ngClass]="outOf ? '' : 'shadow'">OutOfTheStock</button>  
             </div>
+            
             <div class="col-xl-3 col-lg-6 mt-2"  *ngFor="let produit of produitsFilter">
               <div >  
-                <app-card-produit class="mt-4" [id]="produit.idProduct" [title]="produit.nomProduct" [type]="produit.product_Type" [img]="'https://picsum.photos/200/300?grayscale'" [description]="produit.description" [price]="produit.prix" [quantiter]="produit.quantiter" ></app-card-produit>
-              </div>
-            </div>
+                <app-card-produit class="mt-4" [urlImg]="produit?.photo?.imageUrl" [id]="produit.idProduct" [title]="produit.nomProduct" [type]="produit.product_Type" [img]="'https://picsum.photos/200/300?grayscale'" [description]="produit.description" [price]="produit.prix" [quantiter]="produit.quantiter" ></app-card-produit>
+               
+              </div> 
+              
+              <!-- Pagination -->
+             
+             
+            
+            
+           
             <span *ngIf="produitsFilter?.length==0" class="m-2">No products available</span>
-
+          </div>
         </div>
       </div>
     </div>

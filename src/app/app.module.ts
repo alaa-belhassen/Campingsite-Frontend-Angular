@@ -37,7 +37,6 @@ import {MatStepperModule} from '@angular/material/stepper';
 
 
 
-import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -69,6 +68,7 @@ import { PayementDoneComponent } from './pages/payement-done/payement-done.compo
 import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { RefundComponent } from './pages/refund/refund.component';
 
 
 @NgModule({
@@ -127,11 +127,12 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     ListCampsitesComponent,
     ClickimgDirective,
     AllDetailsCampsiteComponent,
-
+    ChartComponent,
     ActiviteCardsComponent,
     UpdateActiviteComponent,
     AddActiviteComponent,
     FilterPipe,
+    RefundComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

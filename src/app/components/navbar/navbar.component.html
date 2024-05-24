@@ -8,7 +8,7 @@
       <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
         <div class="input-group input-group-alternative">
           <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-search"></i></span>
+            
           </div>
           <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
           (blur)="focus = false">
@@ -49,6 +49,10 @@
             <span>Support</span>
           </a>
           <a routerLinkActive="active" [routerLink]="['/chart']" class="dropdown-item">
+            <i class="ni ni-cart"></i>
+            <span>chart</span>
+          </a>
+          <a routerLinkActive="active" [routerLink]="['/refund']" class="dropdown-item">
             <i class="ni ni-cart"></i>
             <span>chart</span>
           </a>

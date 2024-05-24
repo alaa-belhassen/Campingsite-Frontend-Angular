@@ -78,6 +78,9 @@ $colorSubtitle:rgb(21, 21, 102);
     background-color: #333;
   }
   
- 
+  .page-item.disabled .page-link {
+    pointer-events: none;
+    
+  }
   
   
