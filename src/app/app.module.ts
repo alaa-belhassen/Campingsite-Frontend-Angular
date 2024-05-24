@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AjoutReclamationComponent } from './pages/ajout-reclamation/ajout-reclamation.component';
 import { AfficherReclamationAdminComponent } from './pages/afficher-reclamation-admin/afficher-reclamation-admin.component';
+import { DashboardReclammationComponent } from './pages/dashboard-reclammation/dashboard-reclammation.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AfficherReclamationAdminComponent } from './pages/afficher-reclamation-
     AdminLayoutComponent,
     AuthLayoutComponent,
     AjoutReclamationComponent,
-    AfficherReclamationAdminComponent
+    AfficherReclamationAdminComponent,
+    DashboardReclammationComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

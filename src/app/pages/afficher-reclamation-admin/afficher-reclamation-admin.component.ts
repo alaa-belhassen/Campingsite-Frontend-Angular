@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ReclamationService } from '../../services/reclamation.service';
 
+
+
 @Component({
   selector: 'app-afficher-reclamation-admin',
   templateUrl: './afficher-reclamation-admin.component.html',
   styleUrls: ['./afficher-reclamation-admin.component.scss']
 })
 export class AfficherReclamationAdminComponent implements OnInit {
+
   reclamations: any[] = [];
   displayedReclamations: any[] = [];
   currentPage = 1;
@@ -14,14 +17,17 @@ export class AfficherReclamationAdminComponent implements OnInit {
   totalPages = 0;
   pages: number[] = [];
   enAttenteCount: number = 0;
-  SolvedReclamationNumberThisMonth :number = 0;
+  SolvedReclamationNumberThisMonth: number = 0;
+  reclamationCounts: { name: string, value: number }[] = [];
 
   constructor(private reclamationService: ReclamationService) { }
 
   ngOnInit(): void {
     this.loadReclamations();
     this.getEnAttenteReclamationNumber();
+    
   }
+
 
   loadReclamations() {
     this.reclamationService.getAllReclamations().subscribe((data: any[]) => {
@@ -60,6 +66,7 @@ export class AfficherReclamationAdminComponent implements OnInit {
       this.enAttenteCount = count;
     });
   }
+
   getSolvedReclamationNumberThisMonth() {
     this.reclamationService.getSolvedReclamationNumberThisMonth().subscribe((count: number) => {
       this.SolvedReclamationNumberThisMonth = count;

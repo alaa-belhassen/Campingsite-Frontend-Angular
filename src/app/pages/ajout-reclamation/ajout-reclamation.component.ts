@@ -15,7 +15,7 @@ export class AjoutReclamationComponent implements OnInit {
 
   ngOnInit() {
     // Set the default status to "En Attente"
-    this.reclamation.statutReclamation = "En attente";
+    this.reclamation.statutReclamation = "Pending";
   }
 
   addReclamation(reclamationForm: NgForm, event: Event) {
@@ -31,7 +31,7 @@ export class AjoutReclamationComponent implements OnInit {
           reclamationForm.resetForm();
           // Reset reclamation object and set status again
           this.reclamation = new Reclamation();
-          this.reclamation.statutReclamation = "En attente";
+          this.reclamation.statutReclamation = "Pending";
         },
         (error) => {
           console.log('Error adding reclamation:', error);

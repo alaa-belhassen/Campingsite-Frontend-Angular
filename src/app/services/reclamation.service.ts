@@ -19,14 +19,15 @@ export class ReclamationService {
     return this.http.get<Reclamation[]>(`${this.baseUrl}/read`);
   }
 
-  getReclamations(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
-  }
-
   getEnAttenteReclamationNumber(): Observable<number> {
     return this.http.get<number>(`${this.baseUrl}/statistics/enattente-count`);
   }
+
   getSolvedReclamationNumberThisMonth(): Observable<number> {
     return this.http.get<number>(`${this.baseUrl}/statistics/solved-this-month-count`);
+  }
+
+  getStatisticsByReclamationType(): Observable<{ [key: string]: number }> {
+    return this.http.get<{ [key: string]: number }>(`${this.baseUrl}/statistics/reclamation-type`);
   }
 }
