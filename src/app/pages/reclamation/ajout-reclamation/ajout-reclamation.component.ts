@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ReclamationService } from '../../services/reclamation.service';
-import { Reclamation } from '../../models/reclamation';
 import { NgForm } from '@angular/forms';
+import { Reclamation } from 'src/app/models/reclamation';
+import { ReclamationService } from 'src/app/services/reclamation.service';
 
 @Component({
   selector: 'app-ajout-reclamation',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ReclamationService } from '../../services/reclamation.service';
 
 import * as echarts from 'echarts';
+import { ReclamationService } from 'src/app/services/reclamation.service';
 
 @Component({
   selector: 'app-dashboard-reclammation',

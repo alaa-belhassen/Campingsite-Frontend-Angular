@@ -12,9 +12,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { AjoutReclamationComponent } from './pages/ajout-reclamation/ajout-reclamation.component';
-import { AfficherReclamationAdminComponent } from './pages/afficher-reclamation-admin/afficher-reclamation-admin.component';
-import { DashboardReclammationComponent } from './pages/dashboard-reclammation/dashboard-reclammation.component';
+import { AfficherReclamationAdminComponent } from './pages/reclamation/afficher-reclamation-admin/afficher-reclamation-admin.component';
+import { DashboardReclammationComponent } from './pages/reclamation/dashboard-reclammation/dashboard-reclammation.component';
+import {AjoutReclamationComponent} from './pages/reclamation/ajout-reclamation/ajout-reclamation.component';
+import {ChartPipesComponent} from './components/chart-pipes/chart-pipes.component';
+import {ChartComponent} from './components/chart/chart.component';
+import {CardStatComponent} from './components/card-stat/card-stat.component';
 
 
 @NgModule({
