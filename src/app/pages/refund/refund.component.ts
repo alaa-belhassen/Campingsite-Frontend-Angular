@@ -29,13 +29,20 @@ export class RefundComponent implements OnInit {
       }
     })
   }
-  refund(transactionid:any,amount:any){
+  refund(transactionid:any,amount:any,idProduit:any){
     const newCommande: Transaction = {
       transaction_id: transactionid,
       amount: amount,
     };
     this.paymeService.refund(newCommande).subscribe({
-      next:(r)=>console.log(r),
+      next:(r)=>{console.log(r)
+        this.servicePanier.deleteCommande(idProduit).subscribe({
+          next:(r)=> {console.log(r)
+            this.commandeFilter = this.commandeFilter.filter((v:any)=>v.id_Commande!=idProduit)
+          },
+          error:(e)=>console.log(e)
+        })
+      },
       error:(e)=>console.log(e)
     })
   }

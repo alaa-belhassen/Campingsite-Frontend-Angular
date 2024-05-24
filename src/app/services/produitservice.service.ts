@@ -41,5 +41,7 @@ export class ProduitserviceService {
     formData.append("multipartFile",image);
     return this.http.post<any>(environment.url+`photos/uploadToproduct/${idProduit}`,formData);
   }
-
+  deleteCommande(id:any){
+    return this.http.delete(environment.url+'commande/delete-commandes/'+id);
+  }
 }
