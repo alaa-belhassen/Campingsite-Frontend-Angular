@@ -68,6 +68,8 @@ import { PayementDoneComponent } from './pages/payement-done/payement-done.compo
 import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
 import { RefundComponent } from './pages/refund/refund.component';
+import { AdminProduitComponent } from './pages/admin-produit/admin-produit.component';
+import { DetailsComposentComponent } from './pages/details-composent/details-composent.component';
 
 
 @NgModule({
@@ -130,6 +132,8 @@ import { RefundComponent } from './pages/refund/refund.component';
     AddActiviteComponent,
     FilterPipe,
     RefundComponent,
+    AdminProduitComponent,
+    DetailsComposentComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

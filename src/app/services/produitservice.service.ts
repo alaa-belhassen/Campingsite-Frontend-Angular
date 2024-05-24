@@ -44,4 +44,7 @@ export class ProduitserviceService {
   deleteCommande(id:any){
     return this.http.delete(environment.url+'commande/delete-commandes/'+id);
   }
+  deleteProduit(id:any){
+    return this.http.delete(environment.url+'product/delete-products/'+id);
+  }
 }
