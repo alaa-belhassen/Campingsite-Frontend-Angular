@@ -13,10 +13,10 @@ export class CampsiteComponent implements OnInit {
 
   isLinear = false;
 
-  thirdFormGroup: FormGroup;
+
   previousIndex: number = 0;
 
-
+id_user:any;
   constructor(private  campsiteservice:CampsiteService,private _formBuilder: FormBuilder) {
 
   }
@@ -28,7 +28,7 @@ export class CampsiteComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+this.id_user=1;
   }
 
   secondFormGroup:FormGroup= new FormGroup({
@@ -52,10 +52,15 @@ export class CampsiteComponent implements OnInit {
 
   })
 
+  thirdFormGroup:FormGroup= new FormGroup({
 
+    numero:new FormControl(),
+    descriptionrule:new FormControl()
+
+  })
 
   AjoutCampsite(){
-    this.campsiteservice.ajout(this.firstformgrp.value).subscribe({
+    this.campsiteservice.ajout(this.firstformgrp.value,this.id_user).subscribe({
       next:()=>{
         console.log("done")
 
@@ -70,7 +75,9 @@ export class CampsiteComponent implements OnInit {
 
   AjoutDetailCampsite(){
     console.log(this.firstformgrp.value)
+    console.log(this.secondFormGroup.value)
     this.campsiteservice.ajoutDetailCampsite(this.secondFormGroup.value,this.firstformgrp.value.lieu).subscribe({
+
       next:()=>{
         console.log("done")
 
@@ -80,6 +87,9 @@ export class CampsiteComponent implements OnInit {
       }
 
     })
+  }
+   ajoutRule() {
+  this.campsiteservice.ajoutRule(this.thirdFormGroup.value,1)
   }
 
   onStepChange(event: StepperSelectionEvent) {
@@ -91,15 +101,19 @@ export class CampsiteComponent implements OnInit {
       } else if (event.selectedIndex === 2) {
 
 //ajout detailCampsite + affecter  campsite l detail campsite
-        console.log(this.secondFormGroup.value.id)
+        console.log(this.secondFormGroup.value.description)
         this.AjoutDetailCampsite();
 
       } else if (event.selectedIndex === 3) {
 //rules w nzid stepper l images
+        console.log(this.thirdFormGroup.value)
+        this.ajoutRule();
 
       }
     }
     this.previousIndex = event.selectedIndex;
 
   }
+
+
 }

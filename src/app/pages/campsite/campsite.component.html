@@ -9,10 +9,10 @@
     <div class="card-header bg-white border-0">
       <div class="row align-items-center">
         <div class="col-8">
-          <h3 class="mb-0">ADD Campsite</h3>
+          <h3 class="mb-0">Add new Campsite</h3>
         </div>
         <div class="col-4 text-right">
-          <a  [routerLink]="['/listcampsite']" class="btn btn-sm btn-primary">View all campsites</a>
+          <a  [routerLink]="['/listcampsite',id_user]" class="btn btn-sm btn-primary">View all campsites</a>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
 <mat-stepper class="mt-8" [linear]="isLinear" #stepper  (selectionChange)="onStepChange($event)">
   <mat-step [stepControl]="firstformgrp">
     <form [formGroup]="firstformgrp">
-      <ng-template matStepLabel>Fill out your name</ng-template>
+      <ng-template matStepLabel>Fill out campsite infos</ng-template>
       <h6 class="heading-small text-muted mb-4">Location information</h6>
       <div class="pl-lg-4">
         <div class="row">
@@ -127,6 +127,43 @@
       </div>
     </form>
   </mat-step>
+
+
+  <mat-step [stepControl]="thirdFormGroup" label="Rules">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Rules</ng-template>
+      <h6 class="heading-small text-muted mb-4"> informations</h6>
+      <div class="pl-lg-4">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-username">N°</label>
+              <input type="text" formControlName="numero"  id="input-username4" class="form-control form-control-alternative" placeholder="question number°" type="number">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pl-lg-4">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-username">Description</label>
+              <input type="text" formControlName="descriptionrule"  id="input-username51" class="form-control form-control-alternative" placeholder="Add description here" >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 text-right">
+        <a   class="btn btn-sm btn-primary">Add new rule +</a>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
   <mat-step [stepControl]="thirdFormGroup" label="Ajout photos">
     <form [formGroup]="thirdFormGroup">
       <app-image-component [secondFormGroup]="secondFormGroup"></app-image-component>
@@ -146,3 +183,5 @@
   </mat-step>
 </mat-stepper>
 </div>
+
+

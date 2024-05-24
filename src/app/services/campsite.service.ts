@@ -12,22 +12,24 @@ export class CampsiteService {
   constructor(private http:HttpClient) { }
 
   getPhotosByDetailCampsite(id: any): Observable<string[]> {
-    return this.http.get<string[]>(`http://localhost:8082/camp/photos/list/${id}`);
+    return this.http.get<string[]>(`http://localhost:8082/photos/list/${id}`);
   }
 
   //ajout campsite
-  ajout(campsitevalue){
+  ajout(campsitevalue,id_user:any){
 console.log(campsitevalue);
-    return    this.http.post("http://localhost:8082/camp/campsites/add",campsitevalue)
+    return    this.http.post(`http://localhost:8082/campsites/add/${id_user}`,campsitevalue)
 
 }
 
-//ajout avec affectation
+//ajout detailcampsite avec affectation du campsite qu'il appartient
   ajoutDetailCampsite(campsitevalue,lieu:any ){
     console.log(campsitevalue);
-    return    this.http.post(`http://localhost:8082/camp/details/add/${lieu}`,campsitevalue,lieu)
+
+    return    this.http.post(`http://localhost:8082/details/add/${lieu}`,campsitevalue,lieu)
 
   }
+
 
   getAll(){
 
@@ -53,7 +55,7 @@ console.log(campsitevalue);
 
   loadImageData(id: number): void {
     // Make a GET request to fetch image data from your Spring Boot backend
-    this.http.get(`http://localhost:8082/camp/photos/get/${id}`, { responseType: 'arraybuffer' })
+    this.http.get(`http://localhost:8082/photos/get/${id}`, { responseType: 'arraybuffer' })
       .subscribe((data: ArrayBuffer) => {
         // Convert the received binary data to a base64 string
         const base64Image: string = this.arrayBufferToBase64(data);
@@ -88,18 +90,18 @@ console.log(campsitevalue);
   }
 
   archiver(id:any){
-   return  this.http.put(`http://localhost:8082/camp/campsites/Supprimer/${id}`,null)
+   return  this.http.put(`http://localhost:8082/campsites/Supprimer/${id}`,null)
   }
   updateCampsite(){
 
   }
 //utilise dans list-campsite component.ts affiche le campsite a partir de l'id du detail campsite
   getCampsiteByDetailCamp(id:any){
-    return  this.http.get(`http://localhost:8082/camp/campsites/Rechercher/${id}`)
+    return  this.http.get(`http://localhost:8082/campsites/Rechercher/${id}`)
   }
 //utilise dans list-campsite component.ts affiche les  detail du campsite a partir de l'id du detail campsite
   getDetailCampsite(id:any){
-    return  this.http.get(`http://localhost:8082/camp/details/Rechercher/${id}`)
+    return  this.http.get(`http://localhost:8082/details/Rechercher/${id}`)
   }
 
   //cloudinary part
@@ -110,24 +112,41 @@ console.log(campsitevalue);
   public upload(image:File):Observable<any>{
     const formData=new FormData();
     formData.append("multipartFile",image);
-    return this.http.post<any>('http://localhost:8082/camp/photos/upload',formData);
+    return this.http.post<any>('http://localhost:8082/photos/upload',formData);
   }
 
 
   public uploadAndAffecttoDetailCampsite(image:File,descriptionDetailCampsite:any):Observable<any>{
     const formData=new FormData();
     formData.append("multipartFile",image);
-    return this.http.post<any>(`http://localhost:8082/camp/photos/upload/${descriptionDetailCampsite}`,formData);
+    return this.http.post<any>(`http://localhost:8082/photos/upload/${descriptionDetailCampsite}`,formData);
   }
 
 
 
   public delete(id:any):Observable<any> {
-    return this.http.delete<any>(`http://localhost:8082/camp/photos/delete/${id}`)
+    return this.http.delete<any>(`http://localhost:8082/photos/delete/${id}`)
   }
 
 
 
 
+  //lister les campsites qui appartiennent au centre de camping (user)
+  getCampsitesByUSer(id_user:any){
+    console.log(id_user);
+    return this.http.get(`http://localhost:8082/campsites/findcampsitesbyuser/${id_user}`)
+  }
 
+  //get les details campsites qui appartient a un campsite (avec l'id)
+  getDetailCampsitesByCampsite_id(id_camp:any){
+    console.log(id_camp);
+    return this.http.get(`http://localhost:8082/details/RechercherByCampsite/${id_camp}`)
+  }
+
+  //ajout rule
+
+  ajoutRule(rulevalue,id_camp:any){
+    return    this.http.post(`http://localhost:8082/rules/add/${id_camp}`,rulevalue,id_camp);
+
+  }
 }

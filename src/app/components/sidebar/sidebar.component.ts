@@ -20,7 +20,10 @@ export const ROUTES: RouteInfo[] = [
     { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
     { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' },
   { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' }
+    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' },
+  { path: '/admincampsite', title: 'AdminCampsite',  icon:'ni-bullet-list-67 text-red', class: '' },
+  { path: '/usercampsite', title: 'UserCampsite',  icon:'ni-bullet-list-67 text-red', class: '' },
+
 
 ];
 
@@ -38,7 +41,7 @@ export class SidebarComponent implements OnInit {
   produiturl:any;
   drop=false;
   constructor(private location: Location,private router: Router,private active:ActivatedRoute,private categoriesService:ProduitserviceService) {
-   
+
   }
 
   ngOnInit() {
@@ -48,14 +51,14 @@ export class SidebarComponent implements OnInit {
 
       this.isCollapsed = true;
    });
-   
+
 }
 
   navigate(path:any){
     this.router.navigate([path]).then(  ()=>  this.navigateToProductDetail());
   }
   navigateToProductDetail() {
-    
+
     this.produiturl=this.router.url;
     if(this.produiturl=='/produit'){
       this.getCategories();
@@ -64,9 +67,9 @@ export class SidebarComponent implements OnInit {
       const produitMenuItem = ROUTES.find(menuItem => menuItem.title === 'Produit');
       if (produitMenuItem && produitMenuItem.childrens) {
         produitMenuItem.childrens=[];
-      }        
+      }
       this.drop=false;
-    } 
+    }
     this.menuItems = ROUTES.filter(menuItem => menuItem);
 
   }
@@ -97,8 +100,8 @@ export class SidebarComponent implements OnInit {
       }
     })
    }
-   
+
   }
 
-  
+
   }

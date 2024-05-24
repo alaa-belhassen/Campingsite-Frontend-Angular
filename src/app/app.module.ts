@@ -65,6 +65,8 @@ import { ListCampsitesComponent } from './pages/list-campsites/list-campsites.co
 import { PayementDoneComponent } from './pages/payement-done/payement-done.component';
 import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
+import { CampsiteAdminComponent } from './pages/campsite-admin/campsite-admin.component';
+import { CampsiteUserComponent } from './pages/campsite-user/campsite-user.component';
 
 
 @NgModule({
@@ -126,6 +128,8 @@ import { RegisterCentreCampingComponent } from './pages/register-centre-camping/
     UpdateActiviteComponent,
     AddActiviteComponent,
     FilterPipe,
+    CampsiteAdminComponent,
+    CampsiteUserComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
