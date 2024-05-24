@@ -5,7 +5,7 @@ export class Product {
   id_Product: number;
   nom_Product: string;
   description: string;
-  Product_Type: string;
+  product_Type: string;
   quantiter: number;
   prix: number;
   id_Categorie: CategoriesProduct;
@@ -24,7 +24,7 @@ export class Product {
     this.id_Product = id_Product;
     this.nom_Product = nom_Product;
     this.description = description;
-    this.Product_Type = Product_Type;
+    this.product_Type = Product_Type;
     this.quantiter = quantiter;
     this.prix = prix;
     this.id_Categorie = id_Categorie;

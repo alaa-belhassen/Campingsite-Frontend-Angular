@@ -3,7 +3,7 @@
     <span class="mask bg-gradient-danger opacity-8"></span>
     <!-- Header container -->
   </div>
-  <div class="container-fluid mt--7">
+ <!-- <div class="container-fluid mt--7">
     <div class="row">
       <div class="col order-xl-1">
         <div class="card bg-secondary shadow">
@@ -72,7 +72,7 @@
                 </div>
               </div>
               <hr class="my-4" />
-              <!-- Description -->
+             
               <h6 class="heading-small text-muted mb-4">description</h6>
               <div class="pl-lg-4">
                 <div class="form-group">
@@ -86,5 +86,98 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   
+
+  <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="formGroup">
+      <ng-template matStepLabel>Add product</ng-template>
+
+      <div class="container-fluid mt-2">
+        <div class="row">
+          <div class="col order-xl-1">
+            <div class="card bg-secondary shadow">
+              <div class="card-header bg-white border-0">
+        
+              </div>
+              <div class="card-body">
+                <form [formGroup]="formGroup" (submit)="add()">
+                  <h6 class="heading-small text-muted mb-4">product information</h6>
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-username">productname</label>
+                          <input type="text" id="input-username" formControlName="nomProduct" class="form-control form-control-alternative" placeholder="productname" value="lucky.jesse">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-first-name">quantiter</label>
+                          <input type="text" id="input-first-name" formControlName="quantiter" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-last-name">prix</label>
+                          <input type="text" id="input-last-name" formControlName="prix" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="d-flex ">
+                          <div class="form-group">
+                            <div class="dropdown drop">
+                              <button type="button"  class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                productType
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" (click)="select('RENTABLE')">RENTABLE</a></li>
+                                <li><a class="dropdown-item" (click)="select('SELLABLE')">SELLABLE</a></li>
+                              </ul>
+                            </div>
+                            <span class="mr-4">{{this.formGroup.get('product_Type').value}}</span>
+                          </div>
+                          <div class="form-group mr-4">
+                            <div class="dropdown drop">
+                              <button type="button"  class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                categorie
+                              </button>
+                              <ul class="dropdown-menu" >
+                                <li><a class="dropdown-item" *ngFor="let categorie of categories" (click)="selectCategorie(categorie)">{{categorie.nom_Categorie}}</a></li>
+                              </ul>
+                            </div>
+                            <span class="mr-4">{{this.formGroup.get('id_Categorie').get('nom_Categorie').value|json}}</span>
+                          </div>
+                        </div>
+                      </div>
+                  
+                     
+                    </div>
+                  </div>
+                  <hr class="my-4" />
+                  <!-- Description -->
+                  <h6 class="heading-small text-muted mb-4">description</h6>
+                  <div class="pl-lg-4">
+                    <div class="form-group">
+                      <label>description</label>
+                      <textarea rows="4" class="form-control form-control-alternative" formControlName="description" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-success ">add</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out your address</ng-template>
+        <app-image-component [idProduit]="this.produit?.idProduct"></app-image-component>
+        <button mat-button matStepperNext (click)="redirect()" class="btn btn-success ">Done</button>
+      </form>
+    </mat-step>
+  </mat-stepper>

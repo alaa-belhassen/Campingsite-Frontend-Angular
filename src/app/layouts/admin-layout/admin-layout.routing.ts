@@ -17,15 +17,19 @@ import {AllDetailsCampsiteComponent} from "../../pages/all-details-campsite/all-
 import { ProduitComponent } from 'src/app/pages/produit/produit.component';
 import { ConfirmComponent } from 'src/app/components/dialog/confirm/confirm.component';
 import { PayementDoneComponent } from 'src/app/pages/payement-done/payement-done.component';
+import { animate, animation } from '@angular/animations';
 import { AddProduitComponent } from 'src/app/pages/add-produit/add-produit.component';
 import { ListeReservationComponent } from 'src/app/components/Reservation/liste-reservation/liste-reservation.component';
 import { ListUsersComponent } from 'src/app/pages/list-users/list-users.component';
 import { ChartComponent } from 'src/app/pages/chart/chart.component';
 import {CampsiteAdminComponent} from "../../pages/campsite-admin/campsite-admin.component";
 import {CampsiteUserComponent} from "../../pages/campsite-user/campsite-user.component";
+import { RefundComponent } from 'src/app/pages/refund/refund.component';
+import { AdminProduitComponent } from 'src/app/pages/admin-produit/admin-produit.component';
+import { DetailsComposentComponent } from 'src/app/pages/details-composent/details-composent.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'produit',      component: ProduitComponent },
+    { path: 'produit',      component: ProduitComponent , data:{animation:'animate'} },
     { path: 'produit/:id',  component: ProduitComponent },
     { path: 'modal',      component: ConfirmComponent },
     { path: 'payementdone/:type',      component: PayementDoneComponent },
@@ -42,8 +46,12 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'campsite',           component: CampsiteComponent },
     { path: 'listcampsite/:id_user',           component: ListCampsitesComponent },
     { path: 'detaillistcampsite/:id', component: AllDetailsCampsiteComponent },
+
   { path: 'admincampsite', component: CampsiteAdminComponent },
   { path: 'usercampsite', component: CampsiteUserComponent },
+    { path: 'refund',       component:  RefundComponent  },
+    { path: 'activite',       component:  AddActiviteComponent  },
+    { path: 'details',       component:  DetailsComposentComponent  },
 
-    { path: 'activite',       component:  AddActiviteComponent  }
+
 ];

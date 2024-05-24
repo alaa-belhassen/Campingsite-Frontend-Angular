@@ -28,7 +28,7 @@
 </div> --->
 
     
-    <div class="card p-3 card_h">
+  <!--  <div class="card p-3 card_h">
         
         <div class=" ">
             <div class="mt-2">
@@ -57,5 +57,28 @@
         <button class="btn btn-success" (click)="plus()">+</button>
         <span class="quantiter"*ngIf="number>0">{{number}}</span>
         </div>
-    </div>
+    </div>-->
     
+    
+    <div class="note">
+        <article class="card">
+            <div  style="background: url({{urlImg}}) no-repeat center; " class="thumb"></div>
+            <div class="infos">
+                <h2 class="title">{{title}}</h2>
+                <h3 class="date">{{type}}</h3>
+                <h3 class="seats">remaining: {{quantiter}} </h3>
+                <p class="txt">
+                    {{description}}
+                </p>
+                <h3 class="details"> 
+                    <div class="d-flex justify-content-between" >
+                        <span class="btn btn-success" [ngClass]="this.number==0 ? 'disabled' : ''" (click)="moin()">-</span>
+                        <span class="" *ngIf="number>0">{{number}}</span>
+                        <span class="btn btn-success" [ngClass]="this.number+1<=this.quantiter ? '' : 'disabled'" (click)="plus()">+</span>
+                        <button class="btn btn-success" (click)="add()">  <i class="ni ni-cart"></i></button>
+                         
+                    </div>
+                </h3>
+            </div>
+        </article>
+        </div>

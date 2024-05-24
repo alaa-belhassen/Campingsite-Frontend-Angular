@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { ProduitserviceService } from 'src/app/services/produitservice.service';
 
@@ -10,8 +11,11 @@ import { ProduitserviceService } from 'src/app/services/produitservice.service';
 })
 export class AddProduitComponent implements OnInit {
 
-  constructor(private service:ProduitserviceService,private router:Router) { }
+  constructor(private service:ProduitserviceService,private router:Router,private _formBuilder: FormBuilder) { }
   categories:any;
+  produit:any;
+  @ViewChild('stepper') private myStepper: MatStepper;
+
   ngOnInit(): void {
     this.getAllcategories()
   }
@@ -43,7 +47,10 @@ export class AddProduitComponent implements OnInit {
   add(){
     console.log(this.formGroup.value);
     this.service.addProduit(this.formGroup.value).subscribe({
-      next:()=>  this.router.navigate(["/produit"]),
+      next:(r)=> {
+        this.produit=r
+        this.nextStep()
+        },
       error:(e) => console.log(e)
     })
   }
@@ -52,4 +59,16 @@ export class AddProduitComponent implements OnInit {
       next:(r)=>this.categories=r
     })
   }
+  nextStep() {
+    this.myStepper.next();
+  }
+  redirect(){
+    this.router.navigate(["/produit"]);
+  }
+
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isLinear = false;
+
 }

@@ -15,6 +15,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+
+
+import { ChartComponent } from './pages/chart/chart.component';
 import { ActiviteCardsComponent } from './Activites/activite-cards/activite-cards.component';
 import { UpdateActiviteComponent } from './Activites/update-activite/update-activite.component';
 import { AddActiviteComponent } from './Activites/add-activite/add-activite.component';
@@ -34,7 +37,6 @@ import {MatStepperModule} from '@angular/material/stepper';
 
 
 
-import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -67,6 +69,9 @@ import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
 import { CampsiteAdminComponent } from './pages/campsite-admin/campsite-admin.component';
 import { CampsiteUserComponent } from './pages/campsite-user/campsite-user.component';
+import { RefundComponent } from './pages/refund/refund.component';
+import { AdminProduitComponent } from './pages/admin-produit/admin-produit.component';
+import { DetailsComposentComponent } from './pages/details-composent/details-composent.component';
 
 
 @NgModule({
@@ -102,7 +107,7 @@ import { CampsiteUserComponent } from './pages/campsite-user/campsite-user.compo
     MatTableModule,
     MatSortModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
 
   ],
   declarations: [
@@ -123,15 +128,18 @@ import { CampsiteUserComponent } from './pages/campsite-user/campsite-user.compo
     ListCampsitesComponent,
     ClickimgDirective,
     AllDetailsCampsiteComponent,
-
+    ChartComponent,
     ActiviteCardsComponent,
     UpdateActiviteComponent,
     AddActiviteComponent,
     FilterPipe,
+
     CampsiteAdminComponent,
     CampsiteUserComponent,
+    RefundComponent,
+    AdminProduitComponent,
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }

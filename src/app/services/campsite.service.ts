@@ -18,7 +18,10 @@ export class CampsiteService {
   //ajout campsite
   ajout(campsitevalue,id_user:any){
 console.log(campsitevalue);
+
     return    this.http.post(`http://localhost:8082/campsites/add/${id_user}`,campsitevalue)
+
+
 
 }
 
@@ -33,7 +36,7 @@ console.log(campsitevalue);
 
   getAll(){
 
-    return    this.http.get("http://localhost:8082/camp/campsites/Consulter")
+    return    this.http.get("http://localhost:8082/campsites/Consulter")
 
 
   }

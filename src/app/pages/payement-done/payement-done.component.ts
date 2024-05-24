@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CommandeService } from 'src/app/services/commande.service';
+import { PaymeService } from 'src/app/services/payme.service';
 interface Commande {
   date_Commande: Date;
   total_Commande: number;
@@ -22,8 +23,8 @@ export class PayementDoneComponent implements OnInit {
   rentableParam: string;
   dateRetour:any;
   idproduit:any;
-  ngOnInit(): void {
-
+  transactionData:any;
+   ngOnInit() {
     this.route.url.subscribe(urlSegments => {
       this.rentableParam = urlSegments[1].path;
       console.log(this.rentableParam); // Should log 'RENTABLE'
@@ -35,22 +36,17 @@ export class PayementDoneComponent implements OnInit {
       this.dateRetour = params['dateDeRetour'];
       this.idproduit = params['idproduit'];
     });
-    if(this.rentableParam=="RENTABLE"){
-      this.book()
-    }else{
-      this.addCommande();
-    }
-    console.log(this.dateRetour);
-    
-    console.log(this.removePrefix(this.payment_token,"?payment_token="));
+    this.check(this.removePrefix(this.payment_token,"?payment_token="));
 
-    console.log(this.idproduit);
+      
   }
-  constructor(private commandeService:CommandeService,private route: ActivatedRoute){}
+  constructor(private commandeService:CommandeService,private paymeService:PaymeService,private route: ActivatedRoute){     
+   
+}
   addCommande(){
     const newCommande: Commande = {
       date_Commande: new Date(),
-      total_Commande: 0,
+      total_Commande: this.transactionData,
       type_Commande: this.rentableParam,
       paymentMethode: "string",
       payment_token: this.removePrefix(this.payment_token,"?payment_token="),
@@ -64,9 +60,10 @@ export class PayementDoneComponent implements OnInit {
 
   book(){
     if(this.dateRetour!=''){
+    
       const newCommande: Commande = {
         date_Commande: new Date(),
-        total_Commande: 0,
+        total_Commande: this.transactionData,
         type_Commande: this.rentableParam,
         paymentMethode: "string",
         payment_token: this.removePrefix(this.payment_token,"?payment_token="),
@@ -80,7 +77,22 @@ export class PayementDoneComponent implements OnInit {
       })
     }
   }
- removePrefix(queryString: string, prefix: string): string {
+
+ check(transactionid:any){
+    this.paymeService.check(transactionid).subscribe({
+      next:(r:any)=> {this.transactionData=r.data.amount
+        console.log(r.data.amount)
+        if (this.rentableParam === "RENTABLE") {
+          this.book();
+        } else {
+          this.addCommande();
+        }
+      },
+      error:(e)=>console.log(e)
+    })
+  }
+ 
+  removePrefix(queryString: string, prefix: string): string {
     if (queryString.startsWith(prefix)) {
       return queryString.slice(prefix.length);
     }

@@ -33,4 +33,18 @@ export class ProduitserviceService {
   getAllCategorie(){
     return this.http.get(environment.url+'categorieProduct/retrieve-all-categorieProducts');
   }
+  getAllCommande(){
+    return this.http.get(environment.url+'commande/retrieve-all-commandes');
+  }
+  uploadAndAffecttoDetailCampsite(image:File,idProduit:any){
+    const formData=new FormData();
+    formData.append("multipartFile",image);
+    return this.http.post<any>(environment.url+`photos/uploadToproduct/${idProduit}`,formData);
+  }
+  deleteCommande(id:any){
+    return this.http.delete(environment.url+'commande/delete-commandes/'+id);
+  }
+  deleteProduit(id:any){
+    return this.http.delete(environment.url+'product/delete-products/'+id);
+  }
 }
