@@ -57,7 +57,7 @@
                 </thead>
                 <tbody>
                   <ng-container *ngIf="infoUser" >
-                  <tr *ngFor="let user of displayedUsers  ">
+                  <tr *ngFor="let user of displayedUsers ">
                     <td>{{ user.nom }}</td>
                     <td>{{ user.prenom }}</td>
                     <td>{{ user.email }}</td>
@@ -74,7 +74,7 @@
                   </tr>
                 </ng-container>
                 <ng-container *ngIf="infoDetailsUser">
-                  <ng-container *ngFor="let user of displayedUsers">
+                  <ng-container *ngFor="let user of displayedUsers ">
                     <tr>
                       <td>{{ getFormattedDetails(user.detailsUser, 'paysage') }}</td>
                       <td>{{ getFormattedDetails(user.detailsUser, 'alimentation') }}</td>
