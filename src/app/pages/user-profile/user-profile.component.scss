@@ -1,0 +1,76 @@
+.element {
+    background-color: skyblue;
+    border-radius: 10px 30px 0px 90px;
+    padding: 20px;
+    padding-left: 30px; /* Ajouter de l'espace supplémentaire à gauche */
+    padding-right: 30px; /* Ajouter de l'espace supplémentaire à droite */
+    display: inline-block;
+    width: auto;
+    margin: 10px 0; /* Ajouter une marge pour un meilleur espacement vertical */
+    transition: transform 0.3s, background-color 0.3s; /* Ajouter une transition pour l'animation */
+  }
+  
+  .element p {
+    margin: 0;
+  }
+  
+  /* Animation à l'entrée */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .element {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .element:hover {
+    transform: scale(1.05); /* Effet de zoom au survol */
+    background-color: lightblue; /* Changer la couleur de fond au survol */
+  }
+  
+
+
+
+/* CSS */
+.button-89 {
+    margin-top: 40px;
+  --b: 3px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: #373B44;
+  
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-89:hover,
+.button-89:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+.button-89:active {
+  background: var(--color);
+  color: #fff;
+}

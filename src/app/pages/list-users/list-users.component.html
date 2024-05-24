@@ -1,0 +1,123 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8" style="min-height: 350px;">
+    <div class="container-fluid" [@slideRight] *ngIf="hideProp">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-danger confirmation-dialog" role="alert" *ngIf="showConfirmationDialog">
+            <h4 class="alert-heading">Confirmation d'archivage</h4>
+            <p>Voulez-vous archiver cet utilisateur ?</p>
+            <hr>
+            <div class="button-container">
+              <button class="btn btn-danger confirm-button"  (click)="deleteUser()">Oui</button>
+              <button class="btn btn-secondary cancel-button"(click)="closeConfirmationDialog()" >Non</button>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header d-flex justify-content-between border-0">
+              <h3>{{ switch }}</h3>
+              <div class="container">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText">
+              </div>
+               
+              </div>
+              <h3 class="mb-0">
+                <button type="submit" *ngIf="switch=='User'" class="btn" (click)="changeUser()">  User </button>
+                <button type="submit" *ngIf="switch=='DetailsUser'" class="btn" (click)="changeUserDetails()">Préférences User</button>
+              </h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light" *ngIf="infoUser">
+                  <tr>
+                    <th scope="col" >Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Télephone</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <thead class="thead-light" *ngIf="infoDetailsUser">
+                  <tr>
+                    <th scope="col" >Paysage</th>
+                    <th scope="col">Alimentation</th>
+                    <th scope="col">Compagnement</th>
+                    <th scope="col">Saison</th>
+                    <th scope="col">Hebergement</th>
+                    <th scope="col">Couleur</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngIf="infoUser" >
+                  <tr *ngFor="let user of displayedUsers ">
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.telephone }}</td>
+                    <td>{{ user.adresse }}</td>
+                    <td>{{ user.role.role }}</td>
+                    <td>
+                      <span *ngIf="user.status; else archived">Actif</span>
+                      <ng-template #archived>Archivé</ng-template>
+                    </td>
+                    
+                    <td><button type="submit" class="btn "(click)="openConfirmationDialog(user.id)"><span class="ni ni ni-fat-remove" ></span></button></td>
+
+                  </tr>
+                </ng-container>
+                <ng-container *ngIf="infoDetailsUser">
+                  <ng-container *ngFor="let user of displayedUsers ">
+                    <tr>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'paysage') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'alimentation') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'compagnement') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'saison') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'type_hebergement') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'couleur') }}</td>
+                    </tr>
+                  </ng-container>
+                </ng-container>
+                </tbody>
+              </table>
+             
+
+           
+            </div>
+            <div class="card-footer py-4 d-flex justify-content-between">
+              <!-- Pagination -->
+              <nav aria-label="...">
+                <ul class="pagination justify-content-end mb-0">
+                  <li class="page-item" [disabled]="currentPage == 1">
+                    <a class="page-link"   (click)="prevPage()" tabindex="-1">
+                      <i class="fas fa-angle-left"></i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item" *ngFor="let page of pages" [class.active]="currentPage === page">
+                    <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+                  </li>
+
+                  <li class="page-item" [disabled]="currentPage == totalPages">
+                    <a class="page-link"  (click)="nextPage()">
+                      <i class="fas fa-angle-right"></i>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

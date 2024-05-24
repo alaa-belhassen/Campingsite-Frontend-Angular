@@ -7,16 +7,25 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ResetPasswordComponent } from 'src/app/pages/reset-password/reset-password.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AuthLayoutRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgbModule,
+    MatButtonToggleModule,
+   
     // NgbModule
   ],
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResetPasswordComponent,
   ]
 })
 export class AuthLayoutModule { }

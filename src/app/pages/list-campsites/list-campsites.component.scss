@@ -1,0 +1,122 @@
+.container {
+  display: flex;
+  //justify-content: space-between;
+  margin-top: 9%;
+  min-width: 100%;
+//  min-width: 100vh;
+  align-items: center;
+  align-content: center;
+background-color: #E9E4D4;
+  padding: 1%;
+
+}
+
+.img-container, .info-container {
+
+  padding: 1rem;
+  flex: 1 1 48%; /* Allow containers to grow and shrink dynamically */
+  margin: 0 1%;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60%;
+  margin-left: 15%;
+}
+
+.img-prev {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.img-slide {
+  width: 100px; /* Adjust the size of the thumbnails */
+  height: 100px;
+}
+
+.img-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#preview {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+.info-card {
+  margin-top: 0.5%;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 40%;
+  height: auto;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.example-card {
+  width: calc(50% - 10px); /* Adjust for spacing between cards */
+  margin-bottom: 20px; /* Spacing between rows */
+  aspect-ratio: 1; /* Ensures the card is square */
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card-title-group img {
+  width: 70%;
+  height: auto;
+  align-items: center;
+
+}
+.image-wrapper {
+  position: relative;
+  width: 100%;
+}
+.imglist {
+  width: 10%;
+  height: 10%;
+  object-fit: cover;
+}
+
+.mat-card-title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.overlay-text {
+  position: absolute;
+  top: 10px; /* Adjust positioning as needed */
+  left: 10px; /* Adjust positioning as needed */
+  color: white; /* Ensure the text is visible over the image */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background to improve text readability */
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1; /* Ensure text is above the image */
+}

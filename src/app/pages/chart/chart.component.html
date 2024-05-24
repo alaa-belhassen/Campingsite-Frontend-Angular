@@ -1,0 +1,80 @@
+<div class="header  imageCover" >
+</div>
+
+        <div class=" d-flex justify-content-between border-0">
+     
+        </div>
+
+<div class="card">
+<div class="row">
+    <div class="col-md-8 col-lg-8 cart shadow">
+      <h3 class="mb-0">
+        <button type="submit" *ngIf="switch=='RENTABLE'" class="btn " (click)="switchTo('RENTABLE')"> <i class="ni ni ni-basket"></i> </button>
+        <button type="submit" *ngIf="switch=='SELLABLE'" class="btn " (click)="switchTo('SELLABLE')"><i class="ni ni ni-calendar-grid-58"></i>  </button>
+      </h3>
+        <div class="title">
+            <div class="row">
+                <div class="col">
+                  <h4><b>Shopping Cart</b></h4>
+                <span class="text-muted">{{switch}}</span>
+              </div>
+                <div class="col align-self-center text-right text-muted">{{paniersFilter?.length}} items</div>
+            </div>
+        </div>    
+        <div class="row border-top border-bottom">
+            <div class="row main align-items-center border-top" *ngFor="let panier of paniersFilter;index as i ">
+                <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                <div class="col">
+                    <div class="row text-muted">{{panier.produit.id_Categorie.nom_Categorie}}</div>
+                    <div class="row">{{panier.produit.nomProduct}}</div>
+                </div>
+                <div class="col">
+                  <div *ngIf="editmode">
+                    <input type="number" id="input-quantiter" #quantier  class="form-control form-control-alternative inputstyle" placeholder="quantity" [value]="panier.quantiter" >
+                  </div>
+                  <span *ngIf="!editmode">{{panier.quantiter}}</span>
+                </div>
+                <div class="col">
+                  {{panier.produit.prix}} DT
+                </div>
+                <div class="col d-flex">
+                  <button type="submit" class="btn  " *ngIf="switch=='RENTABLE'" (click)="processPayment(panier.produit.idProduct,panier.produit.prix)"><span class="ni ni ni-shop"></span></button>
+                  <button type="submit" class="btn   " (click)="openDialog(panier.produit.idProduct,panier.produit.nomProduct)"><span class="ni ni ni-fat-remove"></span></button>
+                  <button type="submit" class="btn   " (click)="edit(panier.quantiter,panier.produit.idProduct)">
+                    <span class="ni ni-settings-gear-65" *ngIf="!editmode"></span>
+                    <span class="ni ni-check-bold" *ngIf="editmode"></span>
+                  </button>
+                </div>
+             </div>
+        </div>
+        <div class="alert alert-danger message" role="alert" *ngIf="Invalid"  >
+          <strong class="d-block d-sm-inline-block-force">  {{message}} </strong>
+        </div>
+        <div class="alert alert-success message" role="alert" *ngIf="valid"  >
+          <strong class="d-block d-sm-inline-block-force">  {{message}} </strong>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-4 summary  cart shadow">
+        <div><h3><b>Summary</b></h3></div>
+        <hr>
+      
+        <form>
+           <!--- <p>SHIPPING</p>
+            <select>
+              <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+            </select>-->
+            <p >Promo code</p>
+            <input class="form-control form-control-alternative mb-2" id="code" placeholder="Enter your code">
+            <p *ngIf="switch=='RENTABLE'"> Date retour</p>
+            <input type="date" id="input-quantiter" #dateRetour *ngIf="switch=='RENTABLE'"  class="form-control form-control-alternative " placeholder="datederetour"  >
+
+        </form>
+        <div *ngIf="switch=='SELLABLE'" class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+            <div class="col">TOTAL PRICE</div>
+            <div class="col text-right">&euro; {{total}}</div>
+        </div>
+        <button *ngIf="switch=='SELLABLE'" class="btn btn-primary" (click)="processPayment()">CHECKOUT</button>
+    </div>
+</div>
+
+</div>
