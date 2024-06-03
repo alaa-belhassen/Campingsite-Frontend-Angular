@@ -23,7 +23,7 @@
         </div>    
         <div class="row border-top border-bottom">
             <div class="row main align-items-center border-top" *ngFor="let panier of paniersFilter;index as i ">
-                <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                <div class="col-2"><img class="img-fluid" src="{{panier.produit.photo.imageUrl}}"></div>
                 <div class="col">
                     <div class="row text-muted">{{panier.produit.id_Categorie.nom_Categorie}}</div>
                     <div class="row">{{panier.produit.nomProduct}}</div>
@@ -62,9 +62,9 @@
            <!--- <p>SHIPPING</p>
             <select>
               <option class="text-muted">Standard-Delivery- &euro;5.00</option>
-            </select>-->
+            </select>
             <p >Promo code</p>
-            <input class="form-control form-control-alternative mb-2" id="code" placeholder="Enter your code">
+            <input class="form-control form-control-alternative mb-2" id="code" placeholder="Enter your code">--->
             <p *ngIf="switch=='RENTABLE'"> Date retour</p>
             <input type="date" id="input-quantiter" #dateRetour *ngIf="switch=='RENTABLE'"  class="form-control form-control-alternative " placeholder="datederetour"  >
 
@@ -73,7 +73,7 @@
             <div class="col">TOTAL PRICE</div>
             <div class="col text-right">&euro; {{total}}</div>
         </div>
-        <button *ngIf="switch=='SELLABLE'" class="btn btn-primary" (click)="processPayment()">CHECKOUT</button>
+        <button *ngIf="switch=='SELLABLE'" class="btn btn-primary input" (click)="processPayment()">CHECKOUT</button>
     </div>
 </div>
 

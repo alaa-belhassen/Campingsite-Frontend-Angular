@@ -108,21 +108,27 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">productname</label>
-                          <input type="text" id="input-username" formControlName="nomProduct" class="form-control form-control-alternative" placeholder="productname" value="lucky.jesse">
+                          <input type="text" id="input-username" formControlName="nomProduct" class="form-control form-control-alternative" placeholder="productname" >
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-first-name">quantiter</label>
-                          <input type="text" id="input-first-name" formControlName="quantiter" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                          <label class="form-control-label" for="input-first-name">quantity</label>
+                          <input type="text" id="input-first-name" formControlName="quantiter" class="form-control form-control-alternative" placeholder="set the product quantity"  >
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-last-name">prix</label>
-                          <input type="text" id="input-last-name" formControlName="prix" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                          <label class="form-control-label" for="input-last-name">selling price</label>
+                          <input type="text" id="input-last-name" formControlName="prix" class="form-control form-control-alternative" placeholder="set the product selling price" >
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-last-name">buying price</label>
+                          <input type="text" id="input-last-name" formControlName="prixdachat" class="form-control form-control-alternative" placeholder="set the product buying price" >
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -130,25 +136,27 @@
                           <div class="form-group">
                             <div class="dropdown drop">
                               <button type="button"  class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                                productType
+                                
+                                <span *ngIf="this.formGroup.get('product_Type').value==''">productType</span>
+
+                                <span *ngIf="this.formGroup.get('product_Type').value!=''" >{{this.formGroup.get('product_Type').value}}</span>
                               </button>
                               <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" (click)="select('RENTABLE')">RENTABLE</a></li>
                                 <li><a class="dropdown-item" (click)="select('SELLABLE')">SELLABLE</a></li>
                               </ul>
                             </div>
-                            <span class="mr-4">{{this.formGroup.get('product_Type').value}}</span>
                           </div>
                           <div class="form-group mr-4">
                             <div class="dropdown drop">
                               <button type="button"  class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                                categorie
+                                <span *ngIf="this.formGroup.get('id_Categorie').get('nom_Categorie').value==null">categorie</span>
+                                <span *ngIf="this.formGroup.get('id_Categorie').get('nom_Categorie').value!=null" >{{this.formGroup.get('id_Categorie').get('nom_Categorie').value}}</span>
                               </button>
                               <ul class="dropdown-menu" >
                                 <li><a class="dropdown-item" *ngFor="let categorie of categories" (click)="selectCategorie(categorie)">{{categorie.nom_Categorie}}</a></li>
                               </ul>
                             </div>
-                            <span class="mr-4">{{this.formGroup.get('id_Categorie').get('nom_Categorie').value|json}}</span>
                           </div>
                         </div>
                       </div>

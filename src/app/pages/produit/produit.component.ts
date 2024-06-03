@@ -46,6 +46,7 @@ export class ProduitComponent implements OnInit {
         }else{
           this.produits= r;
           this.produitsFilter= r.filter((v)=> v.product_Type==this.switch );
+          console.log(this.produitsFilter)
         }
 
       },

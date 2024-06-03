@@ -70,6 +70,7 @@ import { RegisterCentreCampingComponent } from './pages/register-centre-camping/
 import { RefundComponent } from './pages/refund/refund.component';
 import { AdminProduitComponent } from './pages/admin-produit/admin-produit.component';
 import { DetailsComposentComponent } from './pages/details-composent/details-composent.component';
+import { DashboardProduitComponent } from './pages/dashboard-produit/dashboard-produit.component';
 
 
 @NgModule({
@@ -134,6 +135,7 @@ import { DetailsComposentComponent } from './pages/details-composent/details-com
     RefundComponent,
     AdminProduitComponent,
     DetailsComposentComponent,
+    DashboardProduitComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

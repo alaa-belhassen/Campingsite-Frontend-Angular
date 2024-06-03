@@ -4,38 +4,19 @@
       <!-- Card stats -->
       <div class="row">
     
-        <div class="col-xl-3 col-lg-6">
-         
+        <div class="col-xl-3 col-lg-6">  
           <div >
             <div class="card card-stats mb-4 mb-xl-0" >
-              <app-card-stat [title]=favoriteSeason [value]=favoriteSeason ></app-card-stat>
+              <app-card-stat [title]="'product Bought'" [value]="'3'" ></app-card-stat>
             </div>
-          
+          </div>
+        </div>
         
-          </div>
-          
 
-        </div>
-
-        <div class="col-xl-3 col-lg-6">
-          
-            <div *ngIf="favoriteLandscapeStatistics && favoriteLandscapeStatistics.length > 0">
-              <div class="card card-stats mb-4 mb-xl-0" *ngFor="let LandscapeStat of favoriteLandscapeStatistics">
-                <app-card-stat [title]="LandscapeStat[0]"  [value]="LandscapeStat[1]" ></app-card-stat>
-              </div>
-           
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div *ngIf="favoriteAccommodationTypeStatistics && favoriteAccommodationTypeStatistics.length > 0">
-          <div class="card card-stats mb-4 mb-xl-0" *ngFor="let TypeStat of favoriteAccommodationTypeStatistics">
-           <app-card-stat [title]="TypeStat[0]"  [value]="TypeStat[1]"></app-card-stat>
-          </div>
-        </div>
-      </div>
+     </div>
     </div>
-  </div>
-</div>
+    </div>
+    </div>
 <div class="container-fluid mt--7">
   <div class="row ">
     <div class="col-xl-8 mb-5 mb-xl-0">

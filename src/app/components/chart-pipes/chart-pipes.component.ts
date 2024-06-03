@@ -42,8 +42,6 @@ export class ChartPipesComponent implements OnInit {
       data: chartExample2.data
     });
 
-
- 
   }
 
 

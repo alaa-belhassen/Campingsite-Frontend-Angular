@@ -19,7 +19,7 @@ interface Commande {
   dateDeRetour:Date
 }
 @Component({
-  selector: 'app-chart',
+  selector: 'app-chart-panier',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss'],
   animations: [

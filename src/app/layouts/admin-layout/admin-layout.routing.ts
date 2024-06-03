@@ -25,6 +25,7 @@ import { ChartComponent } from 'src/app/pages/chart/chart.component';
 import { RefundComponent } from 'src/app/pages/refund/refund.component';
 import { AdminProduitComponent } from 'src/app/pages/admin-produit/admin-produit.component';
 import { DetailsComposentComponent } from 'src/app/pages/details-composent/details-composent.component';
+import { DashboardProduitComponent } from 'src/app/pages/dashboard-produit/dashboard-produit.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'produit',      component: ProduitComponent , data:{animation:'animate'} },
@@ -48,6 +49,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'activite',       component:  AddActiviteComponent  },
     { path: 'adminProduit',       component:  AdminProduitComponent  },
     { path: 'details',       component:  DetailsComposentComponent  },
-
+    { path: 'produitDashboard',       component:  DashboardProduitComponent  },
 
 ];

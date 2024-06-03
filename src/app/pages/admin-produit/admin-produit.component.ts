@@ -45,7 +45,7 @@ export class AdminProduitComponent implements OnInit {
     buy(){
   
     }
-    edit(quantiter:any,idproduit:any){
+    edit(product:any){
       if ( this.editmode==true){
         this.editmode=false;
       }else{
@@ -53,17 +53,8 @@ export class AdminProduitComponent implements OnInit {
       }
       if(this.myInput){
       const value = this.myInput.nativeElement.value;
-        if(quantiter!=value){
-          this.panier = new Panier(value,idproduit);
-          console.log(value)
-          this.servicePanier.updatequantiter(this.panier).subscribe({
-            next:()=>{
-             let foundvalue = this.paniers.filter((panier)=> panier.idProduct==idproduit );
-             console.log(foundvalue)
-             foundvalue[0].quantiter=value;
-            },
-            error:(e)=> console.log(e)
-          })
+        if(product.quantiter!=value){
+          this.updateProduct(product);
         }
       }
     }
@@ -78,7 +69,16 @@ export class AdminProduitComponent implements OnInit {
       }
     }
   
-  
+    updateProduct(produit:any){
+      this.servicePanier.updateProduit(produit).subscribe(
+        {
+          next:(r)=>{
+            console.log(r);
+          },
+          error:(e)=>{console.log(e)}
+        }
+      )
+    }
   }
   
 

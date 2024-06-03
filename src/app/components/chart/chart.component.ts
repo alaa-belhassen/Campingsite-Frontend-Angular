@@ -6,7 +6,6 @@ import {
   chartOptions,
   parseOptions,
   chartExample1,
-  chartExample2
 } from "../../variables/charts";
 
 @Component({
@@ -15,7 +14,6 @@ import {
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-  @Input() chartNumber;
   public datasets: any;
   public data: any;
   public salesChart;
@@ -44,6 +42,8 @@ export class ChartComponent implements OnInit {
 			options: chartExample1.options,
 			data: chartExample1.data
 		});
+    console.log('Chart initialized'); // Add this line
+
   }
 
 
