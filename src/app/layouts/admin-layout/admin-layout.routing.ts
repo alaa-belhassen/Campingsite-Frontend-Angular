@@ -5,8 +5,8 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
-import { ActiviteCardsComponent } from 'src/app/Activites/activite-cards/activite-cards.component';
 import { AddActiviteComponent } from 'src/app/Activites/add-activite/add-activite.component';
+import { SpinningWheelComponent } from 'src/app/spinning-wheel/spinning-wheel.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -14,5 +14,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path: 'activite',       component:  AddActiviteComponent  }
+    { path: 'activite',       component:  AddActiviteComponent  },
+    { path: 'Spinning wheel', component:  SpinningWheelComponent  }
 ];

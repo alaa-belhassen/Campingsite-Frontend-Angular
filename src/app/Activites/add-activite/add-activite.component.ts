@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActiviteService } from 'src/app/activite-service.service';
 import { UpdateActiviteComponent } from '../update-activite/update-activite.component';
-import {MatTabsModule} from '@angular/material/tabs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

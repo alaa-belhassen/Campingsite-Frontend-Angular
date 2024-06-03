@@ -19,7 +19,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterPipe } from './filter-activite.pipe';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { ChartPrixComponent } from './Activites/chart-prix/chart-prix.component';
+import { SpinningWheelComponent } from './spinning-wheel/spinning-wheel.component';
+import { CongratsComponent } from './spinning-wheel/congrats/congrats.component';
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -35,7 +45,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+
 
   ],
   declarations: [
@@ -46,6 +57,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     UpdateActiviteComponent,
     AddActiviteComponent,
     FilterPipe,
+    ChartPrixComponent,
+    SpinningWheelComponent,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

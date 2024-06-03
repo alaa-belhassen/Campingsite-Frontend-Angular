@@ -46,5 +46,10 @@ export class ActiviteService {
   updateActiviteById(id: any , activite: any): Observable<any>{
     return this.httpClient.put(this.API_URL+"/UpdateActiviteById/" + id , activite)
   }
+
+  getPrixActiviteByMonth(): Observable<any> {
+    return this.httpClient.get(this.API_URL+"/getPrixActiviteByMonth")
+  }
+
 }
 
