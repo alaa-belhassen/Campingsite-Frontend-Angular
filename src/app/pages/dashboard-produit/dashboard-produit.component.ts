@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { StatsProduitService } from 'src/app/services/stats-produit.service';
-import { WebSocketService } from './web-socket.service';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Label } from 'ng2-charts';
 @Component({
   selector: 'app-dashboard-produit',
   templateUrl: './dashboard-produit.component.html',
@@ -22,7 +20,7 @@ export class DashboardProduitComponent implements OnInit {
   RentableProducts:any;
   SelllableProducts:any;
   profit:any;
-  constructor(private formBuilder: FormBuilder,private statserive:StatsProduitService ,private webSocketService: WebSocketService) {
+  constructor(private formBuilder: FormBuilder,private statserive:StatsProduitService ) {
     this.getRentable();
     this.getSellable();
     this.getProfit();
@@ -73,30 +71,11 @@ export class DashboardProduitComponent implements OnInit {
 
 
 
-  public barChartOptions: ChartOptions = {
-    responsive: true,
-  };
-  public barChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
-
-  public barChartData: ChartDataSets[] = [
-    { data: [], label: 'Total Sales' },
-    { data: [], label: 'Sales Count' }
-  ];
 
 
   ngOnInit(): void {
-    this.webSocketService.getMessages().subscribe(message => {
-      const stats = JSON.parse(message);
-      this.updateChart(stats);
-    });
+  
   }
 
-  updateChart(stats: any): void {
-    this.barChartData[0].data = stats.totalSales;
-    this.barChartData[1].data = stats.salesCount;
-    this.barChartData = [...this.barChartData];
-  }
+
 }
