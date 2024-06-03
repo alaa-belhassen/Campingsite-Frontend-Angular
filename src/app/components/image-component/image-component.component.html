@@ -27,6 +27,9 @@
                 Upload</button>
                 <button *ngIf="this.idProduit" (click)="onUploadAvecAffectationToProduct()" type="submit" class="btn btn-outline-dark" [disabled]="!image"><i class="fas fa-upload"></i>
                   Upload2</button>
+                  <button *ngIf="this.email" (click)="onUploadAvecAffectationToUser()" type="submit" class="btn btn-outline-dark" [disabled]="!image"><i class="fas fa-upload"></i>
+                    UploadImage</button>
+                    
               <button class="btn btn-outline-danger" (click)="reset()"><i class="fas fa-sync-alt"></i>
                 Reset</button>
             </div>

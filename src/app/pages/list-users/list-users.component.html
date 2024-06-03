@@ -21,9 +21,9 @@
               <h3>{{ switch }}</h3>
               <div class="container">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText" (ngModelChange)="onFilterChange()">
               </div>
-               
+               {{searchText}}
               </div>
               <h3 class="mb-0">
                 <button type="submit" *ngIf="switch=='User'" class="btn" (click)="changeUser()">  User </button>
@@ -57,7 +57,7 @@
                 </thead>
                 <tbody>
                   <ng-container *ngIf="infoUser" >
-                  <tr *ngFor="let user of displayedUsers  ">
+                  <tr *ngFor="let user of displayedUsers ">
                     <td>{{ user.nom }}</td>
                     <td>{{ user.prenom }}</td>
                     <td>{{ user.email }}</td>
@@ -73,20 +73,17 @@
 
                   </tr>
                 </ng-container>
-                  <ng-container *ngIf="infoDetailsUser" >
-                  <tr *ngFor="let user of displayedUsers  ">
-                    <td>{{ user.detailsUser.paysage}}</td>
-                    <td>{{ user.detailsUser.alimentation }}</td>
-                    <td>{{ user.detailsUser.compagnement }}</td>
-                    <td>{{ user.detailsUser.saison }}</td>
-                    <td>{{ user.detailsUser.type_hebergement
-                       }}</td>
-                    <td>{{ user.detailsUser.couleur }}</td>
-                   
-                    
-                   
-
-                  </tr>
+                <ng-container *ngIf="infoDetailsUser">
+                  <ng-container *ngFor="let user of displayedUsers ">
+                    <tr>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'paysage') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'alimentation') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'compagnement') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'saison') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'type_hebergement') }}</td>
+                      <td>{{ getFormattedDetails(user.detailsUser, 'couleur') }}</td>
+                    </tr>
+                  </ng-container>
                 </ng-container>
                 </tbody>
               </table>

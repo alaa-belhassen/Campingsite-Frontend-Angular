@@ -26,6 +26,8 @@ import { RefundComponent } from 'src/app/pages/refund/refund.component';
 import { AdminProduitComponent } from 'src/app/pages/admin-produit/admin-produit.component';
 import { DetailsComposentComponent } from 'src/app/pages/details-composent/details-composent.component';
 import { DashboardProduitComponent } from 'src/app/pages/dashboard-produit/dashboard-produit.component';
+import { AdminGuardGuard } from 'src/app/services/admin-guard.guard';
+import { ErreurComponent } from 'src/app/pages/erreur/erreur.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'produit',      component: ProduitComponent , data:{animation:'animate'} },
@@ -40,7 +42,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path : 'ListUser',      component :ListUsersComponent},
+    { path : 'ListUser',   canActivate: [AdminGuardGuard] ,   component :ListUsersComponent},
     { path: 'dashboardAdmin',      component: DashbordAdminComponent },
     { path: 'campsite',           component: CampsiteComponent },
     { path: 'listcampsite',           component: ListCampsitesComponent },
@@ -50,5 +52,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'adminProduit',       component:  AdminProduitComponent  },
     { path: 'details',       component:  DetailsComposentComponent  },
     { path: 'produitDashboard',       component:  DashboardProduitComponent  },
+    { path: 'erreur',       component:  ErreurComponent  }
+
 
 ];

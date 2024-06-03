@@ -1,0 +1,88 @@
+
+
+.header {
+    /* Ajoutez ou modifiez les propriétés ci-dessous selon vos besoins */
+    background-image: url('https://img.freepik.com/photos-gratuite/tentes-camping-sous-pins-lumiere-du-soleil-au-lac-pang-ung-mae-hong-son-thailande_335224-931.jpg?w=1380&t=st=1717165657~exp=1717166257~hmac=be5e11e7e9f992c379af8cfe93cee8244780b4afc62d0113f8d681d314b885a9');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    /* Si vous souhaitez ajouter une couleur d'arrière-plan superposée à l'image */
+    background-color: rgba(0, 0, 0, 0.5); /* couleur rouge avec 50% d'opacité */
+    background-blend-mode: overlay; /* mélange la couleur et l'image */
+}
+.header.bg-gradient-danger {
+  /* Change background color for the specific div */
+  background-color: #2eac0f; /* New background color */
+  background-image: none; /* Remove existing background image if any */
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+.custom-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-form .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .custom-form h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .custom-form .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+  
+  .custom-form .color-picker {
+    height: 40px;
+    cursor: pointer;
+  }
+  
+  .mat-button-toggle-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .mat-button-toggle {
+    flex: 1 1 45%;
+    max-width: 45%;
+    margin-bottom: 10px;
+  }
+  
+  .mat-button-toggle-group .mat-button-toggle-checked {
+    background: #3498db;
+    color: #fff;
+  }
+  .text-lead.text-light {
+    animation: fadeInUp 2s ease-in-out;
+    font-size: 20px;
+  }
+  .text-white {
+    animation: fadeInUp 2s ease-in-out;
+    font-size: 27px;
+  }
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

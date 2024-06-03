@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -68,5 +69,13 @@ export class UserServiceService {
   changerMotDePasse(userId: number, ancienPassword: string, newPassword: string): Observable<any> {
     const url = `${this.URL}ChangePassword/${userId}/${ancienPassword}/${newPassword}`;
     return this.http.get<any>(url);
+  }
+  RecommenderProduit(id: number) : Observable<any> {
+    return this.http.get<any>(this.detailsUser + "recommenderProduits/" + id);
+  }
+  uploadAndAffecttoUser(image:File,email:any){
+    const formData=new FormData();
+    formData.append("multipartFile",image);
+    return this.http.post<any>(environment.url+`photos/uploadTouser/${email}`,formData);
   }
 }

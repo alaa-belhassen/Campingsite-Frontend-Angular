@@ -19,6 +19,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -42,7 +43,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ClipboardModule,
         ComponentsModule,
         ReactiveFormsModule,
-        Ng2SearchPipeModule
+        Ng2SearchPipeModule,
+        MatButtonToggleModule
         
     ]
 })

@@ -67,10 +67,14 @@ import { ListCampsitesComponent } from './pages/list-campsites/list-campsites.co
 import { PayementDoneComponent } from './pages/payement-done/payement-done.component';
 import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { RefundComponent } from './pages/refund/refund.component';
 import { AdminProduitComponent } from './pages/admin-produit/admin-produit.component';
 import { DetailsComposentComponent } from './pages/details-composent/details-composent.component';
 import { DashboardProduitComponent } from './pages/dashboard-produit/dashboard-produit.component';
+import { FilteruserPipe } from './filteruser-.pipe';
+import { ErreurComponent } from './pages/erreur/erreur.component';
+import { RegisterCampeurComponent } from './pages/register-campeur/register-campeur.component';
 
 
 @NgModule({
@@ -107,6 +111,7 @@ import { DashboardProduitComponent } from './pages/dashboard-produit/dashboard-p
     MatSortModule,
     MatDialogModule,
     MatTabsModule,
+    MatButtonToggleModule
 
   ],
   declarations: [
@@ -123,6 +128,7 @@ import { DashboardProduitComponent } from './pages/dashboard-produit/dashboard-p
     UpdateResComponent,
     FilterPipe,
     ChartPipeComponent,
+    ChartComponent,
     CampsiteComponent,
     ListCampsitesComponent,
     ClickimgDirective,
@@ -136,6 +142,9 @@ import { DashboardProduitComponent } from './pages/dashboard-produit/dashboard-p
     AdminProduitComponent,
     DetailsComposentComponent,
     DashboardProduitComponent,
+    FilteruserPipe,
+    ErreurComponent,
+    RegisterCampeurComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

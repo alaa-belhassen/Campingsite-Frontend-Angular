@@ -2,6 +2,8 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ProduitserviceService } from 'src/app/services/produitservice.service';
+import { AdminGuardGuard } from 'src/app/services/admin-guard.guard';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 
 declare interface RouteInfo {
@@ -10,17 +12,18 @@ declare interface RouteInfo {
     icon: string;
     class: string;
     childrens?:any;
+    roles?: string[];
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
-    { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
-    { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
-    { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' },
-  { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' }
+    { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary',class: '',    },
+    { path: '/ListUser', title: 'Liste des utilisateurs',  icon:'ni-bullet-list-67 text-red', class: ''  , roles: ['ADMIN'] },
+   
+   
+    { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,  roles: ['CAMPEUR','CENTRECAMPING'],childrens:[]},
+    { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['ADMIN']  },
+  { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CENTRECAMPING']  },
+    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' },
+    
 
 ];
 
@@ -37,38 +40,49 @@ export class SidebarComponent implements OnInit {
   categories:any;
   produiturl:any;
   drop=false;
-  constructor(private location: Location,private router: Router,private active:ActivatedRoute,private categoriesService:ProduitserviceService) {
+  role: any;
+  constructor(private location: Location,private router: Router,private active:ActivatedRoute,private categoriesService:ProduitserviceService ,  private tokenStorage : TokenStorageService) {
    
   }
 
   ngOnInit() {
-
+    this.role = this.tokenStorage.getRole();
     this.navigateToProductDetail();
+    // Get user role from AuthService
+    this.filterRoutesByRole();
+    
     this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.role = this.tokenStorage.getRole(); // Update role on navigation change
+        this.navigateToProductDetail();
+      }
 
       this.isCollapsed = true;
    });
    
 }
 
+filterRoutesByRole() {
+  this.menuItems = ROUTES.filter(menuItem => !menuItem.roles || menuItem.roles.includes(this.role));
+}
+
   navigate(path:any){
+    this.filterRoutesByRole();
     this.router.navigate([path]).then(  ()=>  this.navigateToProductDetail());
   }
   navigateToProductDetail() {
-    
-    this.produiturl=this.router.url;
-    if(this.produiturl=='/produit'){
+    this.produiturl = this.router.url;
+    if (this.produiturl === '/produit') {
       this.getCategories();
-      this.drop=true;
-    }else{
+      this.drop = true;
+    } else {
       const produitMenuItem = ROUTES.find(menuItem => menuItem.title === 'Produit');
       if (produitMenuItem && produitMenuItem.childrens) {
-        produitMenuItem.childrens=[];
-      }        
-      this.drop=false;
-    } 
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
-
+        produitMenuItem.childrens = [];
+      }
+      this.drop = false;
+    }
+    this.menuItems = ROUTES.filter(menuItem => !menuItem.roles || menuItem.roles.includes(this.role));
   }
   isChildActive(parentRoute: string) {
     console.log(this.active.firstChild)
