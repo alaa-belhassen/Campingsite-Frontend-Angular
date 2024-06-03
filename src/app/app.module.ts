@@ -70,6 +70,8 @@ import { RegisterCentreCampingComponent } from './pages/register-centre-camping/
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { RefundComponent } from './pages/refund/refund.component';
 import { FilteruserPipe } from './filteruser-.pipe';
+import { ErreurComponent } from './pages/erreur/erreur.component';
+import { RegisterCampeurComponent } from './pages/register-campeur/register-campeur.component';
 
 
 @NgModule({
@@ -135,6 +137,8 @@ import { FilteruserPipe } from './filteruser-.pipe';
     FilterPipe,
     RefundComponent,
     FilteruserPipe,
+    ErreurComponent,
+    RegisterCampeurComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -23,7 +23,7 @@
           <div class="col-lg-3 order-lg-2">
             <div class="card-profile-image">
               <a href="javascript:void(0)">
-                <img src="assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                <img [src]="currentUser.photo.imageUrl" class="rounded-circle">
               </a>
             </div>
           </div>
@@ -69,7 +69,7 @@
             </div>
            
             <hr class="my-4" />
-            <ng-container *ngIf="this.currentUser.role=='CAMPEUR'" >
+            <ng-container *ngIf="this.currentUser.role=='CAMPEUR' && this.currentUser.detailsUser.length>0"  >
                   
               <p class="element">{{ getFormattedDetails(currentUser.detailsUser, 'paysage') }}</p>
             
@@ -80,7 +80,7 @@
               
           
           </ng-container>
-          <button class="button-89" role="button" (click)="showPreferenceForm()">Add preferences</button>
+          <button class="button-89" role="button" (click)="showPreferenceForm()" *ngIf="this.role=='CAMPEUR'">Add preferences</button>
            
           </div>
         </div>

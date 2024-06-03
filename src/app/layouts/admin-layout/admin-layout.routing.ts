@@ -23,6 +23,8 @@ import { ListeReservationComponent } from 'src/app/components/Reservation/liste-
 import { ListUsersComponent } from 'src/app/pages/list-users/list-users.component';
 import { ChartComponent } from 'src/app/pages/chart/chart.component';
 import { RefundComponent } from 'src/app/pages/refund/refund.component';
+import { ErreurComponent } from 'src/app/pages/erreur/erreur.component';
+import { AdminGuardGuard } from 'src/app/services/admin-guard.guard';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'produit',      component: ProduitComponent , data:{animation:'animate'} },
@@ -37,11 +39,14 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path : 'ListUser',      component :ListUsersComponent},
+    { path : 'ListUser',   canActivate: [AdminGuardGuard] ,   component :ListUsersComponent},
     { path: 'dashboardAdmin',      component: DashbordAdminComponent },
     { path: 'campsite',           component: CampsiteComponent },
     { path: 'listcampsite',           component: ListCampsitesComponent },
     { path: 'detaillistcampsite/:id', component: AllDetailsCampsiteComponent },
     { path: 'refund',       component:  RefundComponent  },
-    { path: 'activite',       component:  AddActiviteComponent  }
+    { path: 'activite',       component:  AddActiviteComponent  },
+    { path: 'erreur',       component:  ErreurComponent  }
+
+
 ];

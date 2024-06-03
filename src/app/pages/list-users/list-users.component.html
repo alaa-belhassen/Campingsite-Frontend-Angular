@@ -21,9 +21,9 @@
               <h3>{{ switch }}</h3>
               <div class="container">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText" (ngModelChange)="onFilterChange()">
               </div>
-               
+               {{searchText}}
               </div>
               <h3 class="mb-0">
                 <button type="submit" *ngIf="switch=='User'" class="btn" (click)="changeUser()">  User </button>

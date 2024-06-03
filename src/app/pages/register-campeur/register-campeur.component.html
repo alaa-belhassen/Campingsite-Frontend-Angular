@@ -25,7 +25,7 @@
          
           <div class="card-body px-lg-5 py-lg-5">
             <div class="text-center text-muted mb-4">
-              <small>Sign up as a camping center</small>
+              <p>Sign up as a camping center</p>
             </div>
 
             
@@ -35,7 +35,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Center Name" type="text" formControlName="firstName">
+                  <input class="form-control" placeholder="firstName" type="text" formControlName="firstName">
                 </div>
                 <div *ngIf="addUserForm.controls['firstName'].invalid && (
                   addUserForm.controls['firstName'].touched || addUserForm.controls['firstName'].dirty 
@@ -49,7 +49,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Type" type="text" formControlName="lastName">
+                  <input class="form-control" placeholder="LastName" type="text" formControlName="lastName">
                 </div>
                 <div *ngIf="addUserForm.controls['lastName'].invalid && (
                   addUserForm.controls['lastName'].touched || addUserForm.controls['lastName'].dirty
@@ -124,14 +124,69 @@
                       <span class="text-success font-weight-700">{{ getPasswordStrength() }}</span>
                   </small>
               </div>
-              <div class="row my-4">
-                <div class="col-12">
-                  <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                    
-                  </div>
-                </div>
+             
+                <div class="container mt-8 pb-5">
+                     <div class="text-center text-muted mb-4">
+                <p>Add your preferences</p>
               </div>
+                    <form [formGroup]="DetailsUserForm"  class="custom-form" >
+                        <div class="form-group">
+                          <h4>Types de paysage</h4>
+                          <mat-button-toggle-group name="landscapeType" aria-label="Types de paysage" formControlName="paysage"  multiple>
+                            <mat-button-toggle value="FOREST">Forest</mat-button-toggle>
+                            <mat-button-toggle value="DESERT">Desert</mat-button-toggle>
+                            <mat-button-toggle value="MOUNTAIN">Mountain</mat-button-toggle>
+                            <mat-button-toggle value="BEACH">Beach</mat-button-toggle>
+                          </mat-button-toggle-group>
+                        </div>
+                        <div class="form-group">
+                        <h4>Color</h4>
+                          
+                          <input type="color" value="#ff0000" formControlName="couleur"class="form-control" />
+                        </div>
+                        <div class="form-group">
+                          <h4>Alimentation</h4>
+                          <mat-button-toggle-group name="food" aria-label="Alimentation" formControlName="alimentation"  multiple>    
+                            <mat-button-toggle value="PICNIC">Picnic</mat-button-toggle>
+                            <mat-button-toggle value="BARBECUE">Barbecue</mat-button-toggle>
+                            <mat-button-toggle value="RESTAURANT">Restaurant</mat-button-toggle>
+                            <mat-button-toggle value="CAFE">Cafe</mat-button-toggle>
+                          </mat-button-toggle-group>
+                        </div>
+                        <div class="form-group">
+                          <h4>Accompagnement</h4>
+                          <mat-button-toggle-group name="companionship" aria-label="Accompagnement" formControlName="compagnement"  multiple>
+                            <mat-button-toggle value="GUIDED_TOURS">Guided_Tours</mat-button-toggle>
+                            <mat-button-toggle value="OUTDOOR">Outdoor</mat-button-toggle>
+                            <mat-button-toggle value="EVENING">Evening</mat-button-toggle>
+                          </mat-button-toggle-group>
+                        </div>
+                        <div class="form-group">
+                          <h4>Saison</h4>
+                          <mat-button-toggle-group name="season" aria-label="Saison" formControlName="saison"  multiple >
+                            <mat-button-toggle value="SPRING">Spring</mat-button-toggle>
+                            <mat-button-toggle value="SUMMER">Summer</mat-button-toggle>
+                            <mat-button-toggle value="AUTUMN">Autumn</mat-button-toggle>
+                            <mat-button-toggle value="WINTER">Winter</mat-button-toggle>
+                          </mat-button-toggle-group>
+                        </div>
+                        <div class="form-group">
+                          <h4>Type d'hébergement</h4>
+                          <mat-button-toggle-group name="accommodation" aria-label="Type d'hébergement" formControlName="type_hebergement"  multiple >
+                            <mat-button-toggle value="TENT">Tent</mat-button-toggle>
+                            
+                            <mat-button-toggle value="BUNGALOW">Bungalow</mat-button-toggle>
+                            <mat-button-toggle value="CARAVAN">Caravan</mat-button-toggle>
+                            
+                            <mat-button-toggle value="YURT">Yurt</mat-button-toggle>
+                          </mat-button-toggle-group>
+                        </div>
+                        <!-- Vos autres champs ici -->
+                      </form>
+                      
+      
+                </div>
+              
               
               </div>
               

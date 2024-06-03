@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
+import { Photo } from 'src/app/model/photo';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -19,7 +19,8 @@ export class RegisterComponent implements OnInit {
   ajoutReussi: boolean = false;
   erreurAjout: boolean = false;
   userByEmail : boolean=false;
-
+  showImage : boolean =false;
+showConfirmationDialog: boolean=false;
 
 
   constructor( private userService:UserServiceService , private tokenStorage : TokenStorageService , private formBuilder :FormBuilder) { }
@@ -47,8 +48,12 @@ export class RegisterComponent implements OnInit {
     
   }
   addUser() {
+    this.showImage=true;
+    console.log(true)
+    console.log(this.addUserForm.value.email)
     this.userService.findUser(this.addUserForm.value.email).subscribe(
       (data) => {
+
         if (data != null) {
           console.log("L'utilisateur existe déjà.");
           this.userByEmail = true;
@@ -97,7 +102,7 @@ export class RegisterComponent implements OnInit {
                 this.userService.addDetailsUser(detail, this.addUserForm.value.email).subscribe(
                   (detailsUserData) => {
                     console.log("Détails de l'utilisateur ajoutés avec succès :", detailsUserData);
-                    this.addUserForm.reset();
+                    console.log(this.showImage);
                   },
                   (detailsUserError) => {
                     console.error("Une erreur s'est produite lors de l'ajout des détails de l'utilisateur :", detailsUserError);
@@ -128,7 +133,11 @@ export class RegisterComponent implements OnInit {
     );
 }
 
+public showOtherForm()
+{
+  document.getElementById('secondForm').style.display = 'block';
   
+}
   
  
   getPasswordStrength(): string {
@@ -138,7 +147,13 @@ export class RegisterComponent implements OnInit {
         return 'fort';
     }
 }
-     
+openConfirmationDialog(){
+  this.showConfirmationDialog = true;
+}
+
+closeConfirmationDialog(){
+  this.showConfirmationDialog = false;
+}    
     
   }
   

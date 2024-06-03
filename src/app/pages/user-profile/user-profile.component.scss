@@ -74,3 +74,7 @@
   background: var(--color);
   color: #fff;
 }
+.card-profile-image img {
+  max-width: 120px; /* Définir la largeur maximale souhaitée */
+  max-height: 200px; /* Conserver les proportions de l'image */
+}

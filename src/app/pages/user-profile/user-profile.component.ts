@@ -4,6 +4,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { mustMatch } from 'src/validators/mustMatch';
 
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -20,7 +21,7 @@ export class UserProfileComponent implements OnInit {
   ValidProfil:any = false;
   InvalidProfil: any = false;
   UserAfterUpdate : any ;
- 
+  role : any ;
   DetailsUserForm: any;
   
   erreurAjout: boolean =false;
@@ -32,6 +33,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.role = this.tokenStorage.getRole();
     this.editUserForm = this.formBuilder.group({
       id :[this.currentUser.id],
       prenom: [this.currentUser.firstName, [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z]+')]],

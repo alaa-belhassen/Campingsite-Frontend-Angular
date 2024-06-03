@@ -10,6 +10,7 @@ import { RegisterComponent } from '../../pages/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResetPasswordComponent } from 'src/app/pages/reset-password/reset-password.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ImageComponentComponent } from 'src/app/components/image-component/image-component.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,6 +27,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
+    
   ]
 })
 export class AuthLayoutModule { }

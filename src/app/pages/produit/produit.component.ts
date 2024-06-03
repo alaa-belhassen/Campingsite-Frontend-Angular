@@ -34,18 +34,21 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 export class ProduitComponent implements OnInit {
   switch:any="SELLABLE";
   outOf=true;
-  produitsFilter: any[];
+  produitsFilter: Product[];
   produitsRecommended:any;
   currentUser: any;
   totalItems = 0;
   searchTerm = '';
   displayedProducts: any[];
   searchText:string ='';
-  itemsPerPage: number = 3;
+  itemsPerPage: number = 4;
   totalPages: number = 1;
   currentPage: number = 1;
+  currentPage2: number = 1;
+
   pages: number[] = [];
- 
+  pages2: number[] = [];
+
 
   constructor(private produitservice:ProduitserviceService,private router:Router,private active:ActivatedRoute , private userService:UserServiceService , private tokenStorage : TokenStorageService){
     this.currentUser = this.tokenStorage.getUser();
@@ -59,7 +62,7 @@ export class ProduitComponent implements OnInit {
       {
        this.produitsRecommended=data;
        console.log(this.produitsRecommended);
-       this.Pagination(); 
+       this.Pagination(this.produitsRecommended,2); 
 
 
       });
@@ -74,12 +77,14 @@ export class ProduitComponent implements OnInit {
           this.produits= r.filter((v)=> v.id_Categorie.nom_Categorie==this.id );
           this.produitsFilter= r.filter((v)=> v.id_Categorie.nom_Categorie==this.id );
           console.log(this.produitsFilter);
-          this
+          this.Pagination(this.produitsFilter,1); 
+
         }else{
           this.produits= r;
           this.produitsFilter= r.filter((v)=> v.product_Type==this.switch );
           
-         
+          this.Pagination(this.produitsFilter,1); 
+
 
         }
 
@@ -90,6 +95,7 @@ export class ProduitComponent implements OnInit {
   ) ;
  
   });
+
   }
   produits:Product[];
   id:any;
@@ -100,6 +106,7 @@ export class ProduitComponent implements OnInit {
     if(value=="SELLABLE"){
       this.switch="RENTABLE"
       this.produitsFilter= this.produits.filter((v)=> v.product_Type==this.switch);
+      
     }
     else if(value=="RENTABLE"){
       this.switch="SELLABLE";      
@@ -111,6 +118,7 @@ export class ProduitComponent implements OnInit {
     }else{
       this.produitsFilter= this.produitsFilter; 
     }    
+    this.Pagination(this.produitsFilter,1); 
 
   }
   
@@ -122,42 +130,104 @@ export class ProduitComponent implements OnInit {
       this.produitsFilter= this.produits.filter((v)=> v.product_Type==this.switch );  
       this.outOf=true
     }
+    this.Pagination(this.produitsFilter,1); 
+
+  }
+  onFilterChange(){
+    this.filterArrayByValue(this.produitsRecommended,this.searchText);
+    this.filterArrayByValue(this.produitsFilter,this.searchText);
+
   }
   redirect(){
     this.router.navigate(["/addproduit"]);
   }
-  Pagination () : void {
-    this.totalPages = Math.ceil(this.produitsRecommended.length / this.itemsPerPage);
-    this.pages = Array.from({length: this.totalPages}, (_, i) => i + 1);
-    this.displayedProducts = this.getUsersForPage(this.currentPage);
+  Pagination (table:any,index:any)  {
+    let tableFilter= this.filterArrayByValue(table,this.searchText)
+    this.totalPages = Math.ceil(tableFilter.length / this.itemsPerPage);
+    if(index==0){
+      this.pages = Array.from({length: this.totalPages}, (_, i) => i + 1);
+      return this.getUsersForPage(this.currentPage,tableFilter);
+
+    }else{
+      this.pages2 = Array.from({length: this.totalPages}, (_, i) => i + 1);
+      return this.getUsersForPage(this.currentPage2,tableFilter);
+
+    }
    }
-   getUsersForPage(page: number): any[] {
+
+   filterArrayByValue(array: any[], filterValue: any): any[] {
+    if (!array || array.length === 0) {
+      return [];
+    }
+    
+    if (!filterValue || filterValue === '') {
+      return array;
+    }
+  
+  
+    const lowercaseFilter = filterValue.toLowerCase();
+    
+    return array.filter(item => {
+      // Convert the item to a string in lowercase and check if it includes the filter value
+      return JSON.stringify(item).toLowerCase().includes(lowercaseFilter);
+    });
+  }
+
+   getUsersForPage(page: number,table:any): any[] {
     // Calcul des utilisateurs à afficher pour la page donnée.
     const startIndex = (page - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    return this.produitsRecommended.slice(startIndex, endIndex);
+    return table.slice(startIndex, endIndex);
   }
 
-  goToPage(page: number): void {
+  goToPage(page: number,table:any,index:any): void {
     // Changement de la page actuelle.
+    if(index==0){
     this.currentPage = page;
-    this.displayedProducts = this.getUsersForPage(page);
+    }else{
+      this.currentPage2 = page;
+    }
+    this.displayedProducts = this.getUsersForPage(page,table);
   }
 
-  nextPage(): void {
+  nextPage(table:any,index:any): void {
     // Passage à la page suivante.
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-      this.displayedProducts = this.getUsersForPage(this.currentPage);
+    if(index==0){
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+        this.displayedProducts = this.getUsersForPage(this.currentPage,table);
+
+      }
+
+
+    }else{
+      if (this.currentPage2< this.totalPages) {
+        this.currentPage2++;
+        this.displayedProducts = this.getUsersForPage(this.currentPage2,table);
+
+      }
+  
     }
+   
   }
 
-  prevPage(): void {
+  prevPage(table:any,index:any): void {
     // Passage à la page précédente.
-    if (this.currentPage > 1) {
+    if(index==0){
+      if (this.currentPage > 1) {
       this.currentPage--;
-      this.displayedProducts = this.getUsersForPage(this.currentPage);
+      this.displayedProducts = this.getUsersForPage(this.currentPage,table);
+      }
+    }else{
+      if (this.currentPage > 1) {
+
+      this.currentPage2--;
+      this.displayedProducts = this.getUsersForPage(this.currentPage2,table);
+      }
     }
+     
+
+    
   }
 
 }
