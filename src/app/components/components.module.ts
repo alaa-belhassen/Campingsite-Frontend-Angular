@@ -19,6 +19,9 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
 import { ListUsersComponent } from '../pages/list-users/list-users.component';
 import { CardProduitComponent } from './card-produit/card-produit.component';
 import { ImageComponentComponent } from './image-component/image-component.component';
+import {  heatmapComponent } from './Reservation/heatmap/heatmap.component';
+import { ResClientComponent } from './Reservation/res-client/res-client.component';
+
 
 @NgModule({
   imports: [
@@ -41,7 +44,10 @@ import { ImageComponentComponent } from './image-component/image-component.compo
     ChartPipesComponent,
     ListUsersComponent,
     CardProduitComponent,
-    ImageComponentComponent
+    ImageComponentComponent,
+    heatmapComponent,
+    ResClientComponent
+  
   ],
   exports: [
     FooterComponent,
@@ -51,6 +57,7 @@ import { ImageComponentComponent } from './image-component/image-component.compo
     ChartComponent,
     ChartPipesComponent,
     CardProduitComponent,
+    heatmapComponent,
     ImageComponentComponent
       ]
 })

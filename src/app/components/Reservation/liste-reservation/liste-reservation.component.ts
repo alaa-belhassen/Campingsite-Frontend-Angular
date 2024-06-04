@@ -42,7 +42,6 @@ export class ListeReservationComponent implements OnInit {
         dateArrivee: [''], // Add dateArrivée field
         dateDepart: [''], // Add dateDépart field
         nombreCampeurs: [''],
-        statusReservation: [''],
         prix: ['']
       })
     });

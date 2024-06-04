@@ -1,0 +1,26 @@
+/* Custom MatDialog Overlay */
+.custom-mat-dialog-overlay {
+    position: fixed; /* Position the overlay fixed to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    z-index: 1000; /* Ensure overlay is above other content */
+  }
+  
+  /* Custom MatDialog Container */
+  .custom-mat-dialog-container {
+    position: fixed; /* Position the dialog container fixed to the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the dialog */
+    background-color: white; /* Set background color */
+    border-radius: 8px; /* Add border radius for rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    padding: 20px; /* Add padding */
+    max-width: 400px; /* Set maximum width */
+    width: calc(100% - 40px); /* Ensure dialog is always full width with some margin */
+    z-index: 1001; /* Ensure dialog is above overlay */
+  }
+  
