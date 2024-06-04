@@ -1,9 +1,7 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ProduitserviceService } from 'src/app/services/produitservice.service';
-import { AdminGuardGuard } from 'src/app/services/admin-guard.guard';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 
 declare interface RouteInfo {
@@ -24,13 +22,18 @@ export const ROUTES: RouteInfo[] = [
   { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CENTRECAMPING']  },
     { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' },
     
-
+    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' },
+    { path: '/dashboard_reclamation', title: 'Reclamations', icon: 'ni-single-02 text-yellow', class: 'dropdown' },
+    { path: '/dashboard_reclamation', title: 'Dashboard', icon: '', class: '' },
+    { path: '/ajout-reclamation', title: 'Ajout Reclamation', icon: '', class: '' },
+    { path: '/afficher-reclamation', title: 'Afficher Reclamation', icon: '', class: '' },
+    { path: '/afficher-reclamation-client', title: 'Afficher Reclamation Client', icon: 'ni-bullet-list-67 text-red', class: '' }
 ];
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+selector: 'app-sidebar',
+templateUrl: './sidebar.component.html',
+styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
 
@@ -41,7 +44,7 @@ export class SidebarComponent implements OnInit {
   produiturl:any;
   drop=false;
   role: any;
-  constructor(private location: Location,private router: Router,private active:ActivatedRoute,private categoriesService:ProduitserviceService ,  private tokenStorage : TokenStorageService) {
+  constructor(private router: Router,private active:ActivatedRoute,private categoriesService:ProduitserviceService ,  private tokenStorage : TokenStorageService) {
    
   }
 

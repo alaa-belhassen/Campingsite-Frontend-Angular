@@ -1,64 +1,37 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-
+import { CommonModule, Location } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-
-
+import { AfficherReclamationAdminComponent } from './pages/reclamation/afficher-reclamation-admin/afficher-reclamation-admin.component';
+import { AjoutReclamationComponent } from './pages/reclamation/ajout-reclamation/ajout-reclamation.component';
 import { ChartComponent } from './pages/chart/chart.component';
 import { ActiviteCardsComponent } from './Activites/activite-cards/activite-cards.component';
 import { UpdateActiviteComponent } from './Activites/update-activite/update-activite.component';
 import { AddActiviteComponent } from './Activites/add-activite/add-activite.component';
-
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterPipe } from './filter-activite.pipe';
 import { MatTabsModule } from '@angular/material/tabs';
-
-
-
-
-
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
-
-import {MatStepperModule} from '@angular/material/stepper';
-
-
-
-
-
-
-import {MatInputModule} from '@angular/material/input';
-import {MatToolbarModule} from '@angular/material/toolbar';
-
-
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatCardModule} from '@angular/material/card';
-
-
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCardModule } from '@angular/material/card';
 import { ClickimgDirective } from './clickimg.directive';
-
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from "@angular/material/icon";
-import {MatTableModule} from "@angular/material/table";
-import {MatSortModule} from "@angular/material/sort";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 import { ChartPipeComponent } from './components/Reservation/chart-pipe/chart-pipe.component';
 import { ListeReservationComponent } from './components/Reservation/liste-reservation/liste-reservation.component';
 import { UpdateResComponent } from './components/Reservation/liste-reservation/update-res/update-res.component';
-
 import { AddProduitComponent } from './pages/add-produit/add-produit.component';
 import { AllDetailsCampsiteComponent } from './pages/all-details-campsite/all-details-campsite.component';
 import { CampsiteComponent } from './pages/campsite/campsite.component';
@@ -70,58 +43,28 @@ import { RegisterCentreCampingComponent } from './pages/register-centre-camping/
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { RefundComponent } from './pages/refund/refund.component';
 import { FilteruserPipe } from './filteruser-.pipe';
-import { ErreurComponent } from './pages/erreur/erreur.component';
-import { RegisterCampeurComponent } from './pages/register-campeur/register-campeur.component';
+import { OpenReclamationComponent } from './pages/reclamation/open-reclamation/open-reclamation.component';
+import { AfficherReclamationClientComponent } from './pages/reclamation/afficher-reclamation-client/afficher-reclamation-client.component';
+import { AfficherUneReclamationClientComponent } from './pages/reclamation/afficher-une-reclamation-client/afficher-une-reclamation-client.component';
+import { SuccessPopupComponent } from './pages/reclamation/popups/success-popup/success-popup.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    Ng2SearchPipeModule,
-    HttpClientModule,
-    ComponentsModule,
-    NgbModule,
-    RouterModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    MatStepperModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    MatCardModule,
-    MatStepperModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    MatTableModule,
-    MatSortModule,
-    MatDialogModule,
-    MatTabsModule,
-    MatButtonToggleModule
-
-  ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    AjoutReclamationComponent,
+    AfficherReclamationAdminComponent,
     RegisterCentreCampingComponent,
     ProduitComponent,
     AddProduitComponent,
     PayementDoneComponent,
     DashbordAdminComponent,
     ListeReservationComponent,
-    UpdateResComponent,
     UpdateResComponent,
     FilterPipe,
     ChartPipeComponent,
@@ -130,17 +73,46 @@ import { RegisterCampeurComponent } from './pages/register-campeur/register-camp
     ListCampsitesComponent,
     ClickimgDirective,
     AllDetailsCampsiteComponent,
-    ChartComponent,
     ActiviteCardsComponent,
     UpdateActiviteComponent,
     AddActiviteComponent,
-    FilterPipe,
     RefundComponent,
     FilteruserPipe,
-    ErreurComponent,
-    RegisterCampeurComponent,
+    OpenReclamationComponent,
+    AfficherReclamationClientComponent,
+    AfficherUneReclamationClientComponent,
+    SuccessPopupComponent
   ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    CommonModule,
+    RouterModule,
+    NgbModule,
+    AppRoutingModule,
+    ComponentsModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatStepperModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatSortModule,
+    MatButtonToggleModule
+  ],
+  providers: [Location], // Add Location to providers
+    
+    
+  
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
