@@ -43,6 +43,7 @@ import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
 import { heatmapComponent } from './components/Reservation/heatmap/heatmap.component';
 import { ClickimgDirective } from './clickimg.directive';
+import { ResClientComponent } from './components/Reservation/res-client/res-client.component';
 
 @NgModule({
   imports: [
@@ -88,6 +89,7 @@ import { ClickimgDirective } from './clickimg.directive';
     ActiviteCardsComponent,
     UpdateActiviteComponent,
     AddActiviteComponent,
+
     
   ],
   providers: [],
