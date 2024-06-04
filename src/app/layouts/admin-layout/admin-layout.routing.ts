@@ -72,7 +72,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'admincampsite', component: CampsiteAdminComponent },
   { path: 'usercampsite', component: CampsiteUserComponent },
     { path: 'activite',       component:  AddActiviteComponent  },
-  { path: 'viewcampsite_reserver/:id',       component:  ViewcampsiteReserveComponent  }
+  { path: 'viewcampsite_reserver/:id',       component:  ViewcampsiteReserveComponent  },
 
     { path: 'refund',       component:  RefundComponent  },
     { path: 'activite',       component:  AddActiviteComponent  },

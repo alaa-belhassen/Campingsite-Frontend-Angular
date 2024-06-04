@@ -56,8 +56,7 @@ export class SidebarComponent implements OnInit {
   categories:any;
   produiturl:any;
   drop=false;
-  constructor(private location: Location,private router: Router,private active:ActivatedRoute,private categoriesService:ProduitserviceService) {
-
+ 
   role: any;
   constructor(private router: Router,private active:ActivatedRoute,private categoriesService:ProduitserviceService ,  private tokenStorage : TokenStorageService) {
    
@@ -92,8 +91,6 @@ filterRoutesByRole() {
 
     this.produiturl=this.router.url;
     if(this.produiturl=='/produit'){
-    this.produiturl = this.router.url;
-    if (this.produiturl === '/produit') {
       this.getCategories();
       this.drop = true;
     } else {
@@ -105,11 +102,6 @@ filterRoutesByRole() {
     }
     this.menuItems = ROUTES.filter(menuItem => menuItem);
 
-        produitMenuItem.childrens = [];
-      }
-      this.drop = false;
-    }
-    this.menuItems = ROUTES.filter(menuItem => !menuItem.roles || menuItem.roles.includes(this.role));
   }
   isChildActive(parentRoute: string) {
     console.log(this.active.firstChild)
