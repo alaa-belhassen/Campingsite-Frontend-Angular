@@ -10,6 +10,9 @@ import { ActiviteService } from '../../activite-service.service';
 export class ActiviteCardsComponent implements OnInit {
 
   activite:any[];
+  activiteRecommended:any[];
+
+  title = 'Activites-cards'
 
   constructor(private activiteService: ActiviteService) {
   }
@@ -17,9 +20,11 @@ export class ActiviteCardsComponent implements OnInit {
   ngOnInit(): void {
     this.activiteService.getActivite().subscribe((datas)=>{
         this.activite= datas;
+        this.activiteRecommended=this.activite.slice(0, 3);
     }, error => {
       console.error('Error zaffer rahi khlett', error);
-    })
+    });
+
 
   }
 

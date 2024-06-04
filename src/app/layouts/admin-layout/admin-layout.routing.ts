@@ -7,6 +7,7 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { AddActiviteComponent } from 'src/app/Activites/add-activite/add-activite.component';
 import { SpinningWheelComponent } from 'src/app/spinning-wheel/spinning-wheel.component';
+import { ActiviteCardsComponent } from 'src/app/Activites/activite-cards/activite-cards.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -15,5 +16,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'activite',       component:  AddActiviteComponent  },
-    { path: 'Spinning wheel', component:  SpinningWheelComponent  }
+    { path: 'Spinning wheel', component:  SpinningWheelComponent  },
+    {path :'card-activite' , component: ActiviteCardsComponent }
 ];

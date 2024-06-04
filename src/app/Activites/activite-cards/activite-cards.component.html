@@ -1,4 +1,23 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div><br>
+<div class="three">
+  <h1>Recommendations for you </h1>
+</div>
+  <div class="card-container" >
+    <div *ngFor="let act of activiteRecommended ">
+    <div class="card">
+    <img src="../../assets/img/brand/Tasnim_Photographe.jpg">
+      <div class="card-content">
+      <h3>{{ act.nomActivite }}</h3>
+      <p>{{ act.description }}</p>
+      <a class="btn">Read more</a>
+      <a  (click)="deleteActivite(act.activiteID)" class="btn">Reserve</a>
+    </div>
+  </div>
+</div></div><br>
+
+<div class="three">
+  <h1>Activities</h1>
+</div>
   <div class="card-container" >
     <div *ngFor="let act of activite ">
     <div class="card">
@@ -6,8 +25,9 @@
       <div class="card-content">
       <h3>{{ act.nomActivite }}</h3>
       <p>{{ act.description }}</p>
-      <a class="btn">Update</a>
-      <a  (click)="deleteActivite(act.activiteID)" class="btn">Delete</a>
+      <a class="btn">Read more</a>
+      <a  (click)="deleteActivite(act.activiteID)" class="btn">Reserve</a>
     </div>
   </div>
+</div>
 </div>

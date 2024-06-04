@@ -43,15 +43,19 @@ const routes: Routes =[
         loadChildren: () => import('src/app/layouts/test-layout/test.module').then(m => m.TestModule)
       }
     ]
-  }, {
-    path: '**',
-    redirectTo: 'login'
-  }, {
+  },
+  {
     path: 'activite',
     component: AddActiviteComponent
   }, {
     path: 'update-activite/:id',
     component: UpdateActiviteComponent
+  },{
+    path: 'card-activite',
+    component:ActiviteCardsComponent
+  }, {
+    path: '**',
+    redirectTo: 'login'
   },
 ];
 
