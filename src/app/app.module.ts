@@ -34,15 +34,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ChartPrixComponent } from './Activites/chart-prix/chart-prix.component';
 import { SpinningWheelComponent } from './spinning-wheel/spinning-wheel.component';
 import { CongratsComponent } from './spinning-wheel/congrats/congrats.component';
-import {
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogTitle,
-} from '@angular/material/dialog';
-
-
 
 
 
@@ -51,32 +42,10 @@ import {GoogleMapsModule} from "@angular/google-maps";
 
 
 
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
-
-import {MatStepperModule} from '@angular/material/stepper';
-
-
-
-import { MatDialog } from '@angular/material/dialog';
-
-
-
-import {MatInputModule} from '@angular/material/input';
-import {MatToolbarModule} from '@angular/material/toolbar';
-
-
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatCardModule} from '@angular/material/card';
 
 
 import { ClickimgDirective } from './clickimg.directive';
 
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from "@angular/material/icon";
-import {MatTableModule} from "@angular/material/table";
-import {MatSortModule} from "@angular/material/sort";
 import { ChartPipeComponent } from './components/Reservation/chart-pipe/chart-pipe.component';
 import { ListeReservationComponent } from './components/Reservation/liste-reservation/liste-reservation.component';
 import { UpdateResComponent } from './components/Reservation/liste-reservation/update-res/update-res.component';
@@ -88,9 +57,6 @@ import { ListCampsitesComponent } from './pages/list-campsites/list-campsites.co
 import { PayementDoneComponent } from './pages/payement-done/payement-done.component';
 import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
-import { heatmapComponent } from './components/Reservation/heatmap/heatmap.component';
-import { ClickimgDirective } from './clickimg.directive';
-import { ResClientComponent } from './components/Reservation/res-client/res-client.component';
 import { CampsiteAdminComponent } from './pages/campsite-admin/campsite-admin.component';
 import { CampsiteUserComponent } from './pages/campsite-user/campsite-user.component';
 import { ViewcampsiteReserveComponent } from './pages/viewcampsite-reserve/viewcampsite-reserve.component';
@@ -121,7 +87,7 @@ import { ViewcampsiteReserveComponent } from './pages/viewcampsite-reserve/viewc
     MatIconModule,
     MatTableModule,
     MatSortModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
     MatDialogModule,
     MatTabsModule,
     GoogleMapsModule
