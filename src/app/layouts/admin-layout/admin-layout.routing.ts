@@ -1,4 +1,6 @@
 
+import { AfficherReclamationAdminComponent } from 'src/app/pages/reclamation/afficher-reclamation-admin/afficher-reclamation-admin.component';
+import { AjoutReclamationComponent } from 'src/app/pages/reclamation/ajout-reclamation/ajout-reclamation.component';
 
 import { DashbordAdminComponent } from 'src/app/pages/dashbord-admin/dashbord-admin.component'
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
@@ -17,7 +19,6 @@ import {AllDetailsCampsiteComponent} from "../../pages/all-details-campsite/all-
 import { ProduitComponent } from 'src/app/pages/produit/produit.component';
 import { ConfirmComponent } from 'src/app/components/dialog/confirm/confirm.component';
 import { PayementDoneComponent } from 'src/app/pages/payement-done/payement-done.component';
-import { animate, animation } from '@angular/animations';
 import { AddProduitComponent } from 'src/app/pages/add-produit/add-produit.component';
 import { ListeReservationComponent } from 'src/app/components/Reservation/liste-reservation/liste-reservation.component';
 import { ListUsersComponent } from 'src/app/pages/list-users/list-users.component';
@@ -28,8 +29,21 @@ import { DetailsComposentComponent } from 'src/app/pages/details-composent/detai
 import { DashboardProduitComponent } from 'src/app/pages/dashboard-produit/dashboard-produit.component';
 import { AdminGuardGuard } from 'src/app/services/admin-guard.guard';
 import { ErreurComponent } from 'src/app/pages/erreur/erreur.component';
+import { OpenReclamationComponent } from 'src/app/pages/reclamation/open-reclamation/open-reclamation.component';
+import { AfficherReclamationClientComponent } from 'src/app/pages/reclamation/afficher-reclamation-client/afficher-reclamation-client.component';
+import { AfficherUneReclamationClientComponent } from 'src/app/pages/reclamation/afficher-une-reclamation-client/afficher-une-reclamation-client.component';
+
 
 export const AdminLayoutRoutes: Routes = [
+    { path: 'dashboard',      component: DashboardComponent },
+    { path: 'user-profile',   component: UserProfileComponent },
+    { path: 'tables',         component: TablesComponent },
+    { path: 'icons',          component: IconsComponent },
+    { path: 'maps',           component: MapsComponent },
+    { path: 'ajout-reclamation',           component: AjoutReclamationComponent },
+    { path: 'afficher-reclamation',           component: AfficherReclamationAdminComponent },
+    { path: 'dashboard_reclamation',           component: DashboardComponent },
+    //dhashboard reclamation abdelwareth fix the component plz
     { path: 'produit',      component: ProduitComponent , data:{animation:'animate'} },
     { path: 'produit/:id',  component: ProduitComponent },
     { path: 'modal',      component: ConfirmComponent },
@@ -53,6 +67,16 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'details',       component:  DetailsComposentComponent  },
     { path: 'produitDashboard',       component:  DashboardProduitComponent  },
     { path: 'erreur',       component:  ErreurComponent  }
+    { path: 'erreur',       component:  ErreurComponent  },
+
+
+    { path: 'activite',       component:  AddActiviteComponent  },
+    { path: 'open_reclamation/:id', component: OpenReclamationComponent },
+    { path: 'afficher-reclamation-client', component: AfficherReclamationClientComponent },
+    { path: 'afficher-une-reclamation-client/:id', component: AfficherUneReclamationClientComponent },
+
+
+    
 
 
 ];
