@@ -9,6 +9,9 @@ import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResetPasswordComponent } from 'src/app/pages/reset-password/reset-password.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { RegisterCampeurComponent } from 'src/app/pages/register-campeur/register-campeur.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,12 +20,16 @@ import { ResetPasswordComponent } from 'src/app/pages/reset-password/reset-passw
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    MatButtonToggleModule,
+    ComponentsModule
+   
     // NgbModule
   ],
   declarations: [
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
-  ]
+    RegisterCampeurComponent
+    ]
 })
 export class AuthLayoutModule { }

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
-
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { Photo } from 'src/app/model/photo';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,7 +19,8 @@ export class RegisterComponent implements OnInit {
   ajoutReussi: boolean = false;
   erreurAjout: boolean = false;
   userByEmail : boolean=false;
-
+  showImage : boolean =false;
+showConfirmationDialog: boolean=false;
 
 
   constructor( private userService:UserServiceService , private tokenStorage : TokenStorageService , private formBuilder :FormBuilder) { }
@@ -36,20 +38,22 @@ export class RegisterComponent implements OnInit {
     });
 
     this.DetailsUserForm = this.formBuilder.group({
-      paysage: ['foret', Validators.required],
+      paysage: [[], Validators.required], // Utilisez un tableau vide pour stocker les valeurs sélectionnées
       couleur: ['', Validators.required],
-      alimentation: ['pique_nique', Validators.required],
-      musique: ['', Validators.required],
-      compagnement: ['visitesGuidees', Validators.required],
-      saison: ['printemps', Validators.required],
-      type_hebergement: ['tente', Validators.required],
-      // Ajoutez d'autres champs ici si nécessaire
+      alimentation: [[], Validators.required],
+      compagnement: [[], Validators.required],
+      saison: [[], Validators.required],
+      type_hebergement: [[], Validators.required]
     });
     
   }
   addUser() {
+    this.showImage=true;
+    console.log(true)
+    console.log(this.addUserForm.value.email)
     this.userService.findUser(this.addUserForm.value.email).subscribe(
       (data) => {
+
         if (data != null) {
           console.log("L'utilisateur existe déjà.");
           this.userByEmail = true;
@@ -61,30 +65,55 @@ export class RegisterComponent implements OnInit {
           this.ajoutReussi = true;
           this.erreurAjout = false;
           
-              setTimeout(() => {
-                this.ajoutReussi = false;
-              }, 10000);
+          setTimeout(() => {
+            this.ajoutReussi = false;
+          }, 10000);
           
           this.userService.register(this.addUserForm.value).subscribe(
             (userData) => {
               this.user = userData.id; // Récupérer les données de l'utilisateur ajouté
               console.log("userData", userData.email);
               
-              // Appel de la méthode addDetailsUser avec les détails de l'utilisateur et son ID
-              this.userService.addDetailsUser(this.DetailsUserForm.value,this.addUserForm.value.email).subscribe(
-                (detailsUserData) => {
-                  console.log("Détails de l'utilisateur ajoutés avec succès :", detailsUserData);
-                this.addUserForm.reset();
-                },
-                (detailsUserError) => {
-                  console.error("Une erreur s'est produite lors de l'ajout des détails de l'utilisateur :", detailsUserError);
-                  this.erreurAjout = true;
-                  this.ajoutReussi = false;
-                  setTimeout(() => {
-                    this.erreurAjout = false;
-                  }, 5000);
-                }
-              );
+              const detailsUsers = [];
+              const formValue = this.DetailsUserForm.value;
+              
+              // Parcourez les valeurs sélectionnées dans chaque champ multiple et créez un objet détail utilisateur
+              formValue.paysage.forEach((paysage: string) => {
+                formValue.alimentation.forEach((alimentation: string) => {
+                  formValue.compagnement.forEach((compagnement: string) => {
+                    formValue.saison.forEach((saison: string) => {
+                      formValue.type_hebergement.forEach((type_hebergement: string) => {
+                        detailsUsers.push({
+                          paysage,
+                          couleur: formValue.couleur,
+                          alimentation,
+                          compagnement,
+                          saison,
+                          type_hebergement
+                        });
+                      });
+                    });
+                  });
+                });
+              }); console.log(detailsUsers);
+              
+              // Appel de la méthode addDetailsUser pour chaque détail utilisateur dans la liste
+              detailsUsers.forEach((detail) => {
+                this.userService.addDetailsUser(detail, this.addUserForm.value.email).subscribe(
+                  (detailsUserData) => {
+                    console.log("Détails de l'utilisateur ajoutés avec succès :", detailsUserData);
+                    console.log(this.showImage);
+                  },
+                  (detailsUserError) => {
+                    console.error("Une erreur s'est produite lors de l'ajout des détails de l'utilisateur :", detailsUserError);
+                    this.erreurAjout = true;
+                    this.ajoutReussi = false;
+                    setTimeout(() => {
+                      this.erreurAjout = false;
+                    }, 5000);
+                  }
+                );
+              });
             },
             (err) => {
               console.error(err);
@@ -102,14 +131,15 @@ export class RegisterComponent implements OnInit {
         // Traitez l'erreur comme vous le souhaitez, par exemple, affichez un message d'erreur à l'utilisateur
       }
     );
-  }
+}
+
+public showOtherForm()
+{
+  document.getElementById('secondForm').style.display = 'block';
   
+}
   
-  public showOtherForm()
-  {
-    document.getElementById('secondForm').style.display = 'block';
-    
-  }
+ 
   getPasswordStrength(): string {
     if (this.addUserForm.value.password.length < 4) {
         return 'faible';
@@ -117,7 +147,13 @@ export class RegisterComponent implements OnInit {
         return 'fort';
     }
 }
-     
+openConfirmationDialog(){
+  this.showConfirmationDialog = true;
+}
+
+closeConfirmationDialog(){
+  this.showConfirmationDialog = false;
+}    
     
   }
   

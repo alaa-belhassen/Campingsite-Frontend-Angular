@@ -1,4 +1,6 @@
 
+import { AfficherReclamationAdminComponent } from 'src/app/pages/reclamation/afficher-reclamation-admin/afficher-reclamation-admin.component';
+import { AjoutReclamationComponent } from 'src/app/pages/reclamation/ajout-reclamation/ajout-reclamation.component';
 
 import { DashbordAdminComponent } from 'src/app/pages/dashbord-admin/dashbord-admin.component'
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
@@ -25,9 +27,28 @@ import { ChartComponent } from 'src/app/pages/chart/chart.component';
 import {CampsiteAdminComponent} from "../../pages/campsite-admin/campsite-admin.component";
 import {CampsiteUserComponent} from "../../pages/campsite-user/campsite-user.component";
 import {ViewcampsiteReserveComponent} from "../../pages/viewcampsite-reserve/viewcampsite-reserve.component";
+import { RefundComponent } from 'src/app/pages/refund/refund.component';
+import { AdminProduitComponent } from 'src/app/pages/admin-produit/admin-produit.component';
+import { DetailsComposentComponent } from 'src/app/pages/details-composent/details-composent.component';
+import { DashboardProduitComponent } from 'src/app/pages/dashboard-produit/dashboard-produit.component';
+import { AdminGuardGuard } from 'src/app/services/admin-guard.guard';
+import { ErreurComponent } from 'src/app/pages/erreur/erreur.component';
+import { OpenReclamationComponent } from 'src/app/pages/reclamation/open-reclamation/open-reclamation.component';
+import { AfficherReclamationClientComponent } from 'src/app/pages/reclamation/afficher-reclamation-client/afficher-reclamation-client.component';
+import { AfficherUneReclamationClientComponent } from 'src/app/pages/reclamation/afficher-une-reclamation-client/afficher-une-reclamation-client.component';
+
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'produit',      component: ProduitComponent },
+    { path: 'dashboard',      component: DashboardComponent },
+    { path: 'user-profile',   component: UserProfileComponent },
+    { path: 'tables',         component: TablesComponent },
+    { path: 'icons',          component: IconsComponent },
+    { path: 'maps',           component: MapsComponent },
+    { path: 'ajout-reclamation',           component: AjoutReclamationComponent },
+    { path: 'afficher-reclamation',           component: AfficherReclamationAdminComponent },
+    { path: 'dashboard_reclamation',           component: DashboardComponent },
+    //dhashboard reclamation abdelwareth fix the component plz
+    { path: 'produit',      component: ProduitComponent , data:{animation:'animate'} },
     { path: 'produit/:id',  component: ProduitComponent },
     { path: 'modal',      component: ConfirmComponent },
     { path: 'payementdone/:type',      component: PayementDoneComponent },
@@ -43,6 +64,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'Spinning wheel', component:  SpinningWheelComponent  },
     {path :'card-activite' , component: ActiviteCardsComponent },
     { path : 'ListUser',      component :ListUsersComponent},
+    { path : 'ListUser',   canActivate: [AdminGuardGuard] ,   component :ListUsersComponent},
     { path: 'dashboardAdmin',      component: DashbordAdminComponent },
     { path: 'campsite',           component: CampsiteComponent },
     { path: 'listcampsite/:id_user',           component: ListCampsitesComponent },
@@ -51,5 +73,20 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'usercampsite', component: CampsiteUserComponent },
     { path: 'activite',       component:  AddActiviteComponent  },
   { path: 'viewcampsite_reserver/:id',       component:  ViewcampsiteReserveComponent  }
+
+    { path: 'refund',       component:  RefundComponent  },
+    { path: 'activite',       component:  AddActiviteComponent  },
+    { path: 'adminProduit',       component:  AdminProduitComponent  },
+    { path: 'details',       component:  DetailsComposentComponent  },
+    { path: 'produitDashboard',       component:  DashboardProduitComponent  },
+    { path: 'erreur',       component:  ErreurComponent  },
+    { path: 'activite',       component:  AddActiviteComponent  },
+    { path: 'open_reclamation/:id', component: OpenReclamationComponent },
+    { path: 'afficher-reclamation-client', component: AfficherReclamationClientComponent },
+    { path: 'afficher-une-reclamation-client/:id', component: AfficherUneReclamationClientComponent },
+
+
+    
+
 
 ];

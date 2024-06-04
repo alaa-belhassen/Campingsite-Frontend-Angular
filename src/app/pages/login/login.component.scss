@@ -1,3 +1,43 @@
 .text-error {
     color: red;
 }
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .text-lead.text-light {
+    animation: fadeInUp 2s ease-in-out;
+    font-size: 28px;
+  }
+  .text-white {
+    animation: fadeInUp 2s ease-in-out;
+    font-size: 40px;
+  }
+
+
+  .header {
+    /* Ajoutez ou modifiez les propriétés ci-dessous selon vos besoins */
+    background-image: url('https://img.freepik.com/photos-gratuite/tentes-camping-sous-pins-lumiere-du-soleil-au-lac-pang-ung-mae-hong-son-thailande_335224-931.jpg?w=1380&t=st=1717165657~exp=1717166257~hmac=be5e11e7e9f992c379af8cfe93cee8244780b4afc62d0113f8d681d314b885a9');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    /* Si vous souhaitez ajouter une couleur d'arrière-plan superposée à l'image */
+    background-color: rgba(0, 0, 0, 0.5); /* couleur rouge avec 50% d'opacité */
+    background-blend-mode: overlay; /* mélange la couleur et l'image */
+}
+.header.bg-gradient-danger {
+  /* Change background color for the specific div */
+  background-color: #2eac0f; /* New background color */
+  background-image: none; /* Remove existing background image if any */
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}

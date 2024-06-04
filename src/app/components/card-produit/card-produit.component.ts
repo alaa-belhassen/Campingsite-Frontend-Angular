@@ -17,9 +17,9 @@ export class CardProduitComponent implements OnInit {
   @Input() price;
   @Input() quantiter;
   @Input() id: number;
+  @Input() urlImg:any;
   number=0;
   panier:Panier;
-
   ngOnInit(): void {
     console.log(this.id)
   }

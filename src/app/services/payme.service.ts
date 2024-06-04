@@ -15,8 +15,12 @@ export class PaymeService {
     return this.http.post('https://sandbox.paymee.tn/api/v2/payments/create',payme,{headers:headers});
   }
 
-  check(){
-    return this.http.get('https://sandbox.paymee.tn/api/v2/payments/bdbf254028447d21a092532b8f9f8d9c/check',{headers:headers});
+  check(transactionId:any){
+    return this.http.get('https://sandbox.paymee.tn/api/v2/payments/'+transactionId+'/check',{headers:headers});
+
+  }
+  refund(transaction:any){
+    return this.http.post('https://sandbox.paymee.tn/api/v2/payments/refund',transaction,{headers:headers});
 
   }
 }

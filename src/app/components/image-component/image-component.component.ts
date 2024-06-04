@@ -3,6 +3,8 @@ import {CampsiteService} from "../../services/campsite.service";
 import {Photo} from "../../model/photo";
 import Swal from 'sweetalert2';
 import { FormGroup } from '@angular/forms';
+import { ProduitserviceService } from 'src/app/services/produitservice.service';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-image-component',
@@ -14,11 +16,17 @@ image:File | null =null;
 imageMin:File | null =null;
   images: Photo[] = []
   @Input() secondFormGroup!: FormGroup;
+  @Input() idProduit!: any;
+  @Input() email!: any;
 
-  constructor(private campsiteService:CampsiteService) { }
+
+  constructor(private campsiteService:CampsiteService,private produitService:ProduitserviceService ,private userService : UserServiceService) { }
 
   ngOnInit(): void {
     this.fetchImages();
+    console.log(this.secondFormGroup)
+    console.log(this.idProduit)
+    console.log(this.email)
   }
 
   onFileChange(event:any){
@@ -46,7 +54,7 @@ imageMin:File | null =null;
   }
   onUploadAvecAffectation(): void {
     if (this.image && this.secondFormGroup) {
-      const description = this.secondFormGroup.get('description')?.value;
+      const description = this.secondFormGroup?.get('description')?.value;
       console.log(this.image.size);
       this.campsiteService.uploadAndAffecttoDetailCampsite(this.image, description).subscribe(data => {
         this.fetchImages();
@@ -57,6 +65,29 @@ imageMin:File | null =null;
     }
   }
 
+  onUploadAvecAffectationToProduct(): void {
+    if (this.image && this.idProduit) {
+      console.log(this.image.size);
+      this.produitService.uploadAndAffecttoDetailCampsite(this.image, this.idProduit).subscribe(data => {
+        this.fetchImages();
+      }, error => {
+        this.reset();
+        this.fetchImages();
+      });
+    }
+  }
+  onUploadAvecAffectationToUser(): void {
+    if (this.image && this.email) {
+      console.log(this.image.size);
+      this.userService.uploadAndAffecttoUser(this.image, this.email).subscribe(data => {
+        this.fetchImages();
+      }, error => {
+        this.reset();
+        this.fetchImages();
+      });
+    }
+  }
+ 
    reset():void {
     this.image=null;
     this.imageMin=null;

@@ -13,6 +13,7 @@ export class CampsiteService {
 
   getPhotosByDetailCampsite(id: any): Observable<string[]> {
     return this.http.get<string[]>(`http://localhost:8082/photos/list/${id}`);
+    return this.http.get<string[]>(`http://localhost:8082/photos/list/${id}`);
   }
 
   //ajout campsite
@@ -55,6 +56,7 @@ console.log(campsitevalue);
   loadImageData(id: number): void {
     // Make a GET request to fetch image data from your Spring Boot backend
     this.http.get(`http://localhost:8082/photos/get/${id}`, { responseType: 'arraybuffer' })
+    this.http.get(`http://localhost:8082/photos/get/${id}`, { responseType: 'arraybuffer' })
       .subscribe((data: ArrayBuffer) => {
         // Convert the received binary data to a base64 string
         const base64Image: string = this.arrayBufferToBase64(data);
@@ -90,6 +92,7 @@ console.log(campsitevalue);
 
   archiver(id:any){
    return  this.http.put(`http://localhost:8082/campsites/Supprimer/${id}`,null)
+   return  this.http.put(`http://localhost:8082/campsites/Supprimer/${id}`,null)
   }
   updateCampsite(){
 
@@ -97,9 +100,11 @@ console.log(campsitevalue);
 //utilise dans list-campsite component.ts affiche le campsite a partir de l'id du detail campsite
   getCampsiteByDetailCamp(id:any){
     return  this.http.get(`http://localhost:8082/campsites/Rechercher/${id}`)
+    return  this.http.get(`http://localhost:8082/campsites/Rechercher/${id}`)
   }
 //utilise dans list-campsite component.ts affiche les  detail du campsite a partir de l'id du detail campsite
   getDetailCampsite(id:any){
+    return  this.http.get(`http://localhost:8082/details/Rechercher/${id}`)
     return  this.http.get(`http://localhost:8082/details/Rechercher/${id}`)
   }
 
@@ -112,12 +117,14 @@ console.log(campsitevalue);
     const formData=new FormData();
     formData.append("multipartFile",image);
     return this.http.post<any>('http://localhost:8082/photos/upload',formData);
+    return this.http.post<any>('http://localhost:8082/photos/upload',formData);
   }
 
 
   public uploadAndAffecttoDetailCampsite(image:File,descriptionDetailCampsite:any):Observable<any>{
     const formData=new FormData();
     formData.append("multipartFile",image);
+    return this.http.post<any>(`http://localhost:8082/photos/upload/${descriptionDetailCampsite}`,formData);
     return this.http.post<any>(`http://localhost:8082/photos/upload/${descriptionDetailCampsite}`,formData);
   }
 

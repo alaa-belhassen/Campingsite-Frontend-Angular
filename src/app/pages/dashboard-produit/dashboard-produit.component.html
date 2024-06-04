@@ -1,0 +1,52 @@
+<div class="header bg-orange pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        <div class="row">  
+          <div class="col-xl-3 col-lg-6">    
+            <div >
+              <div class="card card-stats mb-4 mb-xl-0" >
+                <app-card-stat [title]="'Bought product'" [value]="SelllableProducts" [since]="today|date" [icon]="'fas fa-chart-bar'" [bg]="'bg-green'" ></app-card-stat>
+            </div>
+            </div>  
+          </div>
+          <div class="col-xl-3 col-lg-6">    
+            <div >
+              <div class="card card-stats mb-4 mb-xl-0" >
+                <app-card-stat [title]="'rented product'" [value]="RentableProducts" [since]="today|date" [icon]="'fas fa-chart-bar'" [bg]="'bg-blue'" ></app-card-stat>
+            </div>
+            </div>  
+          </div>
+          <div class="col-xl-3 col-lg-6">    
+            <div >
+              <div class="card card-stats mb-4 mb-xl-0" >
+                <app-card-stat [title]="'profit Sellable'" [value]="sellable" [since]="today|date" [icon]="'fas fa-chart-bar'" [bg]="'bg-red'" ></app-card-stat>
+            </div>
+            </div>  
+          </div>
+          <div class="col-xl-3 col-lg-6">    
+            <div >
+              <div class="card card-stats mb-4 mb-xl-0" >
+                <app-card-stat [title]="'profit Rentable'" [value]="rentable" [since]="today|date" [icon]="'fas fa-chart-bar'" [bg]="'bg-orange'" ></app-card-stat>
+            </div>
+            </div>  
+          </div>
+       </div>
+      </div>
+      </div>
+      </div>
+  <div class="container-fluid mt--7">
+    <div class="row ">
+      <div class="col-xl-8 mb-5 mb-xl-0">
+        <app-chart [datasets]="CommandeByMonths"></app-chart>
+    </div>
+      <div class="col-xl-4">
+        <app-chart-pipes  [datasets]="CommandeByMonths"></app-chart-pipes>
+      </div>
+    </div>
+        
+  
+  
+    
+  </div>
+  

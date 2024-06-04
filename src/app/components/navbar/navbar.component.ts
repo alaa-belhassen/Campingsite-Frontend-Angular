@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     this.currentUser = this.tokenStorage.getUser();
+    console.log(this.currentUser.adresse)
   }
   LogOut () {
     this.token.signOut();

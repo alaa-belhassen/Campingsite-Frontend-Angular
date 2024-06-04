@@ -1,10 +1,11 @@
+<div class="header">
 <div class="header bg-gradient-danger py-7 py-lg-8">
     <div class="container">
       <div class="header-body text-center mb-7">
         <div class="row justify-content-center">
           <div class="col-lg-5 col-md-6">
-            <h1 class="text-white">Welcome!</h1>
-            <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+            <h1 class="text-white">Create an Account</h1>
+            <p class="text-lead text-light">Start your journey by creating a new account.</p>
           </div>
         </div>
       </div>
@@ -21,31 +22,20 @@
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8">
         <div class="card bg-secondary shadow border-0">
-          <div class="card-header bg-transparent pb-5">
-            <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
-            <div class="text-center">
-              <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-4">
-                <span class="btn-inner--icon"><img src="assets/img/icons/common/github.svg"></span>
-                <span class="btn-inner--text">Github</span>
-              </a>
-              <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
-                <span class="btn-inner--icon"><img src="assets/img/icons/common/google.svg"></span>
-                <span class="btn-inner--text">Google</span>
-              </a>
-            </div>
-          </div>
+         
           <div class="card-body px-lg-5 py-lg-5">
             <div class="text-center text-muted mb-4">
-              <small>Or sign up with credentials</small>
+              <small>Sign up as a camping center</small>
             </div>
-           
-            <form [formGroup]="addUserForm" (ngSubmit)="addUser"  id="firstForm">
+
+            
+            <form [formGroup]="addUserForm" (ngSubmit)="addUser"  id="firstForm" *ngIf="!this.showImage">
               <div class="form-group">
                 <div class="input-group input-group-alternative mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Nom" type="text" formControlName="firstName">
+                  <input class="form-control" placeholder="Center Name" type="text" formControlName="firstName">
                 </div>
                 <div *ngIf="addUserForm.controls['firstName'].invalid && (
                   addUserForm.controls['firstName'].touched || addUserForm.controls['firstName'].dirty 
@@ -59,7 +49,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Prenom" type="text" formControlName="lastName">
+                  <input class="form-control" placeholder="Type" type="text" formControlName="lastName">
                 </div>
                 <div *ngIf="addUserForm.controls['lastName'].invalid && (
                   addUserForm.controls['lastName'].touched || addUserForm.controls['lastName'].dirty
@@ -88,7 +78,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Telephone" type="number" formControlName="telephone">
+                  <input class="form-control" placeholder="phone" type="number" formControlName="telephone">
                 </div>
                 <div *ngIf="addUserForm.controls['telephone'].invalid && (
                   addUserForm.controls['telephone'].touched || addUserForm.controls['telephone'].dirty
@@ -104,7 +94,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input class="form-control" placeholder="adresse" type="text" formControlName="adresse">
+                  <input class="form-control" placeholder="adress" type="text" formControlName="adresse">
                 </div>
               </div>
               <div class="form-group">
@@ -138,9 +128,7 @@
                 <div class="col-12">
                   <div class="custom-control custom-control-alternative custom-checkbox">
                     <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                    <label class="custom-control-label" for="customCheckRegister">
-                      <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                    </label>
+                    
                   </div>
                 </div>
               </div>
@@ -160,12 +148,18 @@
   </div>
   
               <div class="text-center">
-                <button type="button" class="btn btn-primary mt-4" (click)="addUser()" [disabled]="!addUserForm.valid">Create account</button>
+                
+                <button type="button" class="btn btn-primary mt-4" (click)="addUser()" [disabled]="!addUserForm.valid">Add photo</button>
               </div>
             </form>
+            <div class="card-header bg-transparent pb-5" *ngIf="this.showImage">
+              <app-image-component [email]="this.addUserForm.value.email"  ></app-image-component>
+             </div>
+             <button type="button" class="btn btn-primary mt-4"  *ngIf="this.showImage"  [disabled]="!addUserForm.valid">Save</button>
           </div>
         </div>
       </div>
     </div>
   </div>
   
+</div>
