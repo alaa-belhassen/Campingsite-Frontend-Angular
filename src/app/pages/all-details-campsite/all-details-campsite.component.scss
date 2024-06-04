@@ -1,0 +1,66 @@
+.img-container{
+  width: 600px;
+  height: 500px;
+  margin-top: 5%;
+
+}
+.img-container img{
+  width: 100%;
+  height: 100%;
+}
+
+.img-prev{
+  margin-top:10px ;
+}
+
+.img-slide{
+  display: inline-block;
+  width: 24%;
+  margin: 0 1px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.active{
+  border: 2px solid black;
+  opacity: 1;
+}
+.infos{
+  margin-left: 5%;
+  margin-top: 10%;
+}
+.btns {
+  display: flex;
+  flex-direction: column;
+}
+
+.btns button {
+  margin-bottom: 10px; /* Increased margin for better separation */
+  padding: 8px 15px; /* Adjust padding for button size */
+  display: flex;
+  align-items: center;
+  align-content: center;
+  background-color: white; /* Set background color to white */
+  border: 1px solid; /* Set default border */
+  font-size: 16px; /* Set font size */
+}
+
+.btns .archive-btn {
+  border-color: darkred; /* Set border color to green */
+  color: white; /* Set text color to green */
+  background-color: darkred;
+
+}
+
+.btns .update-btn {
+  border-color: darkolivegreen; /* Set border color to green */
+  color: white; /* Set text color to green */
+  background-color: green;
+}
+
+.btns button i {
+  margin-right: 8px; /* Increased margin between icon and text */
+}
+.info-card {
+  margin-top: 3%;
+  margin-bottom: 2%;
+}

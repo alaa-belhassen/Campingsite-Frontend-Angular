@@ -12,5 +12,9 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
   }
+  ngOnDestroy(): void {
+    console.log('FooterComponent destroyed');
+   
+      }
 
 }

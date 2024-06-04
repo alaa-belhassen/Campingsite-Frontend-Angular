@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { TestLayoutComponent } from './layouts/test-layout/test-layout.component';
+import { RouterModule, Routes } from '@angular/router';
 import { ActiviteCardsComponent } from './Activites/activite-cards/activite-cards.component';
 import { AddActiviteComponent } from './Activites/add-activite/add-activite.component';
 import { UpdateActiviteComponent } from './Activites/update-activite/update-activite.component';

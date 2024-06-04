@@ -3,17 +3,37 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { RouterModule } from '@angular/router';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CardStatComponent } from './card-stat/card-stat.component';
 import { ChartComponent } from './chart/chart.component';
 import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
 
+import {MatDialogModule} from '@angular/material/dialog';
+
+import { RouterModule } from '@angular/router';
+import {MatIconModule} from "@angular/material/icon";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MaterialFileInputModule} from "ngx-material-file-input";
+import { ListUsersComponent } from '../pages/list-users/list-users.component';
+import { CardProduitComponent } from './card-produit/card-produit.component';
+import { ImageComponentComponent } from './image-component/image-component.component';
+import {  heatmapComponent } from './Reservation/heatmap/heatmap.component';
+import { ResClientComponent } from './Reservation/res-client/res-client.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule,
+    MatIconModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialFileInputModule
   ],
   declarations: [
     FooterComponent,
@@ -21,7 +41,13 @@ import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
     SidebarComponent,
     CardStatComponent,
     ChartComponent,
-    ChartPipesComponent
+    ChartPipesComponent,
+    ListUsersComponent,
+    CardProduitComponent,
+    ImageComponentComponent,
+    heatmapComponent,
+    ResClientComponent
+  
   ],
   exports: [
     FooterComponent,
@@ -29,7 +55,10 @@ import { ChartPipesComponent } from './chart-pipes/chart-pipes.component';
     SidebarComponent,
     CardStatComponent,
     ChartComponent,
-    ChartPipesComponent
-  ]
+    ChartPipesComponent,
+    CardProduitComponent,
+    heatmapComponent,
+    ImageComponentComponent
+      ]
 })
 export class ComponentsModule { }
