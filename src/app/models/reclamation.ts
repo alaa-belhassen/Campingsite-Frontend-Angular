@@ -1,5 +1,6 @@
 export class Reclamation {
-    idClient: number;
+  idReclamation :number;
+  idClient: number;
   dateReclamation: Date;
   title :String;
   descriptionReclamation: string;

@@ -11,6 +11,18 @@ export class ReclamationService {
 
   constructor(private http: HttpClient) { }
 
+
+  getReclamationById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/reclamation/${id}`);
+  }
+
+
+
+  updateReclamation(reclamation: any): Observable<any> {
+    const id = reclamation.idReclamation; // Assuming the reclamation object has an id field
+    console.log(id);
+    return this.http.put<any>(`${this.baseUrl}/updatereclamation/${id}`, reclamation);
+  }
   addReclamation(reclamation: Reclamation): Observable<Reclamation> {
     return this.http.post<Reclamation>(`${this.baseUrl}/add`, reclamation);
   }
