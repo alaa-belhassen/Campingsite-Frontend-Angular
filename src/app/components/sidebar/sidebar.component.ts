@@ -25,7 +25,10 @@ export const ROUTES: RouteInfo[] = [
     { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
     { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' },
   { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' }
+    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' },
+  { path: '/admincampsite', title: 'AdminCampsite',  icon:'ni-bullet-list-67 text-red', class: '' },
+  { path: '/usercampsite', title: 'UserCampsite',  icon:'ni-bullet-list-67 text-red', class: '' },
+
 
 ];
 

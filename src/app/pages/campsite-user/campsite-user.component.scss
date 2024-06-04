@@ -1,10 +1,58 @@
-.mat-stepper-horizontal {
-  margin-top: 8px;
+#map{
+height: 60vh;
+  width: 100%;
 }
 
-.mat-form-field {
-  margin-top: 16px;
+.container {
+  display: grid;
+  grid-template-columns: 80% 40%; /* Adjust the ratio as needed */
+  //gap: 20px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.example-card {
+  width: 100%;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-right {
+  margin-left: 80%; /* Pushes the image to the right */
+}
+
+.header-right img {
+  height: 130px; /* Custom height */
+  width: 130px; /* Custom width */
+  object-fit: cover;
+}
+
+  .description {
+  text-align: center; /* Center the description */
+
+}
+
+.button-container {
+  text-align: center; /* Center the button */
+  min-width: 100%;
+}
+
+
 $colorSubtitle:rgb(21, 21, 102);
 .add_btn{
   position:absolute;
@@ -87,24 +135,5 @@ $colorSubtitle:rgb(21, 21, 102);
 
 .page-item.disabled .page-link {
   pointer-events: none;
-
-}
-
-
-.current-step .mat-step-header {
-  background-color: yellow;
-}
-
-.completed-step .mat-step-header {
-  background-color: green;
-}
-::ng-deep .mat-horizontal-stepper-header.green-step .mat-step-icon {
-  background-color: green !important;
-  cursor: not-allowed;
-}
-
-::ng-deep .mat-horizontal-stepper-header.green-step .mat-step-label {
-  color: green !important;
-  cursor: not-allowed;
 
 }

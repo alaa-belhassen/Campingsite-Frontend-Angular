@@ -1,0 +1,63 @@
+<div class=" bg-gradient-danger " class="imageCover">
+  <div class="poisitiontitle">
+    <h1 class="title">Administrator side</h1>
+    <h1 class="subtitle text-muted">Approve/desapprove campsites</h1>
+  </div>
+</div>
+
+<div class=""> <!-- Adjust the column size to fit the entire table -->
+  <!-- Search input -->
+
+
+  <!-- Card containing the table -->
+  <div class="card bg-secondary shadow">
+    <div class="card-header bg-white border-0">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="">
+          <h3 class="mb-0">AdminCampsite</h3>
+        </div>
+        <div class=" form-group">
+          <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText">
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-items-center table-flush" style="width: 100%; overflow-x: auto;">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">Reservation</th>
+          <th scope="col">Campeur Placename</th>
+          <th scope="col">Campsite Region</th>
+          <th scope="col">Status</th>
+          <th scope="col">Date Arrival</th>
+
+          <th scope="col">Campsite Price </th>
+          <th scope="col">Action</th> <!-- New column header for delete button -->
+        </tr>
+        </thead>
+        <tbody *ngIf="pendingcampsites && pendingcampsites.length > 0">
+        <tr *ngFor="let res of pendingcampsites | filter: searchText">
+          <td>{{ res.campsiteid }}</td>
+          <td>{{ res.lieu }}</td>
+          <td>{{ res.region }}</td>
+          <td>
+                                  <span class="badge badge-dot mr-4">
+                                      <i class="bg-warning"></i> {{ res.status }}
+                                  </span>
+          </td>
+          <td>{{ res.date_prevu }}</td>
+          <td>{{ res.prix }} TND </td>
+
+          <td>
+            <div class="col-4 text-right">
+              <a class="btn btn-sm btn-warning" (click)="DesapprouveCampsite(res.campsiteid)">desapprove</a>
+              <a class="btn btn-sm btn-success" (click)="approuveCampsite(res.campsiteid)">approve</a>
+
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -45,6 +45,38 @@ import {
 
 
 
+
+import {GoogleMapsModule} from "@angular/google-maps";
+
+
+
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
+import {MatStepperModule} from '@angular/material/stepper';
+
+
+
+import { MatDialog } from '@angular/material/dialog';
+
+
+
+import {MatInputModule} from '@angular/material/input';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
+
+
+import { ClickimgDirective } from './clickimg.directive';
+
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
 import { ChartPipeComponent } from './components/Reservation/chart-pipe/chart-pipe.component';
 import { ListeReservationComponent } from './components/Reservation/liste-reservation/liste-reservation.component';
 import { UpdateResComponent } from './components/Reservation/liste-reservation/update-res/update-res.component';
@@ -59,6 +91,10 @@ import { RegisterCentreCampingComponent } from './pages/register-centre-camping/
 import { heatmapComponent } from './components/Reservation/heatmap/heatmap.component';
 import { ClickimgDirective } from './clickimg.directive';
 import { ResClientComponent } from './components/Reservation/res-client/res-client.component';
+import { CampsiteAdminComponent } from './pages/campsite-admin/campsite-admin.component';
+import { CampsiteUserComponent } from './pages/campsite-user/campsite-user.component';
+import { ViewcampsiteReserveComponent } from './pages/viewcampsite-reserve/viewcampsite-reserve.component';
+
 
 @NgModule({
   imports: [
@@ -86,6 +122,10 @@ import { ResClientComponent } from './components/Reservation/res-client/res-clie
     MatTableModule,
     MatSortModule,
     Ng2SearchPipeModule
+    MatDialogModule,
+    MatTabsModule,
+    GoogleMapsModule
+
   ],
   declarations: [
     AppComponent,
@@ -113,6 +153,9 @@ import { ResClientComponent } from './components/Reservation/res-client/res-clie
 
 
 
+    CampsiteAdminComponent,
+    CampsiteUserComponent,
+    ViewcampsiteReserveComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -22,6 +22,9 @@ import { AddProduitComponent } from 'src/app/pages/add-produit/add-produit.compo
 import { ListeReservationComponent } from 'src/app/components/Reservation/liste-reservation/liste-reservation.component';
 import { ListUsersComponent } from 'src/app/pages/list-users/list-users.component';
 import { ChartComponent } from 'src/app/pages/chart/chart.component';
+import {CampsiteAdminComponent} from "../../pages/campsite-admin/campsite-admin.component";
+import {CampsiteUserComponent} from "../../pages/campsite-user/campsite-user.component";
+import {ViewcampsiteReserveComponent} from "../../pages/viewcampsite-reserve/viewcampsite-reserve.component";
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'produit',      component: ProduitComponent },
@@ -42,9 +45,11 @@ export const AdminLayoutRoutes: Routes = [
     { path : 'ListUser',      component :ListUsersComponent},
     { path: 'dashboardAdmin',      component: DashbordAdminComponent },
     { path: 'campsite',           component: CampsiteComponent },
-    { path: 'listcampsite',           component: ListCampsitesComponent },
+    { path: 'listcampsite/:id_user',           component: ListCampsitesComponent },
     { path: 'detaillistcampsite/:id', component: AllDetailsCampsiteComponent },
+  { path: 'admincampsite', component: CampsiteAdminComponent },
+  { path: 'usercampsite', component: CampsiteUserComponent },
+    { path: 'activite',       component:  AddActiviteComponent  },
+  { path: 'viewcampsite_reserver/:id',       component:  ViewcampsiteReserveComponent  }
 
-
-    { path: 'activite',       component:  AddActiviteComponent  }
 ];

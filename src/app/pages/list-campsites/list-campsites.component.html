@@ -1,57 +1,93 @@
-<p>works</p>
-<div class="container shadow">
-  <div class="img-container">
-    <ng-container *ngIf="photos$ | async as photos">
-      <div class="image-wrapper">
-        <!-- Display the first photo as the preview -->
-        <a [routerLink]="['/detaillistcampsite', id]">
-          <img *ngIf="photos.length > 0" [src]="photos[0]" id="preview" alt="Image">
-        </a>
-        <!-- Overlay description text -->
-        <ng-container *ngIf="detailcampsiteInfos$ | async as detailcampsiteInfos">
-          <div class="overlay-text">Description: {{ detailcampsiteInfos.description }}</div>
-        </ng-container>
-      </div>
-    </ng-container>
-  </div>
-  <div class="info-container">
+<!-- slideshow improved  -->
 
-    <ng-container *ngIf="photos$ | async as photos">
-      <div class="img-prev text-center">
-        <div class="img-slide" *ngFor="let photo of photos; let i = index">
-          <img [src]="photo" [alt]="'Image' + (i + 2)" [class.active]="i === 0" appClickimg>
+    <div class="header-body" style="min-height: 600px" >
+      <!-- Card stats -->
+      <div class="row" style="position:relative; top:-100px; z-index: 0;">
+        <div id="carouselExampleCaptions" class="carousel slide slide  carousel-fade  custom-carousel-height " data-bs-ride="carousel">
+          <ng-container *ngIf="photos$ | async as photos">
+            <div class="carousel-indicators">
+              <button *ngFor="let photo of photos; let i = index"
+                      type="button"
+                      [attr.data-bs-target]="'#carouselExampleCaptions'"
+                      [attr.data-bs-slide-to]="i"
+                      [ngClass]="{'active': i === 0}"
+                      [attr.aria-current]="i === 0 ? 'true' : null"
+                      [attr.aria-label]="'Slide ' + (i + 1)">
+              </button>
+            </div>
+            <div class="carousel-inner">
+              <div *ngFor="let photo of photos; let i = index"
+                   class="carousel-item"
+                   [ngClass]="{'active': i === 0}">
+                <a [routerLink]="['/detaillistcampsite', id_detailcamp]">
+                  <img [src]="photo" alt="Image" class="custom-image-size ">
+                </a>
+                <div class=" d-none d-md-block">
+                  <div class="poisitiontitle">
+                    <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
+                      <h2 class="title">{{ campsiteInfos.lieu |uppercase}}</h2>
+                    </ng-container>
+                    <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
+                      <h1 class="subtitle text-muted">{{ campsiteInfos.region |uppercase}}</h1>
+                    </ng-container>
+                  </div>
+                <!--  <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
+                    <h2 class="title">Lieu : {{ campsiteInfos.lieu }}</h2>
+                  </ng-container>
+                <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
+                    <mat-card-subtitle>Region : {{ campsiteInfos.region }}</mat-card-subtitle>
+                  </ng-container>
+                    <mat-card-subtitle>
+                      <ng-container *ngIf="detailcampsiteInfos$ | async as detailcampsiteInfos">
+                        <div>Description: {{ detailcampsiteInfos.description }}</div>
+                      </ng-container>
+                    </mat-card-subtitle>-->
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
-    </ng-container>
-   <!-- <p>voir plus.</p>-->
-  </div>
+    </div>
+
+<div class="row" >
+<div class="col-xl-3 col-lg-6 mt-2" *ngFor="let campsite of campsitesUser">
+<div class="note">
+  <article class="card">
+    <div class="thumb"></div>
+    <div class="infos">
+      <h2 class="title">
+          <mat-card-title>Lieu : {{ campsite.lieu }}</mat-card-title>
+      </h2>
+      <h3 class="date">
+          <mat-card-subtitle>Region : {{ campsite.region }}</mat-card-subtitle>
+      </h3>
+    <!--<h3 class="seats">remaining: </h3>-->
+      <div>
+      <p class="txt" >
+        {{ campsite.detailCampSite.description }}
+      </p>
+    </div>
+
+      <h3 class="details">
+        <div *ngIf="photos$ | async as photos">
+          <div class="image-wrapper">
+            <a [routerLink]="['/detaillistcampsite', campsite.detailCampSite.detailcampid]" class="btn btn-primary">
+              View Details
+            </a>
+          </div>
+        </div>
+      </h3>
+    </div>
+  </article>
 </div>
-
-
-
-<div class="card-container">
-  <mat-card class="example-card">
-    <mat-card-title-group>
-      <ng-container *ngIf="photos$ | async as photos">
-        <!-- Display the first photo as the preview -->
-        <a [routerLink]="['/detaillistcampsite', id]">
-          <img class="imglist" *ngIf="photos.length > 0" [src]="photos[0]" id="preview1" alt="Image">
-        </a>
-      </ng-container>
-      <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
-
-        <mat-card-title>Lieu : {{ campsiteInfos.lieu }}</mat-card-title>
-        <mat-card-subtitle>Region : {{ campsiteInfos.region }}</mat-card-subtitle>
-      </ng-container>
-    </mat-card-title-group>
-    <mat-card-content>
-      <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
-        <mat-card class="info-card">Lieu : {{ campsiteInfos.lieu }}</mat-card>
-        <mat-card class="info-card">Region : {{ campsiteInfos.region }}</mat-card>
-        <mat-card class="info-card">Prix : {{ campsiteInfos.prix }}</mat-card>
-        <mat-card class="info-card">Nombre de places : {{ campsiteInfos.places }}</mat-card>
-      </ng-container>
-    </mat-card-content>
-  </mat-card>
 </div>
-
+</div>

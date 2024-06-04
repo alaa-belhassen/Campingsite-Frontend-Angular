@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ActiviteCardsComponent } from './Activites/activite-cards/activite-cards.component';
 import { AddActiviteComponent } from './Activites/add-activite/add-activite.component';
 import { UpdateActiviteComponent } from './Activites/update-activite/update-activite.component';
+import {ListCampsitesComponent} from "./pages/list-campsites/list-campsites.component";
 
 const routes: Routes =[
   {
@@ -58,6 +59,8 @@ const routes: Routes =[
     path: '**',
     redirectTo: 'login'
   },
+
+
 ];
 
 

@@ -1,10 +1,3 @@
-.mat-stepper-horizontal {
-  margin-top: 8px;
-}
-
-.mat-form-field {
-  margin-top: 16px;
-}
 $colorSubtitle:rgb(21, 21, 102);
 .add_btn{
   position:absolute;
@@ -91,20 +84,3 @@ $colorSubtitle:rgb(21, 21, 102);
 }
 
 
-.current-step .mat-step-header {
-  background-color: yellow;
-}
-
-.completed-step .mat-step-header {
-  background-color: green;
-}
-::ng-deep .mat-horizontal-stepper-header.green-step .mat-step-icon {
-  background-color: green !important;
-  cursor: not-allowed;
-}
-
-::ng-deep .mat-horizontal-stepper-header.green-step .mat-step-label {
-  color: green !important;
-  cursor: not-allowed;
-
-}

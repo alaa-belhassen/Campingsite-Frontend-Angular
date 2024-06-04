@@ -4,10 +4,9 @@
 <div class="header">
     <div class="container-fluid">
       <div class="header-body">
-      
+
         <!-- Card stats -->
         <div class="row" style="position:relative; top:-100px; z-index: 0;">
-
             <button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>
             <div id="carouselExampleCaptions" class="carousel slide slide carousel-fade" data-bs-ride="carousel" >
               <div class="carousel-indicators">
@@ -47,15 +46,8 @@
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-            <div class="col-xl-3 col-lg-6 mt-4"  *ngFor="let produit of produits">
-              <div >  
-                <app-card-produit class="mt-4" [id]="produit.idProduct" [title]="produit.nomProduct" [type]="produit.product_Type" [img]="'https://picsum.photos/200/300?grayscale'" [description]="produit.description" [price]="produit.prix" [quantiter]="produit.quantiter" ></app-card-produit>
-
-              </div>
-            </div>
         </div>
       </div>
     </div>
 </div>
 
-  
