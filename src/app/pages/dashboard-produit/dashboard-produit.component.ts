@@ -8,23 +8,38 @@ import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
   styleUrls: ['./dashboard-produit.component.scss']
 })
 export class DashboardProduitComponent implements OnInit {
-  favoriteSeasonStatistics: any[];
-  favoriteSeason: any;
-  favoriteLandscapeStatistics: any[];
-  favoritLandscape:any;
-  favoriteAccommodationTypeStatistics: any[];
-  favoriteAccommodationType : any;
+   months:any = [
+    { name: 'January', start: '2024-01-01', end: '2024-02-01' ,value:0},
+    { name: 'February', start: '2024-02-01', end: '2024-03-01' ,value:0},
+    { name: 'March', start: '2024-03-01', end: '2024-04-01' ,value:0},
+    { name: 'April', start: '2024-04-01', end: '2024-05-01' ,value:0},
+    { name: 'May', start: '2024-05-01', end: '2024-06-01' ,value:0},
+    { name: 'June', start: '2024-06-01', end: '2024-07-01' ,value:0},
+    { name: 'July', start: '2024-07-01', end: '2024-08-01' ,value:0},
+    { name: 'August', start: '2024-08-01', end: '2024-09-01' ,value:0},
+    { name: 'September', start: '2024-09-01', end: '2024-10-01',value:0 },
+    { name: 'October', start: '2024-10-01', end: '2024-11-01' ,value:0},
+    { name: 'November', start: '2024-11-01', end: '2024-12-01',value:0 },
+    { name: 'December', start: '2024-12-01', end: '2025-01-01' ,value:0},
+  ];
 
-
+  CommandeByMonths:any=[];
 
   RentableProducts:any;
   SelllableProducts:any;
   profit:any;
+  commandeValue:any;
+  sellable:any;
+  rentable:any;
+  today:any;
   constructor(private formBuilder: FormBuilder,private statserive:StatsProduitService ) {
     this.getRentable();
     this.getSellable();
     this.getProfit();
     this.loadStatistics();
+    this.getProfitSellable();
+    this.getProfitRentable();
+    this.today=new Date();
   }
   getRentable(){
     this.statserive.getRentable().subscribe({
@@ -46,36 +61,50 @@ export class DashboardProduitComponent implements OnInit {
     })
   }
 
-  findTotalCommandeBetweenDates(dd:any,df:any,type:any){
-    this.statserive.findTotalCommandeBetweenDates(dd,df,type).subscribe({
-      next:(r)=>{console.log(r)} ,
+  getProfitSellable(){
+    this.statserive.getProfitType("SELLABLE").subscribe({
+      next:(r)=>{this.sellable = r ;console.log(r)} ,
       error:(e)=>console.log(e)
     })
   }
-  loadStatistics(): void {
-    const months = [
-      { name: 'January', start: '2024-01-01', end: '2023-01-31' },
-      { name: 'February', start: '2024-02-01', end: '2023-02-28' },
-      { name: 'March', start: '2024-05-01', end: '2024-05-31' },
-      // Ajoutez les autres mois ici
-    ];
 
-    months.forEach(month => {
-      this.findTotalCommandeBetweenDates(new Date(month.start),new Date(month.end),"SELLABLE");
+  getProfitRentable(){
+    this.statserive.getProfitType("RENTABLE").subscribe({
+      next:(r)=>{this.rentable = r ;console.log(r)} ,
+      error:(e)=>console.log(e)
+    })
+  }
+
+
+  findTotalCommandeBetweenDates(dd:any,df:any,type:any){
+    this.statserive.findTotalCommandeBetweenDates(dd,df,type).subscribe({
+      next:(r)=>{return r } ,
+      error:(e)=>console.log(e)
+    })
+  }
+
+  findTotalCommandeBetweenDates2(dd: any, df: any, type: any): Promise<any> {
+    return this.statserive.findTotalCommandeBetweenDates(dd, df, type).toPromise();
+  }
+
+
+  async loadStatistics() {
+    this.months.forEach(async (month: { end: string | number | Date; start: string | number | Date; value: any; }) => {
+      const result = new Date(month.end);
+      let commandeValue  = await this.findTotalCommandeBetweenDates2(new Date(month.start),new Date(result.setDate(result.getDate() - 1)),"SELLABLE");
+      if(commandeValue==null){
+        commandeValue=0;
+      }
+      month.value= commandeValue;
+      console.log(commandeValue)
+      this.CommandeByMonths.push(commandeValue)
+      
     });
-  
+    console.log(this.CommandeByMonths)
+
 }
-
-
-
-
-
-
-
-
   ngOnInit(): void {
   
   }
-
 
 }

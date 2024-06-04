@@ -12,6 +12,8 @@ export class CardStatComponent implements OnInit {
   @Input() value;
   @Input() since;
   @Input() growth;
+  @Input() bg;
+  @Input() icon;
 
   ngOnInit(): void {
   }

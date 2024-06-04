@@ -103,7 +103,7 @@ export class ProduitComponent implements OnInit {
   productsRecommend:Product[];
 
   
-  switchTo(value:any){
+ /* switchTo(value:any){
     if(value=="SELLABLE"){
       this.switch="RENTABLE"
       this.produitsFilter= this.produits.filter((v)=> v.product_Type==this.switch);
@@ -133,7 +133,7 @@ export class ProduitComponent implements OnInit {
     }
     this.Pagination(this.produitsFilter,1); 
 
-  }
+  }*/
   onFilterChange(){
     this.filterArrayByValue(this.produitsRecommended,this.searchText);
     this.filterArrayByValue(this.produitsFilter,this.searchText);

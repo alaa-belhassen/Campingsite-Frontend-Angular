@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import Chart from 'chart.js';
 
 // core components
@@ -12,25 +12,39 @@ import {
 @Component({
   selector: 'app-chart-pipes',
   templateUrl: './chart-pipes.component.html',
-  styleUrls: ['./chart-pipes.component.scss']
-})
-export class ChartPipesComponent implements OnInit {
+  styleUrls: ['./chart-pipes.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 
-  public datasets: any;
+})
+export class ChartPipesComponent implements OnInit  {
+
+  @Input() datasets: any;
   public data: any;
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
-
+ 
   ngOnInit() {
 
-    this.datasets = [
-      [0, 20, 10, 30, 15, 40, 20, 60, 60],
-      [0, 20, 5, 25, 10, 30, 15, 40, 40]
+    console.log(this.datasets)
+
+    this.data = this.datasets;
+
+    console.log(this.data)
+
+    parseOptions(Chart, chartOptions());
+    const monthNames= [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
+      'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
-    this.data = this.datasets[0];
 
+    if(this.datasets!=undefined){
+      chartExample2.data.datasets[0].data = this.data;
+      chartExample2.data.labels = monthNames;
 
+    }
+   
+  
     var chartOrders = document.getElementById('chart-orders');
 
     parseOptions(Chart, chartOptions());

@@ -9,10 +9,8 @@
 
 <div class="header">
     <div class="container-fluid">
-      <div class="header-body" *ngIf="this.id==null">
-        <div class="three">
+      <div class="header-body" *ngIf="this.id==null ">
           <h1>Our Features</h1>
-        </div>
         
         <div class="row mt-3">
           <app-card-hover-fancy-produit class="col" [title]="'payement'"  [description]="'our payement is provided by payme a national and popular online payement '" ></app-card-hover-fancy-produit>
@@ -30,13 +28,9 @@
         </div>
         {{searchText}}
         <!-- ICI  -->
-        <div class="row" *ngIf="this.id==null" >
-
+        <div class="row" *ngIf="this.id==null && produitsRecommended.length!==0 " >
          
-        
-          <div class="three">
             <h1>Recommendations for you {{this.currentUser.firstName}}</h1>
-          </div>
           
           
           <div class="col-xl-3 col-lg-6 mt-2"  *ngFor="let p of Pagination(produitsRecommended,1)">
@@ -45,7 +39,7 @@
             </div>
           </div>
           <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0">
+            <ul class="pagination justify-content-end mb-0 mt-2">
               <li class="page-item" [class.disabled]="currentPage2 == 1">
                 <a class="page-link"   (click)="prevPage(produitsRecommended,1)" tabindex="-1">
                   <i class="fas fa-angle-left"></i>
@@ -70,18 +64,15 @@
       <!-- ICI  -->
         <div class="row" >
 
-           <button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>
             <!-- <button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>-->
           
-            <div class="three">
               <h1>Our Products</h1>
-            </div>
             
-            <div class="d-flex filterbar  ">
+           <!--- <div class="d-flex filterbar  ">
               <button type="submit"  class="btn " (click)="switchTo('SELLABLE')" [ngClass]="switch=='SELLABLE' ? '' : 'shadow'" >Rentable </button>
               <button type="submit"  class="btn " (click)="switchTo('RENTABLE')" [ngClass]="switch!=='SELLABLE'  ? '' : 'shadow'">Sellable </button>  
               <button type="submit"  class="btn " (click)="showOut()" [ngClass]="outOf ? '' : 'shadow'">OutOfTheStock</button>  
-            </div>
+            </div>-->
             
             <div class="col-xl-3 col-lg-6 mt-2"  *ngFor="let produit of Pagination(produitsFilter,0)">
               <div >  
@@ -97,7 +88,7 @@
           </div>
              <!-- Pagination -->
              <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
+              <ul class="pagination justify-content-end mb-0 mt-2" >
                 <li class="page-item" [class.disabled]="currentPage == 1">
                   <a class="page-link"   (click)="prevPage(produitsFilter,0)" tabindex="-1">
                     <i class="fas fa-angle-left"></i>

@@ -1,0 +1,21 @@
+.main-content {
+  position: relative;
+
+  // Navbar
+  .navbar-top {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  // Container
+  .container-fluid {
+    @include media-breakpoint-up(md) {
+      padding-left: calc(
+        $main-content-padding-x + $grid-gutter-width / 2
+      ) !important;
+      padding-right: calc(
+        $main-content-padding-x + $grid-gutter-width / 2
+      ) !important;
+    }
+  }
+}

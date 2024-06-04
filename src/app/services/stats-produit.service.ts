@@ -18,6 +18,9 @@ export class StatsProduitService {
   getProfit(){
     return this.http.get(environment.url+'commande/getProfit');
   }
+  getProfitType(type:any){
+    return this.http.get(environment.url+'commande/getProfitbyType/'+type);
+  }
   findTotalCommandeBetweenDates(dateDebut:any,dateFin:any,type:any){
     return this.http.get(environment.url+'commande/findTotalCommandeBetweenDates/'+dateDebut+'/'+dateFin+'/'+type)
   }
