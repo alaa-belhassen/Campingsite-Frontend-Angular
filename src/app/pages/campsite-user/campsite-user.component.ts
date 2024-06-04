@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import * as mapboxgl from 'mapbox-gl';
+import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import {CampsiteService} from "../../services/campsite.service";
 import {Panier} from "../../entities/Panier";
 
@@ -32,7 +32,6 @@ export class CampsiteUserComponent implements OnInit {
       };
 
       // Initialize the map with the initial coordinates
-      var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
       mapboxgl.accessToken = 'pk.eyJ1Ijoic2FyYWhhbG91aSIsImEiOiJjbHdudXR5ZHkyYW80Mml0Z2o5cjRpYWZkIn0.yq0cY53L6w0i0c9BoaU9AA';
       this.map = new mapboxgl.Map({
         container: 'map',
