@@ -23,18 +23,17 @@ console.log(campsitevalue);
 }
 
 //ajout detailcampsite avec affectation du campsite qu'il appartient
-  ajoutDetailCampsite(campsitevalue,lieu:any ){
+  ajoutDetailCampsite(campsitevalue,idcamp:any ){
     console.log(campsitevalue);
 
-    return    this.http.post(`http://localhost:8082/details/add/${lieu}`,campsitevalue,lieu)
+    return    this.http.post(`http://localhost:8082/details/add/${idcamp}`,campsitevalue,idcamp)
 
   }
 
+//getAll campsites
+  getAll():Observable<any>{
 
-  getAll(){
-
-    return    this.http.get("http://localhost:8082/camp/campsites/Consulter")
-
+    return    this.http.get("http://localhost:8082/campsites/Consulter")
 
   }
 /*
@@ -149,4 +148,26 @@ console.log(campsitevalue);
     return    this.http.post(`http://localhost:8082/rules/add/${id_camp}`,rulevalue,id_camp);
 
   }
+
+  //getAllPendingCampsites admin
+
+  getAllPendingCampsites(){
+    return    this.http.get('http://localhost:8082/campsites/findpendingcampsitesforadmin');
+  }
+
+  getAllRulesByIdCamp(id_detail:any){
+    return    this.http.get(`http://localhost:8082/campsites/findAllRuleByCampSite/${id_detail}`);
+  }
+
+  //ApprouveCampsite admin
+
+  approuveCampsite(id_camp:any){
+    return    this.http.put(`http://localhost:8082/campsites/ModifierCampsiteParAdmin/${id_camp}`,id_camp);
+  }
+  //DesapprouveCampsite admin
+
+  depprouveCampsite(id_camp:any){
+    return    this.http.put(`http://localhost:8082/campsites/ModifierCampsiteParAdminDis/${id_camp}`,id_camp);
+  }
+
 }

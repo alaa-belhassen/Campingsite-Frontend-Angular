@@ -1,11 +1,12 @@
-<div class="header  pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 350px;">
-  <!-- Mask -->
-  <span class="mask bg-gradient-danger opacity-8"></span>
-  <!-- Header container -->
+<div class=" bg-gradient-danger " class="imageCover">
+  <div class="poisitiontitle">
+    <h1 class="title">Administrator side</h1>
+    <h1 class="subtitle text-muted">Approve/desapprove campsites</h1>
+  </div>
 </div>
-<div class="bg-white">
-<div class="col-xl-8 order-xl-1">
-  <div class="card bg-secondary shadow">
+<div class="card bg-white shadow">
+<div class="">
+  <div class="card bg-white ">
     <div class="card-header bg-white border-0">
       <div class="row align-items-center">
         <div class="col-8">
@@ -19,7 +20,7 @@
   </div>
 </div>
 
-<mat-stepper class="mt-8" [linear]="isLinear" #stepper  (selectionChange)="onStepChange($event)">
+<mat-stepper class="mt-2" [linear]="isLinear" #stepper >
   <mat-step [stepControl]="firstformgrp">
     <form [formGroup]="firstformgrp">
       <ng-template matStepLabel>Fill out campsite infos</ng-template>
@@ -42,7 +43,6 @@
 
       </div>
       <hr class="my-4" />
-      <!-- Address -->
       <h6 class="heading-small text-muted mb-4">Availability</h6>
       <div class="pl-lg-4">
         <div class="row">
@@ -71,7 +71,7 @@
       </div>
 
       <div>
-        <button mat-button matStepperNext >Next</button>
+        <button mat-button matStepperNext (click)="AjoutCampsite()"  >Next</button>
       </div>
     </form>
   </mat-step>
@@ -91,13 +91,12 @@
           </div>
           <div class="col-lg-6">
             <div class="form-group">
-              <label class="form-control-label" for="input-email">Coordonné</label>
-              <input id="input-email1" formControlName="coordonne"  class="form-control form-control-alternative" placeholder="45° 45′ 35″ nord, 4° 50′ 32″ est">
+              <label class="form-control-label" for="input-email">Coordonné </label>
+              <input id="input-email1" formControlName="coordonne"  class="form-control form-control-alternative" placeholder="(lat: 36.798, lon: 10.1717)">
             </div>
           </div>
         </div>
         <hr class="my-4" />
-        <!-- Address -->
         <h6 class="heading-small text-muted mb-4">Availability</h6>
         <div class="pl-lg-4">
           <div class="row">
@@ -123,7 +122,7 @@
 
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext (click)="AjoutDetailCampsite()">Next</button>
       </div>
     </form>
   </mat-step>
@@ -155,7 +154,7 @@
       </div>
 
       <div class="col-4 text-right">
-        <a   class="btn btn-sm btn-primary">Add new rule +</a>
+        <a   class="btn btn-sm btn-primary" (click)="ajoutRule()">Add new rule +</a>
       </div>
 
       <div>
@@ -182,6 +181,6 @@
     </div>
   </mat-step>
 </mat-stepper>
+  {{this.camp|json}}
 </div>
-
 

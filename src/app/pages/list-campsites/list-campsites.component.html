@@ -3,7 +3,7 @@
     <div class="header-body" style="min-height: 600px" >
       <!-- Card stats -->
       <div class="row" style="position:relative; top:-100px; z-index: 0;">
-        <div id="carouselExampleCaptions" class="carousel slide slide carousel-fade" data-bs-ride="carousel">
+        <div id="carouselExampleCaptions" class="carousel slide slide  carousel-fade  custom-carousel-height " data-bs-ride="carousel">
           <ng-container *ngIf="photos$ | async as photos">
             <div class="carousel-indicators">
               <button *ngFor="let photo of photos; let i = index"
@@ -20,12 +20,18 @@
                    class="carousel-item"
                    [ngClass]="{'active': i === 0}">
                 <a [routerLink]="['/detaillistcampsite', id_detailcamp]">
-                  <img [src]="photo" alt="Image" class="d-block w-100">
+                  <img [src]="photo" alt="Image" class="custom-image-size ">
                 </a>
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Slide {{i + 1}} label</h5>
-
-                  <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
+                <div class=" d-none d-md-block">
+                  <div class="poisitiontitle">
+                    <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
+                      <h2 class="title">{{ campsiteInfos.lieu |uppercase}}</h2>
+                    </ng-container>
+                    <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
+                      <h1 class="subtitle text-muted">{{ campsiteInfos.region |uppercase}}</h1>
+                    </ng-container>
+                  </div>
+                <!--  <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
                     <h2 class="title">Lieu : {{ campsiteInfos.lieu }}</h2>
                   </ng-container>
                 <ng-container *ngIf="campsiteInfos$ | async as campsiteInfos">
@@ -35,7 +41,7 @@
                       <ng-container *ngIf="detailcampsiteInfos$ | async as detailcampsiteInfos">
                         <div>Description: {{ detailcampsiteInfos.description }}</div>
                       </ng-container>
-                    </mat-card-subtitle>
+                    </mat-card-subtitle>-->
                 </div>
               </div>
             </div>

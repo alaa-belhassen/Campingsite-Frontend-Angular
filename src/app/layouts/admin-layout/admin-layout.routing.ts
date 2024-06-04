@@ -23,6 +23,7 @@ import { ListUsersComponent } from 'src/app/pages/list-users/list-users.componen
 import { ChartComponent } from 'src/app/pages/chart/chart.component';
 import {CampsiteAdminComponent} from "../../pages/campsite-admin/campsite-admin.component";
 import {CampsiteUserComponent} from "../../pages/campsite-user/campsite-user.component";
+import {ViewcampsiteReserveComponent} from "../../pages/viewcampsite-reserve/viewcampsite-reserve.component";
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'produit',      component: ProduitComponent },
@@ -44,6 +45,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'detaillistcampsite/:id', component: AllDetailsCampsiteComponent },
   { path: 'admincampsite', component: CampsiteAdminComponent },
   { path: 'usercampsite', component: CampsiteUserComponent },
+    { path: 'activite',       component:  AddActiviteComponent  },
+  { path: 'viewcampsite_reserver/:id',       component:  ViewcampsiteReserveComponent  }
 
-    { path: 'activite',       component:  AddActiviteComponent  }
 ];

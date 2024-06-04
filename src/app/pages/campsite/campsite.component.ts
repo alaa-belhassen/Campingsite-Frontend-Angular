@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, QueryList, Renderer2, ViewChild, ViewChildren} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CampsiteService} from "../../services/campsite.service";
 import {StepperSelectionEvent} from "@angular/cdk/stepper";
+import {MatStepHeader, MatStepper} from '@angular/material/stepper';
 
 @Component({
   selector: 'app-campsite',
@@ -11,13 +12,13 @@ import {StepperSelectionEvent} from "@angular/cdk/stepper";
 })
 export class CampsiteComponent implements OnInit {
 
-  isLinear = false;
+  isLinear = true;
 
 
   previousIndex: number = 0;
 
 id_user:any;
-  constructor(private  campsiteservice:CampsiteService,private _formBuilder: FormBuilder) {
+  constructor(private  campsiteservice:CampsiteService,private _formBuilder: FormBuilder,private renderer: Renderer2) {
 
   }
 
@@ -58,28 +59,32 @@ this.id_user=1;
     descriptionrule:new FormControl()
 
   })
-
+camp:any
   AjoutCampsite(){
     this.campsiteservice.ajout(this.firstformgrp.value,this.id_user).subscribe({
-      next:()=>{
-        console.log("done")
+      next:(data:any)=>{
+        this.camp=data
 
+        console.log("done "+data)
+        console.log("done "+this.firstformgrp.value.lieu)
       },
       error:(e)=>{
         console.log(e)
       }
 
     })
+    this.completeStep(0);
+
   }
 
-
+detail:any
   AjoutDetailCampsite(){
-    console.log(this.firstformgrp.value)
-    console.log(this.secondFormGroup.value)
-    this.campsiteservice.ajoutDetailCampsite(this.secondFormGroup.value,this.firstformgrp.value.lieu).subscribe({
+   // console.log(this.idcamp.campsiteId)
+    this.campsiteservice.ajoutDetailCampsite(this.secondFormGroup.value,this.camp.campsiteid).subscribe({
 
-      next:()=>{
-        console.log("done")
+      next:(data)=>{
+        this.detail=data
+        console.log("done"+this.detail)
 
       },
       error:(e)=>{
@@ -87,10 +92,24 @@ this.id_user=1;
       }
 
     })
+    this.completeStep(1);
+
   }
    ajoutRule() {
-  this.campsiteservice.ajoutRule(this.thirdFormGroup.value,1)
-  }
+  this.campsiteservice.ajoutRule(this.thirdFormGroup.value,this.camp.campsiteid).subscribe({
+
+    next:(r)=>{
+      console.log("done"+r)
+
+    },
+    error:(e)=>{
+      console.log(e)
+    }
+
+  })
+     this.completeStep(2);
+
+   }
 
   onStepChange(event: StepperSelectionEvent) {
     if (event.selectedIndex > this.previousIndex) {
@@ -114,6 +133,19 @@ this.id_user=1;
     this.previousIndex = event.selectedIndex;
 
   }
+  @ViewChild('stepper') stepper: MatStepper;
+  @ViewChildren(MatStepHeader) stepHeaders: QueryList<MatStepHeader>;
 
+  completeStep(stepIndex: number) {
+    const step = this.stepper._steps.toArray()[stepIndex];
+    const stepHeader = this.stepper._stepHeader.toArray()[stepIndex];
+
+    // Add the green-step class to the step header
+    this.renderer.addClass(stepHeader._elementRef.nativeElement, 'green-step');
+
+    // Disable the step
+    step.editable = false;
+    step.completed = true;
+  }
 
 }

@@ -65,11 +65,8 @@
 
       <div class = "purchase-info">
         <input type = "number" min = "0" value = "1">
-        <button type = "button" class = "btn" (click)="setArchivedTrue(id)">
-          Delete Campsite
-        </button>
-        <button type = "button" class = "btn" (click)="update()">
-          Update Campsite
+        <button type = "button" class = "btn">
+          Reserver
         </button>
       </div>
 
@@ -79,29 +76,5 @@
 </div>
 
 
-
-
-<h3 class="mb-0">Rules</h3>
-<div class=" form-group">
-  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText">
-</div>
-<!-- Card containing the table -->
-
-  <div class="table-responsive">
-    <table class="table align-items-center table-flush" style="width: 100%; overflow-x: auto;">
-      <thead class="thead-light">
-      <tr>
-        <th scope="col">N°</th>
-        <th scope="col">Description</th>
-      </tr>
-      </thead>
-      <tbody *ngIf="campsiteRules && campsiteRules.length > 0">
-      <tr *ngFor="let res of campsiteRules | filter: searchText">
-        <td>{{ res.numero }}</td>
-        <td>{{ res.description }}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
 
 

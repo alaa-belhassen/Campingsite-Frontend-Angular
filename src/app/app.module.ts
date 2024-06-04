@@ -23,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FilterPipe } from './filter-activite.pipe';
 import { MatTabsModule } from '@angular/material/tabs';
 
+import {GoogleMapsModule} from "@angular/google-maps";
 
 
 
@@ -67,6 +68,7 @@ import { ProduitComponent } from './pages/produit/produit.component';
 import { RegisterCentreCampingComponent } from './pages/register-centre-camping/register-centre-camping.component';
 import { CampsiteAdminComponent } from './pages/campsite-admin/campsite-admin.component';
 import { CampsiteUserComponent } from './pages/campsite-user/campsite-user.component';
+import { ViewcampsiteReserveComponent } from './pages/viewcampsite-reserve/viewcampsite-reserve.component';
 
 
 @NgModule({
@@ -102,7 +104,8 @@ import { CampsiteUserComponent } from './pages/campsite-user/campsite-user.compo
     MatTableModule,
     MatSortModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    GoogleMapsModule
 
   ],
   declarations: [
@@ -130,6 +133,7 @@ import { CampsiteUserComponent } from './pages/campsite-user/campsite-user.compo
     FilterPipe,
     CampsiteAdminComponent,
     CampsiteUserComponent,
+    ViewcampsiteReserveComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

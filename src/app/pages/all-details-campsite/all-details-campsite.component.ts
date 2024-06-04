@@ -13,6 +13,8 @@ export class AllDetailsCampsiteComponent implements OnInit {
   public id;
   photos$: Observable<string[]>;
   campsiteInfos: any;
+  campsiteRules: any;
+  searchText:any;
 
   constructor(private route: ActivatedRoute,private campsiteService:CampsiteService) { }
 
@@ -21,6 +23,7 @@ export class AllDetailsCampsiteComponent implements OnInit {
       this.id = params['id']; // Récupère l'ID à partir des paramètres de route
       this.photos$ = this.campsiteService.getPhotosByDetailCampsite(this.id);
       this.getCampsiteInfos(this.id)
+      this.getRulesbyCampsite(this.id)
     });
 
 
@@ -65,6 +68,28 @@ export class AllDetailsCampsiteComponent implements OnInit {
       next:(data)=> {
         this.campsiteInfos = data;
         console.log('afficher');
+      } ,
+      error:(err)=>{
+        console.log(err);
+
+      }
+    })
+  }
+  idcamp:any
+  getRulesbyCampsite(id:any) {
+    this.campsiteService.getCampsiteByDetailCamp(id).subscribe({
+      next:(data:any)=> {
+        console.log(data.campsiteid)
+        this.idcamp = data.campsiteid;
+this.campsiteService.getAllRulesByIdCamp(this.idcamp).subscribe({
+  next:(data1:any)=> {
+    this.campsiteRules=data1
+  },
+  error(e){
+    console.log(e)
+  }
+})
+        console.log('afficher jjnk'+this.campsiteRules.length);
       } ,
       error:(err)=>{
         console.log(err);
