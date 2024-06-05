@@ -64,7 +64,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'Spinning wheel', component:  SpinningWheelComponent  },
     {path :'card-activite' , component: ActiviteCardsComponent },
     { path : 'ListUser',      component :ListUsersComponent},
-    { path : 'ListUser',   canActivate: [AdminGuardGuard] ,   component :ListUsersComponent},
+    { path : 'ListUser' ,   component :ListUsersComponent},
     { path: 'dashboardAdmin',      component: DashbordAdminComponent },
     { path: 'campsite',           component: CampsiteComponent },
     { path: 'listcampsite/:id_user',           component: ListCampsitesComponent },

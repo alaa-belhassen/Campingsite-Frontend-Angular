@@ -28,7 +28,7 @@
         </div>
         {{searchText}}
         <!-- ICI  -->
-        <div class="row" *ngIf="this.id==null && produitsRecommended.length!==0 " >
+        <div class="row" *ngIf="this.id==null " >
          
             <h1>Recommendations for you {{this.currentUser.firstName}}</h1>
           
@@ -64,7 +64,7 @@
       <!-- ICI  -->
         <div class="row" >
 
-            <!-- <button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>-->
+            <button type="button" class="btn btn-success add_btn" (click)="redirect()">addproduct</button>
           
               <h1>Our Products</h1>
             

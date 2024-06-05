@@ -13,34 +13,25 @@ declare interface RouteInfo {
     roles?: string[];
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
-    { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
-    { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
+    //{ path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
+    //admin sidebar 
     { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' },
+    { path: '/ListUser', title: 'Liste des utilisateurs',  icon:'ni-bullet-list-67 text-red', class: ''  , roles: ['ADMIN'] },
+    { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' },
+    { path: '/admincampsite', title: 'AdminCampsite',  icon:'ni-bullet-list-67 text-red', class: '' },
+    { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CENTRECAMPING']  },
+    { path: '/afficher-reclamation', title: 'Afficher Reclamation', icon: '', class: '' },
+
+    //camper sidebar
     { path: '/Spinning wheel', title: 'Spinning Wheel',  icon:'ni-bullet-list-67 text-red', class: '' },
     { path: '/card-activite', title: 'activite-cards',  icon:'ni-bullet-list-67 text-red', class: '' },
-
-
-    { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary',class: '',    },
-    { path: '/ListUser', title: 'Liste des utilisateurs',  icon:'ni-bullet-list-67 text-red', class: ''  , roles: ['ADMIN'] },
-    { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
-    { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' },
-  { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' },
-  { path: '/admincampsite', title: 'AdminCampsite',  icon:'ni-bullet-list-67 text-red', class: '' },
-  { path: '/usercampsite', title: 'UserCampsite',  icon:'ni-bullet-list-67 text-red', class: '' },
-
-
-    { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['ADMIN']  },
-    { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CENTRECAMPING']  },
-    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' },
+    { path: '/usercampsite', title: 'UserCampsite',  icon:'ni-bullet-list-67 text-red', class: '' },
     { path: '/dashboard_reclamation', title: 'Reclamations', icon: 'ni-single-02 text-yellow', class: 'dropdown' },
     { path: '/dashboard_reclamation', title: 'Dashboard', icon: '', class: '' },
     { path: '/ajout-reclamation', title: 'Ajout Reclamation', icon: '', class: '' },
-    { path: '/afficher-reclamation', title: 'Afficher Reclamation', icon: '', class: '' },
-    { path: '/afficher-reclamation-client', title: 'Afficher Reclamation Client', icon: 'ni-bullet-list-67 text-red', class: '' }
+    { path: '/afficher-reclamation-client', title: 'Afficher Reclamation Client', icon: 'ni-bullet-list-67 text-red', class: '' },
+    //everywhere exempt admin
+    { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
 ];
 
 @Component({
