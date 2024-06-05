@@ -18,8 +18,7 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
 import { ListUsersComponent } from '../pages/list-users/list-users.component';
 import { CardProduitComponent } from './card-produit/card-produit.component';
 import { ImageComponentComponent } from './image-component/image-component.component';
-import {  heatmapComponent } from './Reservation/heatmap/heatmap.component';
-import { ResClientComponent } from './Reservation/res-client/res-client.component';
+import { heatmapComponent } from './Reservation/heatmap/heatmap.component';
 
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -50,8 +49,6 @@ import { CommonModule } from '@angular/common';
     CardProduitComponent,
     ImageComponentComponent,
     heatmapComponent,
-    ResClientComponent,
-  
     ShoploaderComponent,
     CardHoverFancyProduitComponent,
     ImageComponentComponent,

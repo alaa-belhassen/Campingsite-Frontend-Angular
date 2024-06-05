@@ -41,6 +41,11 @@ import { SpinningWheelComponent } from './spinning-wheel/spinning-wheel.componen
 
 import {GoogleMapsModule} from "@angular/google-maps";
 
+import { ResClientComponent } from './components/Reservation/res-client/res-client.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { heatmapComponent } from './components/Reservation/heatmap/heatmap.component';
+  
 
 import { ChartPipeComponent } from './components/Reservation/chart-pipe/chart-pipe.component';
 import { ListeReservationComponent } from './components/Reservation/liste-reservation/liste-reservation.component';
@@ -72,6 +77,7 @@ import { ClickimgDirective } from './clickimg.directive';
 
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -99,7 +105,8 @@ import { ClickimgDirective } from './clickimg.directive';
     MatDialogModule,
     MatTabsModule,
     GoogleMapsModule,
-  
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
   declarations: [
@@ -133,13 +140,14 @@ import { ClickimgDirective } from './clickimg.directive';
     DetailsComposentComponent,
     DashboardProduitComponent,
     FilteruserPipe,
+    ResClientComponent,
     OpenReclamationComponent,
     AfficherReclamationClientComponent,
     AfficherUneReclamationClientComponent,
     SuccessPopupComponent,
     CampsiteAdminComponent,
     CampsiteUserComponent,
-    ViewcampsiteReserveComponent,
+    ViewcampsiteReserveComponent
   ],
   providers: [Location], // Add Location to providers
     
