@@ -1,26 +1,107 @@
-/* Custom MatDialog Overlay */
-.custom-mat-dialog-overlay {
-    position: fixed; /* Position the overlay fixed to the viewport */
-    top: 0;
-    left: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-    z-index: 1000; /* Ensure overlay is above other content */
+/* res-client.component.scss */
+
+.card-body {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  .heading-small {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6c757d;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
   }
-  
-  /* Custom MatDialog Container */
-  .custom-mat-dialog-container {
-    position: fixed; /* Position the dialog container fixed to the viewport */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center the dialog */
-    background-color: white; /* Set background color */
-    border-radius: 8px; /* Add border radius for rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-    padding: 20px; /* Add padding */
-    max-width: 400px; /* Set maximum width */
-    width: calc(100% - 40px); /* Ensure dialog is always full width with some margin */
-    z-index: 1001; /* Ensure dialog is above overlay */
+
+  .form-group {
+    margin-bottom: 1rem;
+
+    .form-control-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #495057;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .form-control-alternative {
+      border: 1px solid #e3e6f0;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    }
   }
-  
+
+  .example-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    .mat-form-field-wrapper {
+      padding-bottom: 0.5rem;
+    }
+
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+      background-color: #fff;
+    }
+
+    .mat-input-element {
+      padding: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .mat-date-range-input .mat-start-date,
+    .mat-date-range-input .mat-end-date {
+      margin: 0 0.25rem;
+    }
+  }
+
+  .text-right {
+    text-align: right;
+
+    .btn {
+      padding: 0.25rem 0.75rem;
+      font-size: 0.875rem;
+      border-radius: 0.25rem;
+      transition: all 0.15s ease-in-out;
+      
+      &.btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+      }
+
+      &.btn-sm {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+      }
+    }
+  }
+}
+
+mat-card {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 500px;  /* Adjust this value to make the card smaller */
+  margin: auto;
+
+  mat-card-content {
+    padding: 1rem;
+
+    .example-form-field {
+      margin-top: 0.5rem;
+    }
+  }
+}

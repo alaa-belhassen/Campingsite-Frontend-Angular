@@ -23,6 +23,7 @@ import {  heatmapComponent } from './Reservation/heatmap/heatmap.component';
 import { ResClientComponent } from './Reservation/res-client/res-client.component';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -46,7 +47,8 @@ import { ResClientComponent } from './Reservation/res-client/res-client.componen
     CardProduitComponent,
     ImageComponentComponent,
     heatmapComponent,
-    ResClientComponent
+    
+   
   
   ],
   exports: [
@@ -58,7 +60,8 @@ import { ResClientComponent } from './Reservation/res-client/res-client.componen
     ChartPipesComponent,
     CardProduitComponent,
     heatmapComponent,
-    ImageComponentComponent
+    ImageComponentComponent,
+    
       ]
 })
 export class ComponentsModule { }

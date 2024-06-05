@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-
-
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {
   MatDialog,
 } from '@angular/material/dialog';
-import { UpdateResComponent } from './update-res/update-res.component';
+
 import { ReservationService } from '../reservation-service.service';
 
 
@@ -24,6 +23,7 @@ export class ListeReservationComponent implements OnInit {
   title = 'mission';
   reservations: any[] = [];
   ResForm: any;
+  campaignTwo :any;
   futureResrvation:any;
   user:any;
   ResPro: any;
@@ -32,7 +32,10 @@ export class ListeReservationComponent implements OnInit {
     
     const checked = true;
     const disabled = false;
-    
+   this.campaignTwo = new FormGroup({
+      start: new FormControl(''),
+      end: new FormControl(''),
+    });
     this.ResForm = this.fb.group({
       idReservation: [''],
       campeurId: [''],
@@ -46,13 +49,7 @@ export class ListeReservationComponent implements OnInit {
       })
     });
   }
-  openDialog(ID:any): void {
-    this.dialog.open(UpdateResComponent, {
-      width: '400px', // Adjust the width according to your preference
-      data: { id: ID } 
-      
-    });
-  }
+
 
   ngOnInit(): void {
     this.reservationService.getReservation().subscribe((datas) => {

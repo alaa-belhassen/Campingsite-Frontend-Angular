@@ -32,7 +32,7 @@ import { AddActiviteComponent } from './Activites/add-activite/add-activite.comp
 import { FilterPipe } from './filter-activite.pipe';
 import { ChartPipeComponent } from './components/Reservation/chart-pipe/chart-pipe.component';
 import { ListeReservationComponent } from './components/Reservation/liste-reservation/liste-reservation.component';
-import { UpdateResComponent } from './components/Reservation/liste-reservation/update-res/update-res.component';
+
 import { AddProduitComponent } from './pages/add-produit/add-produit.component';
 import { AllDetailsCampsiteComponent } from './pages/all-details-campsite/all-details-campsite.component';
 import { CampsiteComponent } from './pages/campsite/campsite.component';
@@ -44,6 +44,8 @@ import { RegisterCentreCampingComponent } from './pages/register-centre-camping/
 import { heatmapComponent } from './components/Reservation/heatmap/heatmap.component';
 import { ClickimgDirective } from './clickimg.directive';
 import { ResClientComponent } from './components/Reservation/res-client/res-client.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -67,7 +69,11 @@ import { ResClientComponent } from './components/Reservation/res-client/res-clie
     MatIconModule,
     MatTableModule,
     MatSortModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    
+  
   ],
   declarations: [
     AppComponent,
@@ -79,7 +85,7 @@ import { ResClientComponent } from './components/Reservation/res-client/res-clie
     PayementDoneComponent,
     DashbordAdminComponent,
     ListeReservationComponent,
-    UpdateResComponent,
+   
     FilterPipe,
     ChartPipeComponent,
     CampsiteComponent,
@@ -89,7 +95,8 @@ import { ResClientComponent } from './components/Reservation/res-client/res-clie
     ActiviteCardsComponent,
     UpdateActiviteComponent,
     AddActiviteComponent,
-
+    ResClientComponent,
+   
     
   ],
   providers: [],
