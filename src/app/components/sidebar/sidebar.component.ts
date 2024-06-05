@@ -13,8 +13,9 @@ declare interface RouteInfo {
     roles?: string[];
 }
 export const ROUTES: RouteInfo[] = [
-    //{ path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
+   
     //admin sidebar 
+    { path: '/dashbord-admin', title: 'Dashbord',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['ADMIN']},
     { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['ADMIN']},
     { path: '/ListUser', title: 'Liste des utilisateurs',  icon:'ni-bullet-list-67 text-red', class: ''  , roles: ['ADMIN'] },
     { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '', roles: ['ADMIN'] },
@@ -22,7 +23,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['ADMIN']  },
     { path: '/afficher-reclamation', title: 'Afficher Reclamation', icon: '', class: '' , roles: ['ADMIN']},
 
+
     //camper sidebar
+    { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '', roles: ['CAMPEUR'] },
     { path: '/Spinning wheel', title: 'Spinning Wheel',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CAMPEUR']},
     { path: '/card-activite', title: 'activite-cards',  icon:'ni-bullet-list-67 text-red', class: '', roles: ['CAMPEUR'] },
     { path: '/usercampsite', title: 'UserCampsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CAMPEUR']},
@@ -32,6 +35,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/afficher-reclamation-client', title: 'Afficher Reclamation Client', icon: 'ni-bullet-list-67 text-red', class: '' , roles: ['CAMPEUR']},
     //everywhere exempt admin
     { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
+    
 ];
 
 @Component({
