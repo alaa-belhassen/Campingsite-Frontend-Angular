@@ -15,21 +15,21 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     //{ path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
     //admin sidebar 
-    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' },
+    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['ADMIN']},
     { path: '/ListUser', title: 'Liste des utilisateurs',  icon:'ni-bullet-list-67 text-red', class: ''  , roles: ['ADMIN'] },
-    { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/admincampsite', title: 'AdminCampsite',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CENTRECAMPING']  },
-    { path: '/afficher-reclamation', title: 'Afficher Reclamation', icon: '', class: '' },
+    { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '', roles: ['ADMIN'] },
+    { path: '/admincampsite', title: 'AdminCampsite',  icon:'ni-bullet-list-67 text-red', class: '', roles: ['ADMIN'] },
+    { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['ADMIN']  },
+    { path: '/afficher-reclamation', title: 'Afficher Reclamation', icon: '', class: '' , roles: ['ADMIN']},
 
     //camper sidebar
-    { path: '/Spinning wheel', title: 'Spinning Wheel',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/card-activite', title: 'activite-cards',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/usercampsite', title: 'UserCampsite',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/dashboard_reclamation', title: 'Reclamations', icon: 'ni-single-02 text-yellow', class: 'dropdown' },
-    { path: '/dashboard_reclamation', title: 'Dashboard', icon: '', class: '' },
-    { path: '/ajout-reclamation', title: 'Ajout Reclamation', icon: '', class: '' },
-    { path: '/afficher-reclamation-client', title: 'Afficher Reclamation Client', icon: 'ni-bullet-list-67 text-red', class: '' },
+    { path: '/Spinning wheel', title: 'Spinning Wheel',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CAMPEUR']},
+    { path: '/card-activite', title: 'activite-cards',  icon:'ni-bullet-list-67 text-red', class: '', roles: ['CAMPEUR'] },
+    { path: '/usercampsite', title: 'UserCampsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CAMPEUR']},
+    { path: '/dashboard_reclamation', title: 'Reclamations', icon: 'ni-single-02 text-yellow', class: 'dropdown', roles: ['CAMPEUR'] },
+    { path: '/dashboard_reclamation', title: 'Dashboard', icon: '', class: '' , roles: ['CAMPEUR']},
+    { path: '/ajout-reclamation', title: 'Ajout Reclamation', icon: '', class: '' , roles: ['CAMPEUR']},
+    { path: '/afficher-reclamation-client', title: 'Afficher Reclamation Client', icon: 'ni-bullet-list-67 text-red', class: '' , roles: ['CAMPEUR']},
     //everywhere exempt admin
     { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
 ];
@@ -71,28 +71,26 @@ export class SidebarComponent implements OnInit {
 }
 
 filterRoutesByRole() {
-  this.menuItems = ROUTES.filter(menuItem => !menuItem.roles || menuItem.roles.includes(this.role));
+  return ROUTES.filter(menuItem => !menuItem.roles || menuItem.roles.includes(this.role));
 }
 
   navigate(path:any){
-    this.filterRoutesByRole();
     this.router.navigate([path]).then(  ()=>  this.navigateToProductDetail());
   }
   navigateToProductDetail() {
-
-    this.produiturl=this.router.url;
-    if(this.produiturl=='/produit'){
+    this.produiturl = this.router.url;
+    console.log(this.produiturl)
+    if (this.produiturl.includes('/produit') ) {
       this.getCategories();
       this.drop = true;
     } else {
       const produitMenuItem = ROUTES.find(menuItem => menuItem.title === 'Produit');
       if (produitMenuItem && produitMenuItem.childrens) {
-        produitMenuItem.childrens=[];
+        produitMenuItem.childrens = [];
       }
-      this.drop=false;
+      this.drop = false;
     }
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
-
+    this.menuItems = ROUTES.filter(menuItem => !menuItem.roles || menuItem.roles.includes(this.role));
   }
   isChildActive(parentRoute: string) {
     console.log(this.active.firstChild)
@@ -102,12 +100,13 @@ filterRoutesByRole() {
    if(!this.drop){
     this.categoriesService.getAllCategorie().subscribe({
       next:(categories:any)=>{
-        const produitMenuItem = ROUTES.find(menuItem => menuItem.title === 'Produit');
+        const  produitMenuItem= ROUTES.find(menuItem => menuItem.title === 'Produit');
+        console.log(produitMenuItem)
         console.log(categories)
         if (produitMenuItem && produitMenuItem.childrens) {
-          categories.forEach(category => {
+          categories.forEach((category:any) => {
             produitMenuItem.childrens.push({
-              path: `/produit/${category.nom_Categorie}`, // Adjust the path as needed
+              path:`/produit/${category.nom_Categorie}`, // Adjust the path as needed
               title: category.nom_Categorie,
               icon: 'ni ni-bold-right text-blue',
               class: ''
@@ -122,7 +121,6 @@ filterRoutesByRole() {
     })
    }
 
-  }
-
 
   }
+}

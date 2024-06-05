@@ -11,10 +11,11 @@ export class AdminGuardGuard implements CanActivate {
 
   canActivate(): boolean {
     const role = this.token.getRole();
+    console.log('alaa')
+    console.log(this.token.getUser())
     if (role === 'ADMIN') {
       return true;
     } else {
-      this.router.navigate (['/erreur']);
       console.log(" leeeeeeeeeee admin");
       return false;
     }

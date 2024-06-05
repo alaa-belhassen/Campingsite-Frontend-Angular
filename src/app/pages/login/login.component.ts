@@ -63,7 +63,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.role = this.tokenStorage.getUser().role;
-        this.router.navigate(["/user-profile"]);
+        if(this.role=="ADMIN"){
+          this.router.navigate(["/user-profile"]);
+        }else{
+          this.router.navigate(["/welcome2"]);
+
+        }
       },
       (err) => {
         console.log("here error after login", err);

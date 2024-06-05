@@ -11,6 +11,8 @@ import { ActiviteCardsComponent } from './Activites/activite-cards/activite-card
 import { AddActiviteComponent } from './Activites/add-activite/add-activite.component';
 import { UpdateActiviteComponent } from './Activites/update-activite/update-activite.component';
 import {ListCampsitesComponent} from "./pages/list-campsites/list-campsites.component";
+import { AdminGuardGuard } from './services/admin-guard.guard';
+import { CampeurGuardGuard } from './services/campeur-guard.guard';
 
 const routes: Routes =[
   {
@@ -20,6 +22,7 @@ const routes: Routes =[
   },
 {
     path: '',
+    canActivate: [AdminGuardGuard],
     component: AdminLayoutComponent,
     children: [
       {
