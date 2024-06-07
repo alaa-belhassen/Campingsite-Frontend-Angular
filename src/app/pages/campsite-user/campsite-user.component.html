@@ -7,28 +7,28 @@
 
 <div class="row ">
 
-  <div id="map" class="col-8">
+  <div id="map" class="col-9">
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
   </div>
-  <div class=" col-4">
-    <mat-card class="example-card" *ngFor="let campsite of campsites">
+  <div class=" col-3">
+    <mat-card class="example-card shadow" *ngFor="let campsite of campsites">
       <mat-card-header>
         <div class="header-content">
           <div class="header-left">
             <img mat-card-sm-image [src]="campsite.detailCampSite.photos[0]?.imageUrl" alt="Campsite Image">
           </div>
-          <div class="header-right">
+          <div class="header-right ml-4">
             <mat-card-title>{{ campsite.lieu }}</mat-card-title> <mat-card-subtitle>{{ campsite.region }}</mat-card-subtitle>
           </div>
         </div>
       </mat-card-header>
-      <mat-card-content>
-        <!-- Description centered -->
+      <mat-card-content class="mt-3 d-flex justify-content-end">
+        <!-- Description centered  
         <div class="description">
           <p>{{ campsite.detailCampSite.description }}</p>
-        </div>
+        </div>-->
         <!-- Button centered -->
-        <button class="btn btn-sm btn-primary" style="width: 70%; margin-left: 15%;" [routerLink]="['/viewcampsite_reserver', campsite.campsiteid]">Reserver maintenant !</button>
+        <button class="btn btn-sm btn-primary" style="" [routerLink]="['/viewcampsite_reserver', campsite.campsiteid]">Reserver</button>
 
       </mat-card-content>
     </mat-card>
