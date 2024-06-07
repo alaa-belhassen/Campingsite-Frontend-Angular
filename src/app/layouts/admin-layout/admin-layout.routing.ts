@@ -58,6 +58,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'produitDashboard',       component:  DashboardProduitComponent  },
     { path: 'erreur',       component:  ErreurComponent  },
     { path: 'open_reclamation/:id', component: OpenReclamationComponent },
-    { path: 'dashbord-admin',       component:  DashbordAdminComponent}
+    { path: 'dashbord-admin',       component:  DashbordAdminComponent},
+    { path: 'afficherReclamation',       component:  AfficherReclamationAdminComponent}
 
 ];

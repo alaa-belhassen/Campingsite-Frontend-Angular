@@ -23,6 +23,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['ADMIN']  },
     { path: '/adminProduit', title: 'adminproduit',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['ADMIN']  },
     { path: '/produitDashboard', title: 'produitDashboard',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['ADMIN']  },
+    { path: '/afficherReclamation', title: 'afficherReclamation',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['ADMIN']  },
 
     //camper sidebar
     { path: '/Spinning wheel', title: 'Spinning Wheel',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['CAMPEUR']},
