@@ -1,0 +1,67 @@
+.badge-danger {
+  color: red;
+}
+
+.badge-success {
+  color: green;
+}
+
+.badge-closed {
+  color: blue; /* You can choose any color suitable for the "Closed" status */
+}
+
+.badge-rejected {
+  color: gray; /* You can choose any color suitable for the "Rejected" status */
+}
+
+  
+  /* CSS for vertical line */
+.vertical-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #000; /* Adjust color as needed */
+}
+
+/* CSS for left and right sections */
+.left-section,
+.right-section {
+  position: relative;
+}
+
+.left-section h3,
+.right-section h3 {
+  position: relative;
+  z-index: 1; /* Ensure header is above vertical line */
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.left-section .vertical-line,
+.right-section .vertical-line {
+  z-index: 0; /* Ensure vertical line is behind content */
+}
+
+.custom-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.custom-table td {
+  border: none; /* Remove table lines */
+  padding: 8px; /* Optional: add padding to table cells */
+  vertical-align: top; /* Optional: align cell content to the top */
+}
+
+.small-cell {
+  width: 15%; /* Adjust percentage as needed */
+}
+
+.large-cell {
+  width: 55%; /* Adjust percentage as needed */
+}
+
+.medium-cell {
+  width: 30%; /* Adjust percentage as needed */
+}

@@ -1,0 +1,186 @@
+<div class=" bg-gradient-danger " class="imageCover">
+  <div class="poisitiontitle">
+    <h1 class="title">Administrator side</h1>
+    <h1 class="subtitle text-muted">Approve/desapprove campsites</h1>
+  </div>
+</div>
+<div class="card bg-white shadow">
+<div class="">
+  <div class="card bg-white ">
+    <div class="card-header bg-white border-0">
+      <div class="row align-items-center">
+        <div class="col-8">
+          <h3 class="mb-0">Add new Campsite</h3>
+        </div>
+        <div class="col-4 text-right">
+          <a  [routerLink]="['/listcampsite',id_user]" class="btn btn-sm btn-primary">View all campsites</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-stepper class="mt-2" [linear]="isLinear" #stepper >
+  <mat-step [stepControl]="firstformgrp">
+    <form [formGroup]="firstformgrp">
+      <ng-template matStepLabel>Fill out campsite infos</ng-template>
+      <h6 class="heading-small text-muted mb-4">Location information</h6>
+      <div class="pl-lg-4">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-username">Place name</label>
+              <input type="text"  formControlName="lieu" id="input-username" class="form-control form-control-alternative" placeholder="lieu" >
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-email">Area</label>
+              <input id="input-email" formControlName="region"  class="form-control form-control-alternative" placeholder="Tunisia">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <hr class="my-4" />
+      <h6 class="heading-small text-muted mb-4">Availability</h6>
+      <div class="pl-lg-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="form-control-label" for="input-address">Date</label>
+              <input id="input-address" formControlName="date_prevu" class="form-control form-control-alternative" placeholder="date"  type="date">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="form-control-label" for="input-city">Capacity</label>
+              <input type="text" id="input-city" formControlName="places" class="form-control form-control-alternative" placeholder="capacite" >
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="form-control-label" for="input-country">Price</label>
+              <input type="number" id="input-country" formControlName="prix" class="form-control form-control-alternative" placeholder="prix" >
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <button mat-button matStepperNext (click)="AjoutCampsite()"  >Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Details campsite">
+    <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Detail Campsite</ng-template>
+        <h6 class="heading-small text-muted mb-4"> informations</h6>
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-username">Description</label>
+                <input type="text" formControlName="description"  id="input-username1" class="form-control form-control-alternative" placeholder="Add description here" >
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-email">Coordonné </label>
+              <input id="input-email1" formControlName="coordonne"  class="form-control form-control-alternative" placeholder="(lat: 36.798, lon: 10.1717)">
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <h6 class="heading-small text-muted mb-4">Availability</h6>
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="form-control-label" for="input-address"> Minimal duration</label>
+                <input id="input-address1"  formControlName="duree" class="form-control form-control-alternative" type="number" placeholder="minimal days of this campsite" >
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="pl-lg-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="form-control-label" for="input-address"> Heure départ </label>
+              <input id="input-address12" formControlName="heuredepart" class="form-control form-control-alternative" type="time" >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext (click)="AjoutDetailCampsite()">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="thirdFormGroup" label="Rules">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Rules</ng-template>
+      <h6 class="heading-small text-muted mb-4"> informations</h6>
+      <div class="pl-lg-4">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-username">N°</label>
+              <input type="text" formControlName="numero"  id="input-username4" class="form-control form-control-alternative" placeholder="question number°" type="number">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pl-lg-4">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-username">Description</label>
+              <input type="text" formControlName="descriptionrule"  id="input-username51" class="form-control form-control-alternative" placeholder="Add description here" >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 text-right">
+        <a   class="btn btn-sm btn-primary" (click)="ajoutRule()">Add new rule +</a>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" label="Ajout photos">
+    <form [formGroup]="thirdFormGroup">
+      <app-image-component [secondFormGroup]="secondFormGroup"></app-image-component>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+  {{this.camp|json}}
+</div>
+

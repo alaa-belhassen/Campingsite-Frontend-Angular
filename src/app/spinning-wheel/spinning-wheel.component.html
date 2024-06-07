@@ -1,0 +1,44 @@
+<div class=" bg-gradient-danger " class="imageCover">
+  <div class="poisitiontitle">
+    <h1 class="title">Spinning wheel</h1>
+    <h1 class="subtitle text-muted">Turn and win</h1>
+  </div>
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spin Rewards</title>
+  <link rel="stylesheet" href="spinning-wheel.component.scss">
+</head>
+<body>
+
+  <div class="mainbox" id="mainbox">
+    <div class="box" id="box">
+      <div class="box1">
+        <span class="font span1"><h5>Juice </h5></span>
+        <span class="font span2"><h5>10% activities</h5></span>
+        <span class="font span3"><h5>Tent</h5></span>
+        <span class="font span4"><h5>Dinner</h5></span>
+        <span class="font span5"><h5></h5></span>
+      </div>
+      <div class="box2">
+        <span class="font span1"><h5>Surprise</h5></span>
+        <span class="font span2"><h5>20% Reservation</h5></span>
+        <span class="font span3"><h5>T-shirt</h5></span>
+        <span class="font span4"><h5>Brunch</h5></span>
+        <span class="font span5"><h5>Barbecue</h5></span>
+      </div>
+    </div>
+    <button class="spin" (click)="spin()">SPIN</button>
+  </div>
+  <audio controls="controls" id="applause" src="../../assets/audio/mixkit-animated-small-group-applause-523.wav" type="audio/mp3"></audio>
+  <audio controls="controls" id="wheel" src="../../assets/audio/SYYWGNR-prize-wheel.mp3" type="audio/mp3"></audio>
+  <br>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../../assets/js/scriptt.js"></script>
+</body>
+</html>

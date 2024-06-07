@@ -1,0 +1,46 @@
+<mat-card>
+  <mat-card-content>
+   
+        
+          <form [formGroup]="ResForm" (ngSubmit)="SubmitForm()">
+            <h6 class="heading-small text-muted mb-4">Reservation details</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-nombreCampeurs">nombre de personne</label>
+                    <input type="number" id="input-nombreCampeur" class="form-control form-control-alternative" formControlName="nombreCampeurs">
+                  </div>
+                </div>
+              </div>
+             
+                  <mat-form-field class="example-form-field" appearance="outline">
+                    <mat-label>Date Range</mat-label>
+                    <mat-date-range-input
+                      [formGroup]="ResForm.get('detailReservation')"
+                      [rangePicker]="picker">
+                      <input matStartDate placeholder="Start date" formControlName="dateArrivee">
+                      <input matEndDate placeholder="End date" formControlName="dateDepart">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
+              
+              
+         
+  
+            </div>
+            <div class="col-4 text-right">
+              <button type="submit" class="btn btn-sm btn-primary" >Reserver</button>
+            </div>
+          </form>
+        
+        
+         </mat-card-content>
+        </mat-card>
+  
+  
+  
+  
+  
+  

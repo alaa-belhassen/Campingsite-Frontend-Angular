@@ -1,0 +1,80 @@
+<div class=" bg-gradient-danger " class="imageCover">
+  <div class="poisitiontitle">
+    <h1 class="title">Campsite Administrator side</h1>
+    <h1 class="subtitle text-muted">View & edit My campsites</h1>
+  </div>
+</div>
+
+<div class = "card-wrapper">
+  <div class = "card">
+    <!-- card left -->
+
+
+    <section class="gallery  d-flex justify-content-around">
+      <div class="img-container">
+        <!-- Display the preview image separately -->
+        <ng-container *ngIf="photos$ | async as photos">
+          <!-- Display the first photo as the preview -->
+          <a [routerLink]="['/detaillistcampsite', id]">
+            <img *ngIf="photos.length > 0" [src]="photos[0]" id="preview" alt="Image">
+          </a>
+          <div class="img-prev text-center">
+            <!-- Display the first photo again in the slider -->
+            <div class="img-slide">
+              <img *ngIf="photos.length > 0" [src]="photos[0]" [alt]="'Image1'" appClickimg>
+              <!-- Add the 'Add to favorite' button -->
+            </div>
+
+            <!-- Loop through the rest of the photos starting from index 1 -->
+            <div class="img-slide" *ngFor="let photo of photos.slice(1); let i = index">
+              <!-- Check if the current index is 0, if so, add the 'active' class -->
+              <img [src]="photo" [alt]="'Image' + (i + 2)" [class.active]="i === 0" appClickimg>
+              <!-- Add the 'Add to favorite' button -->
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+    </section>
+    <!-- card right -->
+    <div class = "product-content">
+
+      <h2 class = "product-title">{{ campsiteInfos.lieu }} , {{ campsiteInfos.region }}</h2>
+      <a  class = "product-link bg-gradient-danger">visit Tunisia</a>
+      <div class = "product-rating">
+        <i class = "ni ni-like-2"></i>
+        <i class = "ni ni-like-2"></i>
+        <i class = "ni ni-like-2"></i>
+        <i class = "ni ni-like-2"></i>
+        <i class = "ni ni-like-2"></i>
+        <span>4.7(21)</span>
+      </div>
+
+      <div class = "product-price">
+        <p class = "new-price">Price: <span>{{ campsiteInfos.prix }} TND </span></p>
+      </div>
+
+      <div class = "product-detail">
+        <h2>about this campsite: </h2>
+        <p>{{ campsiteInfos.detailCampSite.description }}</p>
+        <ul>
+          <li>Exact location: <span> TRY {{ campsiteInfos.detailCampSite.coordonne }} on Maps</span></li>
+          <li>Available: <span>{{ campsiteInfos.places }} places left </span></li>
+        </ul>
+      </div>
+
+      <div class = "purchase-info">
+        <input type = "number" min = "0" value = "1">
+        <button type = "button" class = "btn">
+          Reserver
+        </button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<app-res-client></app-res-client>
+

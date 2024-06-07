@@ -6,7 +6,6 @@ import {
   chartOptions,
   parseOptions,
   chartExample1,
-  chartExample2
 } from "../../variables/charts";
 
 @Component({
@@ -15,8 +14,7 @@ import {
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-  @Input() chartNumber;
-  public datasets: any;
+  @Input() datasets: any;
   public data: any;
   public salesChart;
   public clicked: boolean = true;
@@ -24,19 +22,24 @@ export class ChartComponent implements OnInit {
 
   ngOnInit() {
 
-    this.datasets = [
-      [0, 20, 10, 30, 15, 40, 20, 60, 60],
-      [0, 20, 5, 25, 10, 30, 15, 40, 40]
-    ];
-    this.data = this.datasets[0];
+    console.log(this.datasets)
 
+    this.data = this.datasets;
 
+    console.log(this.data)
 
     parseOptions(Chart, chartOptions());
+    const monthNames= [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
+      'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
 
-
-
-
+    if(this.datasets!=undefined){
+      chartExample1.data.datasets[0].data = this.data;
+      chartExample1.data.labels = monthNames;
+  
+    }
+    
     var chartSales = document.getElementById('chart-sales');
 
     this.salesChart = new Chart(chartSales, {
@@ -44,6 +47,8 @@ export class ChartComponent implements OnInit {
 			options: chartExample1.options,
 			data: chartExample1.data
 		});
+    console.log('Chart initialized'); // Add this line
+
   }
 
 

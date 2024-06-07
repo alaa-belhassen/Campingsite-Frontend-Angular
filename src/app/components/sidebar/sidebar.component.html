@@ -1,8 +1,7 @@
 <nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white" id="sidenav-main">
   <div class="container-fluid">
     <!-- Toggler -->
-    <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
-       aria-controls="sidenav-collapse-main">
+    <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed" aria-controls="sidenav-collapse-main">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
@@ -15,6 +14,7 @@
         <a class="nav-link nav-link-icon" role="button" ngbDropdownToggle>
           <i class="ni ni-bell-55"></i>
         </a>
+        
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
           <a class="dropdown-item" href="javascript:void(0)">Action</a>
           <a class="dropdown-item" href="javascript:void(0)">Another action</a>
@@ -68,6 +68,7 @@
               <img src="./assets/img/brand/blue.png">
             </a>
           </div>
+
           <div class="col-6 collapse-close">
             <button type="button" class="navbar-toggler" (click)="isCollapsed=!isCollapsed">
               <span></span>
@@ -79,7 +80,7 @@
       <!-- Form -->
       <form class="mt-4 mb-3 d-md-none">
         <div class="input-group input-group-rounded input-group-merge">
-          <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
+          
           <div class="input-group-prepend">
             <div class="input-group-text">
               <span class="fa fa-search"></span>
@@ -89,15 +90,27 @@
       </form>
       <!-- Navigation -->
       <ul class="navbar-nav">
-          <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-              <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
+          <li *ngFor="let menuItem of filterRoutesByRole()" class="{{menuItem.class}} nav-item">
+             <!---<a routerLinkActive="active"  (click)="navigateToProductDetail()"   class="nav-link">
                   <i class="ni {{menuItem.icon}}"></i>
                   {{menuItem.title}}
-              </a>
+              </a> -->
+              <a routerLinkActive="active" [routerLink]="[menuItem.path]" (click)="navigate(menuItem.path)"   class="nav-link">
+                <i class="ni {{menuItem.icon}}"></i>
+                {{menuItem.title}}
+            </a>
+              <div *ngIf="categories!=[]">
+                <div *ngFor="let childItem of menuItem.childrens" class="{{childItem.class}}  nav-item ">
+                    <a routerLinkActive="active" [routerLink]="[menuItem.path,childItem.title]" class="nav-link pl-5">
+                        <i class="ni {{childItem.icon}}"></i>
+                        {{childItem.title}}
+                    </a>
+                </div>
+              </div>
           </li>
       </ul>
 
-     
+
     </div>
   </div>
 </nav>

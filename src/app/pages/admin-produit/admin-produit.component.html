@@ -1,0 +1,100 @@
+<div class=" bg-gradient-danger " class="imageCover">
+  <div class="poisitiontitle">
+    <h1 class="title">Product Admin</h1>
+    <h1 class="subtitle text-muted">Manage product </h1>
+  </div>
+</div>    
+
+<div class="">
+        <div class="row">
+          <div class="col">
+            <div class="card shadow">
+              <div class="card-header d-flex justify-content-between border-0">
+                <h3>{{switch}}</h3>
+
+                <h3 class="mb-0">
+                  <button type="submit" *ngIf="switch=='rentable'" class="btn " (click)="switchTo('rentable')">switchTo Sellable </button>
+                  <button type="submit" *ngIf="switch=='sellable'" class="btn " (click)="switchTo('sellable')">switchTo Rentable </button>
+                </h3>
+              </div>
+              <div class="table-responsive" >
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">product</th>
+                      <th scope="col">price</th>
+                      <th scope="col">Quantity</th>
+
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let panier of paniersFilter;index as i ">
+                      <th scope="row">
+                        <div class="media align-items-center">
+                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="{{panier?.photo?.imageUrl}}">
+                          </a>
+                          <div class="media-body">
+                            <div class="col">
+                                <span class="mb-0 text-sm row">{{panier?.nomProduct}}</span>
+                                <span class="mb-0 text-muted row">{{panier?.product_Type}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </th>
+                      <td>
+                        {{panier?.prix}} DT
+                      </td>
+                      <td>
+                        <div *ngIf="editmode">
+                          <input type="number" id="input-quantiter" #quantier  class="form-control form-control-alternative inputstyle" placeholder="quantity" [value]="panier.quantiter" >
+                        </div>
+                        <span *ngIf="!editmode"> {{panier?.quantiter}}</span>
+                      </td>
+        
+                      <td class="text-right">
+                      
+                        <button type="submit" class="btn " (click)="remove(panier.idProduct)"><span class="ni ni ni-fat-remove"></span></button>
+                        <button type="submit" class="btn" (click)="edit(panier)">
+                          <span class="ni ni-settings-gear-65" *ngIf="!editmode"></span>
+                          <span class="ni ni-check-bold" *ngIf="editmode"></span>
+                        </button>
+    
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+              <div class="card-footer py-4 d-flex justify-content-between">
+                <nav aria-label="...">
+                  <ul class="pagination justify-content-end mb-0">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                        <i class="fas fa-angle-left"></i>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link" href="javascript:void(0)">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="javascript:void(0)">
+                        <i class="fas fa-angle-right"></i>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <button type="button" class="btn btn-success add_btn m-3" (click)="redirect()">addproduct</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>

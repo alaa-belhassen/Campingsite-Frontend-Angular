@@ -1,0 +1,196 @@
+<div class=" bg-gradient-danger " class="imageCover">
+  <div class="poisitiontitle">
+    <h1 class="title">Reservation</h1>
+    <h1 class="subtitle text-muted"></h1>
+  </div>
+
+
+<div class="container-fluid mt-7">
+  <div class="header-body">
+    <!-- Card stats -->
+    <div class="row">
+      <div class="col-xl-3 col-lg-6">
+        <div class="card card-stats mb-4 mb-xl-0">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Future Reservations</h5>
+                <span class="h2 font-weight-bold mb-0">{{this.futureResrvation}}</span>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                  <i class="fas fa-chart-bar"></i>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6">
+        <div class="card card-stats mb-4 mb-xl-0">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Our Reservation users</h5>
+                <span class="h2 font-weight-bold mb-0 ">4</span>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                  <i class="fas fa-chart-pie"></i>
+                </div>
+              </div>
+            </div>
+          
+           
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6">
+        <div class="card card-stats mb-4 mb-xl-0">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Reservation Archived</h5>
+                <span class="h2 font-weight-bold mb-0">6</span>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                  <i class="fas fa-users"></i>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6">
+        <div class="card card-stats mb-4 mb-xl-0">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Our Reserved Campsites</h5>
+                <span class="h2 font-weight-bold mb-0">3</span>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                  <i class="fas fa-percent"></i>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="container-fluid mt--7">
+<div class="row ">
+  <div class="col-xl-8 mb-5 mb-xl-0">
+    <app-chart-pipe></app-chart-pipe>
+  </div>
+ 
+</div>
+
+
+
+
+
+<mat-card>
+  <mat-card-content label="List Reservation" > 
+  <div class="col-xl-12 order-xl-1" style="width: 1150px;"> <!-- Adjust the column size to fit the entire table -->
+      <!-- Search input -->
+      <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText">
+      </div>
+
+      <!-- Card containing the table -->
+      <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                  <div class="col-8">
+                      <h3 class="mb-0">Reservation</h3>
+                  </div>
+              </div>
+          </div>
+          <div class="table-responsive">
+              <table class="table align-items-center table-flush" style="width: 100%; overflow-x: auto;">
+                  <thead class="thead-light">
+                      <tr>
+                          <th scope="col">Reservation</th>
+                          <th scope="col">Campeur</th>
+                          <th scope="col">Campsite</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Date Arrival</th>
+                          <th scope="col">Date Departure</th>
+                          <th scope="col">Number of Campers</th>
+                          <th scope="col">Prix</th>
+                          <th scope="col">Action</th> <!-- New column header for delete button -->
+                      </tr>
+                  </thead>
+                  <!-- <tbody *ngIf="reservations && reservations.length > 0">
+                    <tr *ngFor="let res of reservations | filter: searchText">
+                          <td>{{ res.idReservation }}</td>
+                          <td>{{ res.campeurId }}</td>
+                          <td>{{ res.campsiteId }}</td>
+                          <td>
+                              <span class="badge badge-dot mr-4">
+                                  <i class="bg-warning"></i> {{ res.detailReservation?.statusReservation }}
+                              </span>
+                          </td>
+                          <td>{{ res.detailReservation?.dateArrivee }}</td>
+                          <td>{{ res.detailReservation?.dateDepart }}</td>
+                          <td>{{ res.detailReservation?.nombreCampeurs }}</td>
+                          <td>{{ res.detailReservation?.prix }} DT</td>
+                          <td>
+                              <div class="col-4 text-right">
+                                  <a class="btn btn-sm btn-warning" (click)="DeleteReservation(res.idReservation)">Arrchiver</a>
+                             
+                                  <mat-slide-toggle [(ngModel)]="isChecked">{{isChecked}}</mat-slide-toggle>
+                                  
+                              </div>
+                          </td>
+                      </tr>
+                  </tbody> -->
+
+
+                  <tbody >
+                    <tr *ngFor="let res of reservationsList | filter: searchText">
+                      <td>#{{res.idReservation }}</td>
+                          <td>{{ res.campeurName }}</td>
+                          <td>{{ res.campSite}}</td>
+                          <td>
+                              <span class="badge badge-dot mr-4">
+                                  <i class="bg-info"> </i>
+                              </span>confirmee
+                          </td>
+                          <td>{{ res.dateArrivee }}</td>
+                          <td>{{ res.dateDepart }}</td>
+                          <td>{{ res.nombreCampeurs }}</td>
+                          <td>{{ res.prix }} DT</td>
+                          <td>
+                              <div class="col-4 text-right">
+                                  <a class="btn btn-sm btn-warning" (click)="DeleteReservation(res.idReservation)">Arrchiver</a>
+                             
+                                  <mat-slide-toggle [(ngModel)]="isChecked">{{isChecked}}</mat-slide-toggle>
+                                  
+                              </div>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+ 
+
+
+<app-heatmap></app-heatmap>
+
