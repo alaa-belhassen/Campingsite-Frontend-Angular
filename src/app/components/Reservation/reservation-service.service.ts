@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ReservationService {
-  readonly API_URL ="http://localhost:8085/projet"
+  readonly API_URL ="http://localhost:8082/projet"
   readonly ENDPOINT ="/getAll"
 
   constructor(private httpClient : HttpClient) { }

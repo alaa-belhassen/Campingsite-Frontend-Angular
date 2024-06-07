@@ -5,20 +5,20 @@
   </div>
 </div>
 
-<div class="container">
+<div class="row ">
 
-  <div id="map">
+  <div id="map" class="col-8">
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
   </div>
-  <div class="card-list">
+  <div class=" col-4">
     <mat-card class="example-card" *ngFor="let campsite of campsites">
       <mat-card-header>
         <div class="header-content">
           <div class="header-left">
-            <mat-card-title>{{ campsite.lieu }}</mat-card-title> <mat-card-subtitle>{{ campsite.region }}</mat-card-subtitle>
+            <img mat-card-sm-image [src]="campsite.detailCampSite.photos[0]?.imageUrl" alt="Campsite Image">
           </div>
           <div class="header-right">
-            <img mat-card-sm-image [src]="campsite.detailCampSite.photos[0]?.imageUrl" alt="Campsite Image">
+            <mat-card-title>{{ campsite.lieu }}</mat-card-title> <mat-card-subtitle>{{ campsite.region }}</mat-card-subtitle>
           </div>
         </div>
       </mat-card-header>

@@ -11,7 +11,7 @@
         <a class="nav-link pr-0 " role="button" ngbDropdownToggle>
           <div class="media align-items-center">
             <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" [src]="this.currentUser?.photo?.imageUrl">
+              <img alt="Image placeholder" [src]="'https://www.prolival.fr/wp-content/uploads/2018/06/user.png'">
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
               <span class="mb-0 text-sm  font-weight-bold ">{{this.currentUser.firstName}} {{this.currentUser.lastName}}</span>
@@ -26,25 +26,13 @@
             <i class="ni ni-single-02"></i>
             <span>My profile</span>
           </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-            <i class="ni ni-settings-gear-65"></i>
-            <span>Settings</span>
-          </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-            <i class="ni ni-calendar-grid-58"></i>
-            <span>Activity</span>
-          </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-            <i class="ni ni-support-16"></i>
-            <span>Support</span>
-          </a>
           <a routerLinkActive="active" [routerLink]="['/chart']" class="dropdown-item">
             <i class="ni ni-cart"></i>
             <span>chart</span>
           </a>
           <a routerLinkActive="active" [routerLink]="['/refund']" class="dropdown-item">
-            <i class="ni ni-cart"></i>
-            <span>chart</span>
+            <i class="ni ni-box-2"></i>
+            <span>refund</span>
           </a>
           <div class="dropdown-divider"></div>
           <a  class="dropdown-item pointer" (click)="LogOut()" >

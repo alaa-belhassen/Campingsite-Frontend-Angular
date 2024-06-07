@@ -39,14 +39,11 @@ import { AfficherUneReclamationClientComponent } from 'src/app/pages/reclamation
 
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'user-profile',   component: UserProfileComponent },
 
     { path: 'afficher-reclamation',           component: AfficherReclamationAdminComponent },
  
     //dhashboard reclamation abdelwareth fix the component plz
 
-    { path: 'payementdone/:type',      component: PayementDoneComponent },
-    { path: 'chart',      component: ChartComponent },
     { path: 'addproduit',      component: AddProduitComponent },
     { path: 'reservation',      component: ListeReservationComponent },
     { path: 'activite',       component:  AddActiviteComponent  },
@@ -56,13 +53,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'listcampsite/:id_user',           component: ListCampsitesComponent },
     { path: 'detaillistcampsite/:id', component: AllDetailsCampsiteComponent },
     { path: 'admincampsite', component: CampsiteAdminComponent },
-    { path: 'viewcampsite_reserver/:id',       component:  ViewcampsiteReserveComponent  },
     { path: 'adminProduit',       component:  AdminProduitComponent  },
     { path: 'details',       component:  DetailsComposentComponent  },
     { path: 'produitDashboard',       component:  DashboardProduitComponent  },
     { path: 'erreur',       component:  ErreurComponent  },
     { path: 'open_reclamation/:id', component: OpenReclamationComponent },
-    { path: 'user-profile',       component:  UserProfileComponent  },
     { path: 'dashbord-admin',       component:  DashbordAdminComponent}
 
 ];

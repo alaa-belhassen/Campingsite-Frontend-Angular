@@ -15,26 +15,23 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
    
     //admin sidebar 
-    { path: '/dashbord-admin', title: 'Dashbord',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['ADMIN']},
-    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['ADMIN']},
-    { path: '/ListUser', title: 'Liste des utilisateurs',  icon:'ni-bullet-list-67 text-red', class: ''  , roles: ['ADMIN'] },
-    { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-red', class: '', roles: ['ADMIN'] },
-    { path: '/admincampsite', title: 'AdminCampsite',  icon:'ni-bullet-list-67 text-red', class: '', roles: ['ADMIN'] },
-    { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['ADMIN']  },
-    { path: '/afficher-reclamation', title: 'Afficher Reclamation', icon: '', class: '' , roles: ['ADMIN']},
-
+    { path: '/dashbord-admin', title: 'Dashbord',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['ADMIN']},
+    { path: '/activite', title: 'Activite',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['ADMIN']},
+    { path: '/ListUser', title: 'Liste des utilisateurs',  icon:'ni-bullet-list-67 text-blue', class: ''  , roles: ['ADMIN'] },
+    { path: '/reservation', title: 'Reservation',  icon:'ni-bullet-list-67 text-blue', class: '', roles: ['ADMIN'] },
+    { path: '/admincampsite', title: 'AdminCampsite',  icon:'ni-bullet-list-67 text-blue', class: '', roles: ['ADMIN'] },
+    { path: '/campsite', title: 'campsite',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['ADMIN']  },
+    { path: '/adminProduit', title: 'adminproduit',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['ADMIN']  },
+    { path: '/produitDashboard', title: 'produitDashboard',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['ADMIN']  },
 
     //camper sidebar
-    { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '', roles: ['CAMPEUR'] },
-    { path: '/Spinning wheel', title: 'Spinning Wheel',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CAMPEUR']},
-    { path: '/card-activite', title: 'activite-cards',  icon:'ni-bullet-list-67 text-red', class: '', roles: ['CAMPEUR'] },
-    { path: '/usercampsite', title: 'UserCampsite',  icon:'ni-bullet-list-67 text-red', class: '' , roles: ['CAMPEUR']},
-    { path: '/dashboard_reclamation', title: 'Reclamations', icon: 'ni-single-02 text-yellow', class: 'dropdown', roles: ['CAMPEUR'] },
-    { path: '/dashboard_reclamation', title: 'Dashboard', icon: '', class: '' , roles: ['CAMPEUR']},
-    { path: '/ajout-reclamation', title: 'Ajout Reclamation', icon: '', class: '' , roles: ['CAMPEUR']},
-    { path: '/afficher-reclamation-client', title: 'Afficher Reclamation Client', icon: 'ni-bullet-list-67 text-red', class: '' , roles: ['CAMPEUR']},
+    { path: '/Spinning wheel', title: 'Spinning Wheel',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['CAMPEUR']},
+    { path: '/card-activite', title: 'activite-cards',  icon:'ni-bullet-list-67 text-blue', class: '', roles: ['CAMPEUR'] },
+    { path: '/usercampsite', title: 'UserCampsite',  icon:'ni-bullet-list-67 text-blue', class: '' , roles: ['CAMPEUR']},
+    { path: '/ajout-reclamation', title: 'Ajout Reclamation', icon: 'ni-bullet-list-67 text-blue', class: '' , roles: ['CAMPEUR']},
+    { path: '/afficher-reclamation-client', title: 'Afficher Reclamation Client', icon: 'ni-bullet-list-67 text-blue', class: '' , roles: ['CAMPEUR']},
     //everywhere exempt admin
-    { path: '/produit', title: 'Produit',  icon:'ni ni-books text-green', class: '' ,childrens:[]},
+    { path: '/produit', title: 'Produit',  icon:'ni-bullet-list-67 text-blue', class: '', roles: ['CAMPEUR'] ,childrens:[]},
     
 ];
 

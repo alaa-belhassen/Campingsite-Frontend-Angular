@@ -13,6 +13,7 @@ import { UpdateActiviteComponent } from './Activites/update-activite/update-acti
 import {ListCampsitesComponent} from "./pages/list-campsites/list-campsites.component";
 import { AdminGuardGuard } from './services/admin-guard.guard';
 import { CampeurGuardGuard } from './services/campeur-guard.guard';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes =[
   {
@@ -58,7 +59,8 @@ const routes: Routes =[
   },{
     path: 'card-activite',
     component:ActiviteCardsComponent
-  }, {
+  },
+  {
     path: '**',
     redirectTo: 'login'
   },

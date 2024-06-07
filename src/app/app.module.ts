@@ -69,6 +69,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ClickimgDirective } from './clickimg.directive';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ResClientComponent } from './components/Reservation/res-client/res-client.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { heatmapComponent } from './components/Reservation/heatmap/heatmap.component';
 
 
 
@@ -99,7 +103,8 @@ import { ClickimgDirective } from './clickimg.directive';
     MatDialogModule,
     MatTabsModule,
     GoogleMapsModule,
-  
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
   declarations: [
@@ -140,6 +145,7 @@ import { ClickimgDirective } from './clickimg.directive';
     CampsiteAdminComponent,
     CampsiteUserComponent,
     ViewcampsiteReserveComponent,
+    ResClientComponent,
   ],
   providers: [Location], // Add Location to providers
     

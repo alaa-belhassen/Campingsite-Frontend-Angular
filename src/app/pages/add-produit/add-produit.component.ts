@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { ProduitserviceService } from 'src/app/services/produitservice.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-add-produit',
@@ -11,7 +12,7 @@ import { ProduitserviceService } from 'src/app/services/produitservice.service';
 })
 export class AddProduitComponent implements OnInit {
 
-  constructor(private service:ProduitserviceService,private router:Router,private _formBuilder: FormBuilder) { }
+  constructor(private token : TokenStorageService ,private service:ProduitserviceService,private router:Router,private _formBuilder: FormBuilder) { }
   categories:any;
   produit:any;
   @ViewChild('stepper') private myStepper: MatStepper;
@@ -66,7 +67,13 @@ export class AddProduitComponent implements OnInit {
     this.myStepper.next();
   }
   redirect(){
-    this.router.navigate(["/produit"]);
+    this.router.navigate(["/addproduit"]);
+    if(    this.token.getRole()      =="ADMIN"){
+      this.router.navigate(["/adminProduit"]);
+    }else{
+      this.router.navigate(["/addproduit"]);
+
+    }
   }
 
   secondFormGroup = this._formBuilder.group({

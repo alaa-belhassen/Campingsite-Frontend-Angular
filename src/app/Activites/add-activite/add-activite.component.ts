@@ -39,7 +39,7 @@ export class AddActiviteComponent implements OnInit {
       date: ['', Validators.required],
       participants: ['', Validators.required],
       lieu: ['', Validators.required],
-      status: [false],
+      status: [true],
       prix: ['', Validators.required],
       pre_requis: ['', Validators.required]
     });

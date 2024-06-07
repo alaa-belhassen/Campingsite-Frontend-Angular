@@ -10,7 +10,9 @@ import { ActiviteService } from '../../activite-service.service';
 export class ActiviteCardsComponent implements OnInit {
 
   activite:any[];
-  activiteRecommended:any[];
+  activiteRecommended:any[
+    
+  ];
 
   title = 'Activites-cards'
 

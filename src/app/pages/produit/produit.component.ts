@@ -50,7 +50,7 @@ export class ProduitComponent implements OnInit {
   pages2: number[] = [];
 
 
-  constructor(private produitservice:ProduitserviceService,private router:Router,private active:ActivatedRoute , private userService:UserServiceService , private tokenStorage : TokenStorageService){
+  constructor(private token : TokenStorageService ,private produitservice:ProduitserviceService,private router:Router,private active:ActivatedRoute , private userService:UserServiceService , private tokenStorage : TokenStorageService){
     this.currentUser = this.tokenStorage.getUser();
   }
   ngOnInit(): void {
@@ -81,7 +81,7 @@ export class ProduitComponent implements OnInit {
 
         }else{
           this.produits= r;
-          this.produitsFilter= r.filter((v)=> v.product_Type==this.switch );
+          this.produitsFilter= r;
           console.log(this.produitsFilter)
           
           this.Pagination(this.produitsFilter,1); 
@@ -139,9 +139,7 @@ export class ProduitComponent implements OnInit {
     this.filterArrayByValue(this.produitsFilter,this.searchText);
 
   }
-  redirect(){
-    this.router.navigate(["/addproduit"]);
-  }
+  
   Pagination (table:any,index:any)  {
     let tableFilter= this.filterArrayByValue(table,this.searchText)
     this.totalPages = Math.ceil(tableFilter.length / this.itemsPerPage);

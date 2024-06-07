@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup  } from '@angular/forms';
 
 
 import {
   MatDialog,
 } from '@angular/material/dialog';
-import { UpdateResComponent } from './update-res/update-res.component';
+
 import { ReservationService } from '../reservation-service.service';
 
 
@@ -18,7 +18,71 @@ import { ReservationService } from '../reservation-service.service';
  
 })
 export class ListeReservationComponent implements OnInit {
- 
+    reservationsList:any[] = [
+    {
+        detailResID: 1,
+        dateArrivee: new Date('2024-07-01'),
+        dateDepart: new Date('2024-07-10'),
+        nombreCampeurs: 4,
+        prix: 300.0,
+        idReservation: 101,
+        campeurName: "jaouadi_tasnim",
+        
+        campSite: "tabarka"
+    },
+    {
+        detailResID: 2,
+        dateArrivee: new Date('2024-08-05'),
+        dateDepart: new Date('2024-08-15'),
+        nombreCampeurs: 2,
+        prix: 200.0,
+        idReservation: 102,
+        campeurName: "mohamed salah",
+        
+        campSite: "SidiBouSaid"
+    },
+    {
+        detailResID: 3,
+        dateArrivee: new Date('2024-09-10'),
+        dateDepart: new Date('2024-09-20'),
+        nombreCampeurs: 6,
+        prix: 450.0,
+        idReservation: 103,
+        campeurName: "user-2001",
+       
+        campSite: "Ain drahem"
+    },{
+      detailResID: 4,
+      dateArrivee: new Date('2024-10-01'),
+      dateDepart: new Date('2024-10-10'),
+      nombreCampeurs: 3,
+      prix: 250.0,
+      idReservation: 104,
+      campeurName: "John Doe",
+      campSite: "Hammamet"
+  },
+  {
+      detailResID: 5,
+      dateArrivee: new Date('2024-11-15'),
+      dateDepart: new Date('2024-11-25'),
+      nombreCampeurs: 5,
+      prix: 400.0,
+      idReservation: 105,
+      campeurName: "Alice Smith",
+      campSite: "Djerba"
+  },
+  {
+      detailResID: 6,
+      dateArrivee: new Date('2024-12-05'),
+      dateDepart: new Date('2024-12-15'),
+      nombreCampeurs: 2,
+      prix: 150.0,
+      idReservation: 106,
+      campeurName: "Emily Johnson",
+      campSite: "Tozeur"
+  }
+];
+
 
   searchText:any;
   title = 'mission';
@@ -33,26 +97,9 @@ export class ListeReservationComponent implements OnInit {
     const checked = true;
     const disabled = false;
     
-    this.ResForm = this.fb.group({
-      idReservation: [''],
-      campeurId: [''],
-      campsiteId: [''],
-      detailReservation: this.fb.group({
-        detailResId: [''],
-        dateArrivee: [''], // Add dateArrivée field
-        dateDepart: [''], // Add dateDépart field
-        nombreCampeurs: [''],
-        prix: ['']
-      })
-    });
+  
   }
-  openDialog(ID:any): void {
-    this.dialog.open(UpdateResComponent, {
-      width: '400px', // Adjust the width according to your preference
-      data: { id: ID } 
-      
-    });
-  }
+
 
   ngOnInit(): void {
     this.reservationService.getReservation().subscribe((datas) => {
@@ -63,7 +110,7 @@ export class ListeReservationComponent implements OnInit {
 
     this.getFutureReservations();
     this.getUser();
-    this.getnbrReservationInprogress();
+  
     this.nbrReservationCampsite();
   }
   
@@ -73,11 +120,11 @@ export class ListeReservationComponent implements OnInit {
     );
   }
   
-  getnbrReservationInprogress() {
-    this.reservationService.nbrReservationInprogress().subscribe((data)=>{
-      this.ResPro=data;}
-    ); 
-  }
+  // getnbrReservationInprogress() {
+  //   this.reservationService.nbrReservationInprogress().subscribe((data)=>{
+  //     this.ResPro=data;}
+  //   ); 
+  // }
 
   nbrReservationCampsite() {
     this.reservationService.nbrReservationCampsite().subscribe((data)=>{
@@ -120,5 +167,3 @@ export class ListeReservationComponent implements OnInit {
   
 
 }
-
-
