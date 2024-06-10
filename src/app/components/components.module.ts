@@ -24,6 +24,7 @@ import { ConfirmComponent } from './dialog/confirm/confirm.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ReserverActiviteComponent } from './Reservation/reserver-activite/reserver-activite.component';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { CommonModule } from '@angular/common';
     ShoploaderComponent,
     CardHoverFancyProduitComponent,
     ImageComponentComponent,
+  
     
   ],
   exports: [

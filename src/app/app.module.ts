@@ -74,6 +74,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ClickimgDirective } from './clickimg.directive';
+import { ReserverActiviteComponent } from './components/Reservation/reserver-activite/reserver-activite.component';
 
 
 
@@ -147,9 +148,10 @@ import { ClickimgDirective } from './clickimg.directive';
     SuccessPopupComponent,
     CampsiteAdminComponent,
     CampsiteUserComponent,
-    ViewcampsiteReserveComponent
+    ViewcampsiteReserveComponent,
+    ReserverActiviteComponent
   ],
-  providers: [Location], // Add Location to providers
+  providers: [Location], 
     
     
   

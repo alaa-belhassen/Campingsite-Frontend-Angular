@@ -20,6 +20,10 @@ export class ReservationService {
     return this.httpClient.post<any>(`${this.API_URL}/addReservation`, reservation);
   }
 
+  Reserver(reservation:any,CampsiteId,CampeurId): Observable<any> {
+    return this.httpClient.post<any>(`${this.API_URL}/reserver/`+CampsiteId+`/`+CampeurId, reservation);
+  }
+
   DeleteReservationById(ID:any):Observable<any> {
     return this.httpClient.delete(this.API_URL+"/deleteReservation/"+ID)
   }
@@ -45,5 +49,7 @@ export class ReservationService {
   nbrReservation():Observable<any>{
     return this.httpClient.get(this.API_URL+"/reservations/getNbrReservationByMonth")
   }
-
+  reserverActivite(idActivite:any,reservation:any,campeurID:any){
+    return this.httpClient.post(this.API_URL+"/reserverActivite/"+campeurID+"?activiteListId="+idActivite,reservation)
+  }
 }

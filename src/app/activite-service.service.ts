@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ActiviteService {
-  readonly API_URL ="http://localhost:8082/Activite"
+  readonly API_URL ="http://localhost:8085/Activite"
   readonly ENDPOINT ="/RetrieveActivite"
 
   constructor(private httpClient : HttpClient) {}
@@ -50,6 +50,7 @@ export class ActiviteService {
   getPrixActiviteByMonth(): Observable<any> {
     return this.httpClient.get(this.API_URL+"/getPrixActiviteByMonth")
   }
+ 
 
 }
 

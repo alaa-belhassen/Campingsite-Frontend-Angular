@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReservationService } from '../reservation-service.service';
 
+
 @Component({
-  selector: 'app-res-client',
-  templateUrl: './res-client.component.html',
-  styleUrls: ['./res-client.component.scss']
+  selector: 'app-reserver-activite',
+  templateUrl: './reserver-activite.component.html',
+  styleUrls: ['./reserver-activite.component.scss']
 })
-export class ResClientComponent implements OnInit {
+export class ReserverActiviteComponent implements OnInit {
   ResForm: FormGroup;
 
   constructor(private fb: FormBuilder, private reservationService: ReservationService) {
@@ -26,7 +27,7 @@ export class ResClientComponent implements OnInit {
 
   SubmitForm() {
    console.log(this.ResForm.value)
-      this.reservationService.Reserver(this.ResForm.value, 1, 1).subscribe(() => {
+      this.reservationService.reserverActivite( 1,this.ResForm.value, 1).subscribe(() => {
         alert('Campsite disponible a reserver');
       }, error => {
         console.error('Error fetching reservations:', error);

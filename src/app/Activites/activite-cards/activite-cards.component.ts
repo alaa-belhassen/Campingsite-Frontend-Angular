@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActiviteService } from '../../activite-service.service';
-
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { ResClientComponent } from 'src/app/components/Reservation/res-client/res-client.component';
+import { ReserverActiviteComponent } from 'src/app/components/Reservation/reserver-activite/reserver-activite.component';
 
 @Component({
   selector: 'activite-cards',
@@ -14,9 +22,13 @@ export class ActiviteCardsComponent implements OnInit {
 
   title = 'Activites-cards'
 
-  constructor(private activiteService: ActiviteService) {
+  constructor(private activiteService: ActiviteService,public dialog: MatDialog) {
   }
 
+
+  openDialog() {
+    this.dialog.open(ReserverActiviteComponent);
+  }
   ngOnInit(): void {
     this.activiteService.getActivite().subscribe((datas)=>{
         this.activite= datas;
@@ -47,6 +59,10 @@ export class ActiviteCardsComponent implements OnInit {
           console.log(err);
         }
       );
+  }
+
+  ReserverActivite(activiteID:any){
+ 
   }
 
 }
