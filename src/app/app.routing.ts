@@ -8,7 +8,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { TestLayoutComponent } from './layouts/test-layout/test-layout.component';
 import { ActiviteAdminComponent } from './activite-admin/activite-admin.component';
 import { AddActiviteComponent } from './add-activite/add-activite.component';
-import { ModifyActiviteComponent } from './modify-activite/modify-activite.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -46,18 +46,10 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: 'AddActivite',
-    component: ActiviteAdminComponent
-  },
-  {
-    path: 'Activite',
-    component: AddActiviteComponent
-  },
-  {
-    path: 'ModifyActivite',
-    component: ModifyActiviteComponent
-  },
+  // {
+  //   path: 'ModifyActivite',
+  //   component: ModifyActiviteComponent
+  // },
   {
     path: '**',
     redirectTo: 'login'

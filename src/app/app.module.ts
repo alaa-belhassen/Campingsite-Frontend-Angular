@@ -15,11 +15,10 @@ import { ComponentsModule } from './components/components.module';
 import { AddActiviteComponent } from './add-activite/add-activite.component';
 import { ActiviteAdminComponent } from './activite-admin/activite-admin.component';
 import { HeaderNavbarComponent } from './header-navbar/header-navbar.component';
-import { ModifyActiviteComponent } from './modify-activite/modify-activite.component';
-
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -33,7 +32,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     AppRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+
+
   ],
   declarations: [
     AppComponent,
@@ -42,7 +43,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     AddActiviteComponent,
     ActiviteAdminComponent,
     HeaderNavbarComponent,
-    ModifyActiviteComponent
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

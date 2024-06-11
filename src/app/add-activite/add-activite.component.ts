@@ -21,6 +21,7 @@ export class AddActiviteComponent implements OnInit {
     }, error => {
       console.error('Error zaffer rahi khlett', error);
     })
+
   }
 
   getallactivite(){
