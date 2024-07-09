@@ -125,7 +125,7 @@ console.log(campsitevalue);
     const formData=new FormData();
     formData.append("multipartFile",image);
     return this.http.post<any>(`http://localhost:8082/photos/upload/${descriptionDetailCampsite}`,formData);
-    return this.http.post<any>(`http://localhost:8082/photos/upload/${descriptionDetailCampsite}`,formData);
+    //return this.http.post<any>(`http://localhost:8082/photos/upload/${descriptionDetailCampsite}`,formData);
   }
 
 

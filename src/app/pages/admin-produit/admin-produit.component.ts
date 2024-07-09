@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Panier } from 'src/app/entities/panier';
 import { ProduitserviceService } from 'src/app/services/produitservice.service';
 
@@ -17,7 +18,7 @@ export class AdminProduitComponent implements OnInit {
     @ViewChild('quantier') myInput: ElementRef;
     panier:Panier;
     switch:any='sellable';
-    constructor(private servicePanier:ProduitserviceService) { }
+    constructor(private servicePanier:ProduitserviceService,private router:Router) { }
   
     ngOnInit(): void {
 
@@ -78,6 +79,9 @@ export class AdminProduitComponent implements OnInit {
           error:(e)=>{console.log(e)}
         }
       )
+    }
+    redirect(){
+      this.router.navigate(['/addproduit'])
     }
   }
   

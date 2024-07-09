@@ -18,7 +18,12 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
 import { ListUsersComponent } from '../pages/list-users/list-users.component';
 import { CardProduitComponent } from './card-produit/card-produit.component';
 import { ImageComponentComponent } from './image-component/image-component.component';
+<<<<<<< HEAD
 import { heatmapComponent } from './Reservation/heatmap/heatmap.component';
+=======
+import {  heatmapComponent } from './Reservation/heatmap/heatmap.component';
+
+>>>>>>> 04053d5d936f1418425884daafe194d157729e5d
 
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -50,6 +55,11 @@ import { ReserverActiviteComponent } from './Reservation/reserver-activite/reser
     CardProduitComponent,
     ImageComponentComponent,
     heatmapComponent,
+<<<<<<< HEAD
+=======
+   
+  
+>>>>>>> 04053d5d936f1418425884daafe194d157729e5d
     ShoploaderComponent,
     CardHoverFancyProduitComponent,
     ImageComponentComponent,

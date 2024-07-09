@@ -1,11 +1,17 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8" style="min-height: 350px;"></div>
-     <div class="container-fluid">
+<div class=" bg-gradient-danger " class="imageCover">
+  <div class="poisitiontitle">
+    <h1 class="title">Product Admin</h1>
+    <h1 class="subtitle text-muted">Manage product </h1>
+  </div>
+</div>    
+
+<div class="">
         <div class="row">
           <div class="col">
             <div class="card shadow">
               <div class="card-header d-flex justify-content-between border-0">
                 <h3>{{switch}}</h3>
-    
+
                 <h3 class="mb-0">
                   <button type="submit" *ngIf="switch=='rentable'" class="btn " (click)="switchTo('rentable')">switchTo Sellable </button>
                   <button type="submit" *ngIf="switch=='sellable'" class="btn " (click)="switchTo('sellable')">switchTo Rentable </button>
@@ -85,6 +91,8 @@
                     </li>
                   </ul>
                 </nav>
+                <button type="button" class="btn btn-success add_btn m-3" (click)="redirect()">addproduct</button>
+
               </div>
             </div>
           </div>

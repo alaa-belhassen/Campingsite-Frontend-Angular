@@ -18,7 +18,9 @@ import { ReserverActiviteComponent } from 'src/app/components/Reservation/reserv
 export class ActiviteCardsComponent implements OnInit {
 
   activite:any[];
-  activiteRecommended:any[];
+  activiteRecommended:any[
+    
+  ];
 
   title = 'Activites-cards'
 

@@ -33,7 +33,7 @@ export class ListCampsitesComponent implements OnInit {
 
   ngOnInit(): void {
  // this.campsiteService.loadImageData()
-  this.id_detailcamp=1;
+  this.id_detailcamp=5;
     this.photos$ = this.campsiteService.getPhotosByDetailCampsite(this.id_detailcamp);
     this.campsiteInfos$ = this.campsiteService.getCampsiteByDetailCamp(this.id_detailcamp);
     this.detailcampsiteInfos$ = this.campsiteService.getDetailCampsite(this.id_detailcamp);

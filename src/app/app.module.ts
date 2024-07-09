@@ -74,8 +74,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ClickimgDirective } from './clickimg.directive';
+<<<<<<< HEAD
 import { ReserverActiviteComponent } from './components/Reservation/reserver-activite/reserver-activite.component';
 
+=======
+import { MatNativeDateModule } from '@angular/material/core';
+import { ResClientComponent } from './components/Reservation/res-client/res-client.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { heatmapComponent } from './components/Reservation/heatmap/heatmap.component';
+>>>>>>> 04053d5d936f1418425884daafe194d157729e5d
 
 
 
@@ -149,7 +156,11 @@ import { ReserverActiviteComponent } from './components/Reservation/reserver-act
     CampsiteAdminComponent,
     CampsiteUserComponent,
     ViewcampsiteReserveComponent,
+<<<<<<< HEAD
     ReserverActiviteComponent
+=======
+    ResClientComponent,
+>>>>>>> 04053d5d936f1418425884daafe194d157729e5d
   ],
   providers: [Location], 
     

@@ -62,7 +62,8 @@
 <div class="col-xl-3 col-lg-6 mt-2" *ngFor="let campsite of campsitesUser">
 <div class="note">
   <article class="card">
-    <div class="thumb"></div>
+      <div  style="background: url({{campsite?.detailCampSite?.photos[0]?.imageUrl}}) no-repeat  center ;   background-size:cover;
+            " class="thumb"></div>
     <div class="infos">
       <h2 class="title">
           <mat-card-title>Lieu : {{ campsite.lieu }}</mat-card-title>

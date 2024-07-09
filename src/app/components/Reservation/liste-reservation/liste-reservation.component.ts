@@ -167,5 +167,3 @@ export class ListeReservationComponent implements OnInit {
   
 
 }
-
-
